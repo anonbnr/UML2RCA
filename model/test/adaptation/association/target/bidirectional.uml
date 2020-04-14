@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="model">
+  <packageImport>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" name="root">
+    <packagedElement xsi:type="uml:Class" name="A">
+      <ownedAttribute name="b" type="//root/B" association="//first-bidirectional">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Class" name="B">
+      <ownedAttribute name="a" type="//root/A" association="//second-bidirectional">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="first-bidirectional" memberEnd="//root/A/b //first-bidirectional/a">
+    <ownedEnd name="a" type="//root/A" association="//first-bidirectional">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" name="second-bidirectional" memberEnd="//root/B/a //second-bidirectional/b">
+    <ownedEnd name="b" type="//root/B" association="//second-bidirectional">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

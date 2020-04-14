@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FhWkgH0PEeq_vO1Ti1fjcA" name="model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Fhl1EH0PEeq_vO1Ti1fjcA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_G58vIH0PEeq_vO1Ti1fjcA" name="root">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ihrh8H0PEeq_vO1Ti1fjcA" name="A"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JH3YMH0PEeq_vO1Ti1fjcA" name="B"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_SxCR4H0PEeq_vO1Ti1fjcA" name="bidirectional" memberEnd="_SxDgAn0PEeq_vO1Ti1fjcA _SxEHEH0PEeq_vO1Ti1fjcA" navigableOwnedEnd="_SxDgAn0PEeq_vO1Ti1fjcA _SxEHEH0PEeq_vO1Ti1fjcA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SxDgAH0PEeq_vO1Ti1fjcA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SxDgAX0PEeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SxDgAn0PEeq_vO1Ti1fjcA" name="b" type="_JH3YMH0PEeq_vO1Ti1fjcA" association="_SxCR4H0PEeq_vO1Ti1fjcA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SxEHEH0PEeq_vO1Ti1fjcA" name="a" type="_Ihrh8H0PEeq_vO1Ti1fjcA" association="_SxCR4H0PEeq_vO1Ti1fjcA"/>
+  </packagedElement>
+</uml:Model>

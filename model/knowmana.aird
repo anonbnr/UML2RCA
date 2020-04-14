@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_jeABsEkKEeqZgOYK2Q1rMQ" selectedViews="_jhjE8EkKEeqZgOYK2Q1rMQ" version="14.3.0.201909031200">
+    <semanticResources>knowmana.ecore</semanticResources>
+    <semanticResources>knowmana.genmodel</semanticResources>
+    <semanticResources>pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml</semanticResources>
+    <semanticResources>pathmap://UML_PROFILES/Ecore.profile.uml</semanticResources>
+    <semanticResources>pathmap://UML_PROFILES/Standard.profile.uml</semanticResources>
+    <semanticResources>http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard</semanticResources>
+    <semanticResources>http://www.eclipse.org/uml2/5.0.0/UML</semanticResources>
+    <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+    <semanticResources>pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml</semanticResources>
+    <semanticResources>pathmap://UML_METAMODELS/UML.metamodel.uml</semanticResources>
+    <semanticResources>pathmap://UML_METAMODELS/Ecore.metamodel.uml</semanticResources>
+    <semanticResources>http://www.eclipse.org/uml2/5.0.0/Types</semanticResources>
+    <semanticResources>test/conversion/class/source/class.notation</semanticResources>
+    <semanticResources>test/conversion/class/source/class.di</semanticResources>
+    <semanticResources>test/conversion/class/source/class.uml</semanticResources>
+    <semanticResources>test/conversion/attribute/source/attribute.di</semanticResources>
+    <semanticResources>test/conversion/attribute/source/attribute.notation</semanticResources>
+    <semanticResources>test/conversion/attribute/source/attribute.uml</semanticResources>
+    <semanticResources>test/conversion/association/source/association.notation</semanticResources>
+    <semanticResources>test/conversion/association/source/association.di</semanticResources>
+    <semanticResources>test/conversion/association/source/association.uml</semanticResources>
+    <semanticResources>test/conversion/association/source/association_fr_FR.properties</semanticResources>
+    <semanticResources>test/adaptation/association/source/aggregation.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/aggregation.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/aggregation.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/aggregation.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/composition.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/composition.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/composition.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/composition.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/dependency.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/dependency.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/dependency.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/dependency.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/bidirectional.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/bidirectional.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/bidirectional.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/bidirectional.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/associationClass.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/associationClass.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/associationClass.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/associationClass.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/naryAssociation.notation</semanticResources>
+    <semanticResources>test/adaptation/association/source/naryAssociation.di</semanticResources>
+    <semanticResources>test/adaptation/association/source/naryAssociation.uml</semanticResources>
+    <semanticResources>test/adaptation/association/source/naryAssociation_fr_FR.properties</semanticResources>
+    <semanticResources>test/adaptation/association/target/naryAssociationMaterialized.uml</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/simpleGeneralization.di</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/simpleGeneralization.notation</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/simpleGeneralization.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/naryAssociationForgotten.uml</semanticResources>
+    <semanticResources>test/adaptation/generalization/target/simpleGeneralization.uml</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_jhjE8EkKEeqZgOYK2Q1rMQ">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jqJnUEkKEeqZgOYK2Q1rMQ" name="knowmana" repPath="#_jjJAYEkKEeqZgOYK2Q1rMQ">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="knowmana.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_jjJAYEkKEeqZgOYK2Q1rMQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_jqHLEEkKEeqZgOYK2Q1rMQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_jqHLEUkKEeqZgOYK2Q1rMQ"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_jvT0IEkKEeqZgOYK2Q1rMQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_jvT0IUkKEeqZgOYK2Q1rMQ" type="Sirius" element="_jjJAYEkKEeqZgOYK2Q1rMQ" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_jvT0IkkKEeqZgOYK2Q1rMQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_jkYWgEkKEeqZgOYK2Q1rMQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <target xmi:type="ecore:EPackage" href="knowmana.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

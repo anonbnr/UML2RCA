@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="model">
+  <packageImport>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" name="root">
+    <packagedElement xsi:type="uml:Class" name="A">
+      <ownedAttribute name="assocClass-A" type="//AssocClass" association="//@packagedElement.3">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Class" name="B">
+      <ownedAttribute name="assocClass-B" type="//AssocClass" association="//@packagedElement.2">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Class" name="AssocClass">
+    <ownedAttribute name="assocAtt1">
+      <type xsi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute name="assocAtt2">
+      <type xsi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute name="b" type="//root/B" association="//@packagedElement.2">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute name="a" type="//root/A" association="//@packagedElement.3">
+      <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+      <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Association" memberEnd="//AssocClass/b //root/B/assocClass-B"/>
+  <packagedElement xsi:type="uml:Association" memberEnd="//AssocClass/a //root/A/assocClass-A"/>
+</uml:Model>

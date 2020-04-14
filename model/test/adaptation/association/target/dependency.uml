@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="model">
+  <packageImport>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Package" name="root">
+    <packagedElement xsi:type="uml:Class" name="A"/>
+    <packagedElement xsi:type="uml:Class" name="B"/>
+    <packagedElement xsi:type="uml:Class" name="C"/>
+    <packagedElement xsi:type="uml:Association" name="a-dependsOn-b" memberEnd="//root/a-dependsOn-b/a //root/a-dependsOn-b/b" navigableOwnedEnd="//root/a-dependsOn-b/b">
+      <ownedEnd name="a" type="//root/A" association="//root/a-dependsOn-b">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+      <ownedEnd name="b" type="//root/B" association="//root/a-dependsOn-b">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Association" name="a-dependsOn-c" memberEnd="//root/a-dependsOn-c/a //root/a-dependsOn-c/c" navigableOwnedEnd="//root/a-dependsOn-c/c">
+      <ownedEnd name="a" type="//root/A" association="//root/a-dependsOn-c">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+      <ownedEnd name="c" type="//root/C" association="//root/a-dependsOn-c">
+        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
+        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
