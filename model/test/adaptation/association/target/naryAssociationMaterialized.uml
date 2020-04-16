@@ -1,43 +1,42 @@
-<?xml version="1.0" encoding="ASCII"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="model">
-  <packageImport>
-    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_X6Rd4H4SEeq_vO1Ti1fjcA" name="model">
+  <packageImport xmi:id="_X6vX8H4SEeq_vO1Ti1fjcA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xsi:type="uml:Package" name="root">
-    <packagedElement xsi:type="uml:Class" name="A">
-      <ownedAttribute name="naryAssociation-A" type="//root/NaryAssociation" association="//root/@packagedElement.5">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
+  <packagedElement xmi:type="uml:Package" xmi:id="_ZIBqcH4SEeq_vO1Ti1fjcA" name="root">
+    <packagedElement xmi:type="uml:Class" xmi:id="_bBcDIH4SEeq_vO1Ti1fjcA" name="A"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bmYjQH4SEeq_vO1Ti1fjcA" name="B"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_dJAMkH4SEeq_vO1Ti1fjcA" name="C"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hmKgcH87EeqQv9F8VtLhJA" name="NaryAssociation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hmqPsH87EeqQv9F8VtLhJA" name="B-NaryAssociation" memberEnd="_hmq2wH87EeqQv9F8VtLhJA _hmrd0H87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmq2wH87EeqQv9F8VtLhJA _hmrd0H87EeqQv9F8VtLhJA">
+      <ownedEnd xmi:id="_hmq2wH87EeqQv9F8VtLhJA" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_hmqPsH87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmq2wX87EeqQv9F8VtLhJA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmq2wn87EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_hmrd0H87EeqQv9F8VtLhJA" name="naryAssociation-B" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmqPsH87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmrd0X87EeqQv9F8VtLhJA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmrd0n87EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
     </packagedElement>
-    <packagedElement xsi:type="uml:Class" name="B">
-      <ownedAttribute name="naryAssociation-B" type="//root/NaryAssociation" association="//root/@packagedElement.4">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hmsE4H87EeqQv9F8VtLhJA" name="A-NaryAssociation" memberEnd="_hmsE4X87EeqQv9F8VtLhJA _hmsE5H87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmsE4X87EeqQv9F8VtLhJA _hmsE5H87EeqQv9F8VtLhJA">
+      <ownedEnd xmi:id="_hmsE4X87EeqQv9F8VtLhJA" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_hmsE4H87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmsE4n87EeqQv9F8VtLhJA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmsE4387EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_hmsE5H87EeqQv9F8VtLhJA" name="naryAssociation-A" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmsE4H87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmsr8H87EeqQv9F8VtLhJA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmsr8X87EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
     </packagedElement>
-    <packagedElement xsi:type="uml:Class" name="C">
-      <ownedAttribute name="naryAssociation-C" type="//root/NaryAssociation" association="//root/@packagedElement.6">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hmsr8n87EeqQv9F8VtLhJA" name="C-NaryAssociation" memberEnd="_hmt6EH87EeqQv9F8VtLhJA _hmuhIH87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmt6EH87EeqQv9F8VtLhJA _hmuhIH87EeqQv9F8VtLhJA">
+      <ownedEnd xmi:id="_hmt6EH87EeqQv9F8VtLhJA" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_hmsr8n87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmt6EX87EeqQv9F8VtLhJA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmt6En87EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_hmuhIH87EeqQv9F8VtLhJA" name="naryAssociation-C" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmsr8n87EeqQv9F8VtLhJA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmuhIX87EeqQv9F8VtLhJA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmuhIn87EeqQv9F8VtLhJA" value="1"/>
+      </ownedEnd>
     </packagedElement>
-    <packagedElement xsi:type="uml:Class" name="NaryAssociation">
-      <ownedAttribute name="b" type="//root/B" association="//root/@packagedElement.4">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute name="a" type="//root/A" association="//root/@packagedElement.5">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute name="c" type="//root/C" association="//root/@packagedElement.6">
-        <lowerValue xsi:type="uml:LiteralInteger"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xsi:type="uml:Association" memberEnd="//root/NaryAssociation/b //root/B/naryAssociation-B"/>
-    <packagedElement xsi:type="uml:Association" memberEnd="//root/NaryAssociation/a //root/A/naryAssociation-A"/>
-    <packagedElement xsi:type="uml:Association" memberEnd="//root/NaryAssociation/c //root/C/naryAssociation-C"/>
   </packagedElement>
 </uml:Model>

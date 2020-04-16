@@ -28,5 +28,9 @@ public abstract class NaryAssociationAdaptation<T> extends AbstractAdaptation<As
 		
 		this.setSource(source);
 		this.setTarget(this.transform(source));
+		this.postTransformationClean();
 	}
+	
+	/* METHODS */
+	protected abstract void postTransformationClean();
 }

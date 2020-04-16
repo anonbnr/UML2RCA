@@ -45,6 +45,7 @@ public class DependencyToAssociationAdaptation extends AbstractAdaptation<Depend
 		
 		this.setSource(source);
 		this.setTarget(this.transform(source));
+		postTransformationClean();
 	}
 
 	/* METHODS */
@@ -64,8 +65,6 @@ public class DependencyToAssociationAdaptation extends AbstractAdaptation<Depend
 				associations.add(association);
 			}
 		}
-		
-		source.destroy();
 
 		return associations;
 	}
@@ -75,7 +74,17 @@ public class DependencyToAssociationAdaptation extends AbstractAdaptation<Depend
 		.stream()
 		.allMatch(end -> (end instanceof Type))))
 			throw new NotATypeException(source.getName() + 
-					" is a dependency having a non-type client");
+					" is a dependency having a non-type client/supplier");
+	}
+	
+	private Association initAssociation(Dependency source, NamedElement client, NamedElement supplier) {
+		Association association = UMLFactory.eINSTANCE.createAssociation();
+		association.setPackage(source.getNearestPackage());
+		association.setName(
+				Strings.decapitalize(client.getName()) + 
+				"-" + source.getName() + "-" +
+				Strings.decapitalize(supplier.getName()));
+		return association;
 	}
 	
 	private void initDependencyEnd(Association association, NamedElement dependencyEnd, boolean isNavigable) {
@@ -88,14 +97,8 @@ public class DependencyToAssociationAdaptation extends AbstractAdaptation<Depend
 		newDependencyEnd.setUpper(LiteralUnlimitedNatural.UNLIMITED);
 		newDependencyEnd.setType((Type) dependencyEnd);
 	}
-
-	private Association initAssociation(Dependency source, NamedElement client, NamedElement supplier) {
-		Association association = UMLFactory.eINSTANCE.createAssociation();
-		association.setPackage(source.getNearestPackage());
-		association.setName(
-				Strings.decapitalize(client.getName()) + 
-				"-" + source.getName() + "-" +
-				Strings.decapitalize(supplier.getName()));
-		return association;
+	
+	private void postTransformationClean() {
+		source.destroy();
 	}
 }

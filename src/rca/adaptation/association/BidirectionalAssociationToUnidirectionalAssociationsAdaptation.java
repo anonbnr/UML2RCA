@@ -8,7 +8,6 @@ import org.eclipse.uml2.uml.Property;
 
 import core.adaptation.AbstractAdaptation;
 import exceptions.NotABidirectionalAssociationException;
-import exceptions.NotABinaryAssociationException;
 import rca.utility.Associations;
 
 /**
@@ -29,15 +28,10 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation exte
 	 * creates an BidirectionalAssociationToUnidirectionalAssociationsAdaptation instance from a source
 	 * bidirectional association.
 	 * @param source a bidirectional association to adapt.
-	 * @throws NotABinaryAssociationException
 	 * @throws NotABidirectionalAssociationException
 	 */
 	public BidirectionalAssociationToUnidirectionalAssociationsAdaptation(Association source)
-			throws NotABinaryAssociationException, NotABidirectionalAssociationException {
-		
-		if(!source.isBinary())
-			throw new NotABinaryAssociationException(source.getName() + 
-					" is not a binary association");
+			throws NotABidirectionalAssociationException {
 		
 		if(!Associations.isBidirectional(source))
 			throw new NotABidirectionalAssociationException(source.getName() + 
@@ -45,6 +39,7 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation exte
 		
 		this.setSource(source);
 		this.setTarget(this.transform(source));
+		postTransformationClean();
 	}
 
 	/* METHODS */
@@ -62,17 +57,13 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation exte
 		uniAssociations.add(initUnidirectionalAssociation(
 				source, secondEnd, firstEnd, "second-" + source.getName()));
 		
-		source.destroy();
-		
 		return uniAssociations;
 	}
 
 	private Association initUnidirectionalAssociation(Association source, Property navigableEnd, Property nonNavigableEnd, String newName) {
-		Association uniAssociation = Associations.createUniDirectionalAssociation(navigableEnd, nonNavigableEnd);
+		Association uniAssociation = Associations.cloneIntoUnidirectionalAssociation(navigableEnd, nonNavigableEnd);
 		uniAssociation.setPackage(source.getPackage());
 		uniAssociation.setName(newName);
-		
-		cleanAssociatedClassifiersOwnedAttributes(uniAssociation);
 		
 		return uniAssociation;
 	}
@@ -105,5 +96,10 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation exte
 		
 		for (Property attribute: toClean)
 			attribute.destroy();
+	}
+	
+	private void postTransformationClean() {
+		target.stream().forEach(this::cleanAssociatedClassifiersOwnedAttributes);
+		source.destroy();
 	}
 }

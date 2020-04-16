@@ -4,7 +4,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 
 import core.adaptation.AbstractAdaptation;
-import exceptions.NotABinaryAssociationException;
+import exceptions.NotACompositionException;
 import rca.utility.Associations;
 
 /**
@@ -25,13 +25,13 @@ public class CompositionToAssociationAdaptation extends AbstractAdaptation<Assoc
 	/**
 	 * creates an CompositionToAssociationAdaptation instance from a source composition.
 	 * @param source a composition to adapt.
-	 * @throws NotABinaryAssociationException
+	 * @throws NotACompositionException
 	 */
 	public CompositionToAssociationAdaptation(Association source)
-			throws NotABinaryAssociationException {
+			throws NotACompositionException {
 		
-		if(!source.isBinary())
-			throw new NotABinaryAssociationException(source.getName() + " is not a composition");
+		if(!Associations.isComposition(source))
+			throw new NotACompositionException(source.getName() + " is not a composition");
 		
 		this.setSource(source);
 		this.setTarget(this.transform(source));

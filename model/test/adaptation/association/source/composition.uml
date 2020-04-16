@@ -4,18 +4,17 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_vGatsHz8Eeq_vO1Ti1fjcA" name="root">
-    <packagedElement xmi:type="uml:Class" xmi:id="_w49pYHz8Eeq_vO1Ti1fjcA" name="A">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_1ubjgXz8Eeq_vO1Ti1fjcA" name="b" type="_xmTQgHz8Eeq_vO1Ti1fjcA" aggregation="composite" association="_1uaVYHz8Eeq_vO1Ti1fjcA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1ucKkHz8Eeq_vO1Ti1fjcA"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1ucKkXz8Eeq_vO1Ti1fjcA" value="1"/>
-      </ownedAttribute>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_w49pYHz8Eeq_vO1Ti1fjcA" name="A"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_xmTQgHz8Eeq_vO1Ti1fjcA" name="B"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_1uaVYHz8Eeq_vO1Ti1fjcA" name="contains" memberEnd="_1ubjgXz8Eeq_vO1Ti1fjcA _1ucKknz8Eeq_vO1Ti1fjcA">
+  <packagedElement xmi:type="uml:Association" xmi:id="_1uaVYHz8Eeq_vO1Ti1fjcA" name="contains" memberEnd="_1ubjgXz8Eeq_vO1Ti1fjcA _1ucKknz8Eeq_vO1Ti1fjcA" navigableOwnedEnd="_1ubjgXz8Eeq_vO1Ti1fjcA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1ua8cHz8Eeq_vO1Ti1fjcA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1ubjgHz8Eeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_1ucKknz8Eeq_vO1Ti1fjcA" name="a" type="_w49pYHz8Eeq_vO1Ti1fjcA" association="_1uaVYHz8Eeq_vO1Ti1fjcA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1ubjgXz8Eeq_vO1Ti1fjcA" name="b" type="_xmTQgHz8Eeq_vO1Ti1fjcA" aggregation="composite" association="_1uaVYHz8Eeq_vO1Ti1fjcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1ucKkHz8Eeq_vO1Ti1fjcA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1ucKkXz8Eeq_vO1Ti1fjcA" value="1"/>
+    </ownedEnd>
   </packagedElement>
 </uml:Model>

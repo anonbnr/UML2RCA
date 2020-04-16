@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="ASCII"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="root">
-  <packageImport>
-    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_tunNQHz8Eeq_vO1Ti1fjcA" name="root">
+  <packageImport xmi:id="_tu_AsHz8Eeq_vO1Ti1fjcA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xsi:type="uml:Package" name="root">
-    <packagedElement xsi:type="uml:Class" name="A">
-      <ownedAttribute name="b" type="//root/B" association="//contains">
-        <lowerValue xsi:type="uml:LiteralInteger"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xsi:type="uml:Class" name="B"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_vGatsHz8Eeq_vO1Ti1fjcA" name="root">
+    <packagedElement xmi:type="uml:Class" xmi:id="_w49pYHz8Eeq_vO1Ti1fjcA" name="A"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_xmTQgHz8Eeq_vO1Ti1fjcA" name="B"/>
   </packagedElement>
-  <packagedElement xsi:type="uml:Association" name="contains" memberEnd="//root/A/b //contains/a">
-    <eAnnotations source="org.eclipse.papyrus">
-      <details key="nature" value="UML_Nature"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_1uaVYHz8Eeq_vO1Ti1fjcA" name="contains" memberEnd="_1ubjgXz8Eeq_vO1Ti1fjcA _1ucKknz8Eeq_vO1Ti1fjcA" navigableOwnedEnd="_1ubjgXz8Eeq_vO1Ti1fjcA">
+    <eAnnotations xmi:id="_1ua8cHz8Eeq_vO1Ti1fjcA" source="org.eclipse.papyrus">
+      <details xmi:id="_1ubjgHz8Eeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd name="a" type="//root/A" association="//contains"/>
+    <ownedEnd xmi:id="_1ucKknz8Eeq_vO1Ti1fjcA" name="a" type="_w49pYHz8Eeq_vO1Ti1fjcA" association="_1uaVYHz8Eeq_vO1Ti1fjcA"/>
+    <ownedEnd xmi:id="_1ubjgXz8Eeq_vO1Ti1fjcA" name="b" type="_xmTQgHz8Eeq_vO1Ti1fjcA" association="_1uaVYHz8Eeq_vO1Ti1fjcA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1ucKkHz8Eeq_vO1Ti1fjcA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1ucKkXz8Eeq_vO1Ti1fjcA" value="1"/>
+    </ownedEnd>
   </packagedElement>
 </uml:Model>

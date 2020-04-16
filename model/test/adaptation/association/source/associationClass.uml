@@ -4,14 +4,10 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_ndksMH0sEeq_vO1Ti1fjcA" name="root">
-    <packagedElement xmi:type="uml:Class" xmi:id="_qUJQsH0sEeq_vO1Ti1fjcA" name="A">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_u-TSsX0sEeq_vO1Ti1fjcA" name="b" type="_rCrxsH0sEeq_vO1Ti1fjcA" association="_u-RdgH0sEeq_vO1Ti1fjcA"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_rCrxsH0sEeq_vO1Ti1fjcA" name="B">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_u-T5wH0sEeq_vO1Ti1fjcA" name="a" type="_qUJQsH0sEeq_vO1Ti1fjcA" association="_u-RdgH0sEeq_vO1Ti1fjcA"/>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qUJQsH0sEeq_vO1Ti1fjcA" name="A"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rCrxsH0sEeq_vO1Ti1fjcA" name="B"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_u-RdgH0sEeq_vO1Ti1fjcA" name="AssocClass" memberEnd="_u-TSsX0sEeq_vO1Ti1fjcA _u-T5wH0sEeq_vO1Ti1fjcA">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_u-RdgH0sEeq_vO1Ti1fjcA" name="AssocClass" memberEnd="_u-TSsX0sEeq_vO1Ti1fjcA _u-T5wH0sEeq_vO1Ti1fjcA" navigableOwnedEnd="_u-TSsX0sEeq_vO1Ti1fjcA _u-T5wH0sEeq_vO1Ti1fjcA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_u-SroH0sEeq_vO1Ti1fjcA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_u-TSsH0sEeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
     </eAnnotations>
@@ -21,5 +17,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_8oaSQH0sEeq_vO1Ti1fjcA" name="assocAtt2">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_u-TSsX0sEeq_vO1Ti1fjcA" name="b" type="_rCrxsH0sEeq_vO1Ti1fjcA" association="_u-RdgH0sEeq_vO1Ti1fjcA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_u-T5wH0sEeq_vO1Ti1fjcA" name="a" type="_qUJQsH0sEeq_vO1Ti1fjcA" association="_u-RdgH0sEeq_vO1Ti1fjcA"/>
   </packagedElement>
 </uml:Model>

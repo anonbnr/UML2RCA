@@ -2,6 +2,7 @@ package rca.test.adaptation.association;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.AggregationKind;
@@ -38,8 +39,11 @@ public class DependencyToAssociationAdaptationTest {
 		manager.save(model, "model/test/adaptation/association/target/dependency.uml");
 		Association associationAToB = (Association) root.getMember("a-dependsOn-b");
 		Association associationAToC = (Association) root.getMember("a-dependsOn-c");
+		
 		assertNotNull(associationAToB);
 		assertNotNull(associationAToC);
+		assertTrue(associations.contains(associationAToB));
+		assertTrue(associations.contains(associationAToC));
 		
 		for (Property memberEnd: associationAToB.getMemberEnds())
 			assertEquals(memberEnd.getAggregation(), AggregationKind.NONE_LITERAL);

@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="ASCII"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="model">
-  <packageImport>
-    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="__i4DoHz9Eeq_vO1Ti1fjcA" name="model">
+  <packageImport xmi:id="__jHUMHz9Eeq_vO1Ti1fjcA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xsi:type="uml:Package" name="root">
-    <packagedElement xsi:type="uml:Class" name="A"/>
-    <packagedElement xsi:type="uml:Class" name="B"/>
-    <packagedElement xsi:type="uml:Class" name="C"/>
-    <packagedElement xsi:type="uml:Association" name="a-dependsOn-b" memberEnd="//root/a-dependsOn-b/a //root/a-dependsOn-b/b" navigableOwnedEnd="//root/a-dependsOn-b/b">
-      <ownedEnd name="a" type="//root/A" association="//root/a-dependsOn-b">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_C4UVcHz-Eeq_vO1Ti1fjcA" name="root">
+    <packagedElement xmi:type="uml:Class" xmi:id="_E0HTwHz-Eeq_vO1Ti1fjcA" name="A"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GB6joHz-Eeq_vO1Ti1fjcA" name="B"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qpQ6AH0JEeq_vO1Ti1fjcA" name="C"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_F3DVEH87EeqdjIDomMFZEw" name="a-dependsOn-b" memberEnd="_F3QwcH87EeqdjIDomMFZEw _F3WQAH87EeqdjIDomMFZEw" navigableOwnedEnd="_F3WQAH87EeqdjIDomMFZEw">
+      <ownedEnd xmi:id="_F3QwcH87EeqdjIDomMFZEw" name="a" type="_E0HTwHz-Eeq_vO1Ti1fjcA" association="_F3DVEH87EeqdjIDomMFZEw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F3VB4H87EeqdjIDomMFZEw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F3Vo8H87EeqdjIDomMFZEw" value="*"/>
       </ownedEnd>
-      <ownedEnd name="b" type="//root/B" association="//root/a-dependsOn-b">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      <ownedEnd xmi:id="_F3WQAH87EeqdjIDomMFZEw" name="b" type="_GB6joHz-Eeq_vO1Ti1fjcA" association="_F3DVEH87EeqdjIDomMFZEw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F3WQAX87EeqdjIDomMFZEw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F3WQAn87EeqdjIDomMFZEw" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xsi:type="uml:Association" name="a-dependsOn-c" memberEnd="//root/a-dependsOn-c/a //root/a-dependsOn-c/c" navigableOwnedEnd="//root/a-dependsOn-c/c">
-      <ownedEnd name="a" type="//root/A" association="//root/a-dependsOn-c">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_F3XeIH87EeqdjIDomMFZEw" name="a-dependsOn-c" memberEnd="_F3XeIX87EeqdjIDomMFZEw _F3XeJH87EeqdjIDomMFZEw" navigableOwnedEnd="_F3XeJH87EeqdjIDomMFZEw">
+      <ownedEnd xmi:id="_F3XeIX87EeqdjIDomMFZEw" name="a" type="_E0HTwHz-Eeq_vO1Ti1fjcA" association="_F3XeIH87EeqdjIDomMFZEw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F3XeIn87EeqdjIDomMFZEw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F3XeI387EeqdjIDomMFZEw" value="*"/>
       </ownedEnd>
-      <ownedEnd name="c" type="//root/C" association="//root/a-dependsOn-c">
-        <lowerValue xsi:type="uml:LiteralInteger" value="1"/>
-        <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+      <ownedEnd xmi:id="_F3XeJH87EeqdjIDomMFZEw" name="c" type="_qpQ6AH0JEeq_vO1Ti1fjcA" association="_F3XeIH87EeqdjIDomMFZEw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F3XeJX87EeqdjIDomMFZEw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F3XeJn87EeqdjIDomMFZEw" value="*"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>

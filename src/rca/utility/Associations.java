@@ -18,24 +18,81 @@ import org.eclipse.uml2.uml.UMLFactory;
 public class Associations {
 	
 	/**
-	 * Checks if an association is bidirectional.
-	 * @param association the association to check.
-	 * @return true if the association is bidirectional, false otherwise.
+	 * Checks if a binary association is unidirectional.
+	 * @param association the binary association to check.
+	 * @return true if the binary association is unidirectional, false otherwise.
+	 */
+	public static boolean isUnidirectional(Association association) {
+		if (association.isBinary())
+			return association.getMemberEnds()
+			.stream()
+			.filter(memberEnd -> memberEnd.isNavigable())
+			.collect(Collectors.toList())
+			.size() == 1;
+		else return false;
+	}
+	
+	/**
+	 * Checks if a binary association is bidirectional.
+	 * @param association the binary association to check.
+	 * @return true if the binary association is bidirectional, false otherwise.
 	 */
 	public static boolean isBidirectional(Association association) {
-		return association.getMemberEnds()
-		.stream()
-		.filter(memberEnd -> memberEnd.isNavigable())
-		.collect(Collectors.toList())
-		.size() == 2;
+		if (association.isBinary())
+			return association.getMemberEnds()
+			.stream()
+			.filter(memberEnd -> memberEnd.isNavigable())
+			.collect(Collectors.toList())
+			.size() == 2;
+		else return false;
 	}
 	
-	public static boolean isNary(Association association) {
-		return !(association.isBinary() || isAssociationClass(association));
+	/**
+	 * Checks if a binary association is an aggregation.
+	 * @param association the binary association to check.
+	 * @return true if the binary association is an aggregation, false otherwise.
+	 */
+	public static boolean isAggregation(Association association) {
+		if (association.isBinary())
+			return !association.getMemberEnds()
+			.stream()
+			.filter(memberEnd -> memberEnd.getAggregation() == AggregationKind.SHARED_LITERAL)
+			.collect(Collectors.toList())
+			.isEmpty();
+		else return false;
 	}
 	
+	/**
+	 * Checks if a binary association is a composition.
+	 * @param association the binary association to check.
+	 * @return true if the binary association is a composition, false otherwise.
+	 */
+	public static boolean isComposition(Association association) {
+		if (association.isBinary())
+			return !association.getMemberEnds()
+			.stream()
+			.filter(memberEnd -> memberEnd.getAggregation() == AggregationKind.COMPOSITE_LITERAL)
+			.collect(Collectors.toList())
+			.isEmpty();
+		else return false;
+	}
+	
+	/**
+	 * Checks if an association is an association class.
+	 * @param association the association to check.
+	 * @return true if the association is an association class, false otherwise.
+	 */
 	public static boolean isAssociationClass(Association association) {
 		return association instanceof AssociationClass;
+	}
+	
+	/**
+	 * Checks if an association is an n-ary association.
+	 * @param association the association to check.
+	 * @return true if the association is n-ary, false otherwise.
+	 */
+	public static boolean isNary(Association association) {
+		return !(association.isBinary() || isAssociationClass(association));
 	}
 	
 	/**
@@ -61,45 +118,43 @@ public class Associations {
 		return association;
 	}
 	
-	/**
-	 * creates a binary unidirectional association from the ends of a binary bidirectional association 
-	 * while specifying its navigable and non-navigable ends.
-	 * @param navigableEnd the navigable end in the created unidirectional association.
-	 * @param nonNavigableEnd the non navigable end in the created unidirectional association.
-	 * @return a unidirectional binary association obtained from the ends of a bidirectional association.
-	 * and the specified navigable and non-navigable ends.
-	 */
-	public static Association createUniDirectionalAssociation(Property navigableEnd, Property nonNavigableEnd) {
-		Association unidirectionalAssociation = UMLFactory.eINSTANCE.createAssociation();
-		
-		createNavigableMemberEnd(unidirectionalAssociation, navigableEnd, nonNavigableEnd);
-		createNonNavigableMemberEnd(unidirectionalAssociation, nonNavigableEnd);
-		
-		return unidirectionalAssociation;
-	}
-	
-	public static Association createBinaryAssociation(Property firstEnd, Property secondEnd) {
+	public static Association cloneIntoBinaryAssociation(Property firstEnd, Property secondEnd) {
 		Association association = UMLFactory.eINSTANCE.createAssociation();
 		
-		if (firstEnd.isNavigable())
-			createNavigableMemberEnd(association, firstEnd, secondEnd);
+		Property newFirstEnd = cloneMemberEnd(firstEnd);
+		adaptMemberEndOwnership(association, newFirstEnd, firstEnd.isNavigable());
 		
-		else
-			createNonNavigableMemberEnd(association, firstEnd);
-		
-		if (secondEnd.isNavigable())
-			createNavigableMemberEnd(association, secondEnd, firstEnd);
-		
-		else
-			createNonNavigableMemberEnd(association, secondEnd);
+		Property newSecondEnd = cloneMemberEnd(secondEnd);
+		adaptMemberEndOwnership(association, newSecondEnd, secondEnd.isNavigable());
 		
 		return association;
 	}
 	
-	public static Property copyMemberEnd(Property memberEnd) {
+	/**
+	 * creates a new binary unidirectional association from the ends of an existing association 
+	 * while specifying its navigable and non-navigable ends.
+	 * @param navigableEnd the navigable end in the created unidirectional association.
+	 * @param nonNavigableEnd the non navigable end in the created unidirectional association.
+	 * @return a unidirectional binary association obtained from an existing association,
+	 * while specifying its navigable and non-navigable ends.
+	 */
+	public static Association cloneIntoUnidirectionalAssociation(Property navigableEnd, Property nonNavigableEnd) {
+		Association unidirectionalAssociation = UMLFactory.eINSTANCE.createAssociation();
+		
+		Property newNavigableEnd = cloneMemberEnd(navigableEnd);
+		adaptMemberEndOwnership(
+				unidirectionalAssociation, newNavigableEnd, true);
+		
+		Property newNonNavigableEnd = cloneMemberEnd(nonNavigableEnd);
+		adaptMemberEndOwnership(
+				unidirectionalAssociation, newNonNavigableEnd, false);
+		
+		return unidirectionalAssociation;
+	}
+	
+	public static Property cloneMemberEnd(Property memberEnd) {
 		Property newMemberEnd = UMLFactory.eINSTANCE.createProperty();
 		
-		newMemberEnd.setIsNavigable(memberEnd.isNavigable());
 		newMemberEnd.setAggregation(memberEnd.getAggregation());
 		newMemberEnd.setName(memberEnd.getName());
 		newMemberEnd.setLower(memberEnd.getLower());
@@ -109,13 +164,17 @@ public class Associations {
 		return newMemberEnd;
 	}
 	
-	public static void becomeMemberEnd(Property memberEnd, Association newContainingAssociation) {
-		memberEnd.setAssociation(newContainingAssociation);
+	public static void adaptMemberEndOwnership(Association association,
+			Property clone, boolean isNavigable) {
+		if (isNavigable)
+			clone.setAssociation(association);
+		else
+			clone.setOwningAssociation(association);
+		clone.setIsNavigable(isNavigable);
 	}
 
-	public static Property createNonNavigableMemberEnd(Association association, Property nonNavigableEnd) {
-		Property newNonNavigableEnd;
-		newNonNavigableEnd = UMLFactory.eINSTANCE.createProperty();
+	public static Property cloneNonNavigableMemberEnd(Association association, Property nonNavigableEnd) {
+		Property newNonNavigableEnd = UMLFactory.eINSTANCE.createProperty();
 		newNonNavigableEnd.setOwningAssociation(association);
 		newNonNavigableEnd.setIsNavigable(false);
 		newNonNavigableEnd.setAggregation(nonNavigableEnd.getAggregation());
@@ -127,7 +186,7 @@ public class Associations {
 		return newNonNavigableEnd;
 	}
 
-	public static void createNavigableMemberEnd(Association association, Property navigableEnd, Property otherEnd) {
+	public static void cloneNavigableMemberEndForBinaryAssociations(Association association, Property navigableEnd, Property otherEnd) {
 		Property newNavigableEnd;
 		Class otherEndClass = (Class) otherEnd.getType();
 		otherEndClass.createOwnedAttribute(navigableEnd.getName(), navigableEnd.getType());

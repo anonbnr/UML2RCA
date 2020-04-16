@@ -32,19 +32,19 @@ public class NaryAssociationMaterializationAdaptationTest {
 		
 		Association naryAssociation = (Association) root.getPackagedElement(naryAssociationName);
 		int naryAssociationMemberEndsSize = naryAssociation.getMemberEnds().size();
-		Class cls = null;
+		Class target = null;
 		
 		try {
-			cls = new NaryAssociationMaterializationAdaptation(naryAssociation).getTarget();
+			target = new NaryAssociationMaterializationAdaptation(naryAssociation).getTarget();
 		} catch (NotAnNAryAssociationException e) {
 			e.printStackTrace();
 		}
 		
 		manager.save(model, targetURI);
 		
-		cls = (Class) root.getPackagedElement(targetClassName);
-		assertNotNull(cls);
-		assertEquals(cls.getName(), Strings.capitalize(naryAssociation.getName()));
-		assertEquals(cls.getAssociations().size(), naryAssociationMemberEndsSize);
+		target = (Class) root.getPackagedElement(targetClassName);
+		assertNotNull(target);
+		assertEquals(target.getName(), Strings.capitalize(naryAssociation.getName()));
+		assertEquals(target.getAssociations().size(), naryAssociationMemberEndsSize);
 	}
 }

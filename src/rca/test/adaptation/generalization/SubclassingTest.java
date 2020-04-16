@@ -8,8 +8,8 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
-import rca.adaptation.generalization.SimpleGeneralizationAdaptation;
 import rca.management.EcoreModelManager;
+import rca.utility.Classes;
 
 public class SubclassingTest {
 	
@@ -30,12 +30,12 @@ public class SubclassingTest {
 		Class InProceedings = (Class) package2.getPackagedElement("InProceedings");
 		Class JournalArticle = (Class) package2.getPackagedElement("JournalArticle");
 		
-		EList<Class> DocumentSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(Document);
-		EList<Class> ReportSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(Report);
-		EList<Class> ThesisSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(Thesis);
-		EList<Class> ArticleSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(Article);
-		EList<Class> InProceedingsSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(InProceedings);
-		EList<Class> JournalArticleSubClasses = SimpleGeneralizationAdaptation.getAllSubclasses(JournalArticle);
+		EList<Class> DocumentSubClasses = Classes.getAllSubclasses(Document);
+		EList<Class> ReportSubClasses = Classes.getAllSubclasses(Report);
+		EList<Class> ThesisSubClasses = Classes.getAllSubclasses(Thesis);
+		EList<Class> ArticleSubClasses = Classes.getAllSubclasses(Article);
+		EList<Class> InProceedingsSubClasses = Classes.getAllSubclasses(InProceedings);
+		EList<Class> JournalArticleSubClasses = Classes.getAllSubclasses(JournalArticle);
 		
 		assertTrue(DocumentSubClasses.contains(Report));
 		assertTrue(DocumentSubClasses.contains(Thesis));

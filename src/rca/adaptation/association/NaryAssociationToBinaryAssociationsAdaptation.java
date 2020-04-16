@@ -23,7 +23,6 @@ public class NaryAssociationToBinaryAssociationsAdaptation extends NaryAssociati
 	/* CONSTRUCTOR */
 	public NaryAssociationToBinaryAssociationsAdaptation(Association source) 
 			throws NotAnNAryAssociationException {
-		
 		super(source);
 	}
 
@@ -36,7 +35,7 @@ public class NaryAssociationToBinaryAssociationsAdaptation extends NaryAssociati
 		EList<Association> binaryAssociations = new BasicEList<>();
 		Property iEnd = null, jEnd = null;
 		
-		for (int i = 0; i < memberEnds.size() - 1; i++) {
+		for (int i = 0; i < memberEnds.size(); i++) {
 			iEnd = memberEnds.get(i);
 			
 			for (int j = i + 1; j < memberEnds.size(); j++) {
@@ -47,16 +46,19 @@ public class NaryAssociationToBinaryAssociationsAdaptation extends NaryAssociati
 			}
 		}
 		
-		source.destroy();
-		
 		return binaryAssociations;
 	}
 
 	private Association initBinaryAssociation(Association source, Property firstEnd, Property secondEnd, String newName) {
-		Association binaryAssociation = Associations.createBinaryAssociation(firstEnd, secondEnd);
+		Association binaryAssociation = Associations.cloneIntoBinaryAssociation(firstEnd, secondEnd);
 		binaryAssociation.setPackage(source.getPackage());
 		binaryAssociation.setName(newName);
 		
 		return binaryAssociation;
+	}
+	
+	@Override
+	protected void postTransformationClean() {
+		source.destroy();
 	}
 }

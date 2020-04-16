@@ -4,7 +4,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 
 import core.adaptation.AbstractAdaptation;
-import exceptions.NotABinaryAssociationException;
+import exceptions.NotAnAggregationException;
 import rca.utility.Associations;
 
 /**
@@ -25,13 +25,13 @@ public class AggregationToAssociationAdaptation extends AbstractAdaptation<Assoc
 	/**
 	 * creates an AggregationToAssociationAdaptation instance from a source aggregation.
 	 * @param source an aggregation to adapt.
-	 * @throws NotABinaryAssociationException
+	 * @throws NotAnAggregationException
 	 */
 	public AggregationToAssociationAdaptation(Association source) 
-			throws NotABinaryAssociationException {
+			throws NotAnAggregationException {
 		
-		if(!source.isBinary())
-			throw new NotABinaryAssociationException(source.getName() + 
+		if(!Associations.isAggregation(source))
+			throw new NotAnAggregationException(source.getName() + 
 					" is not an aggregation");
 		
 		this.setSource(source);

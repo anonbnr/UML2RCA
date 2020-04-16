@@ -1,198 +1,255 @@
 package rca.adaptation.generalization;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
 import rca.utility.Associations;
+import rca.utility.Classes;
+import rca.utility.NamedElements;
+import utility.Strings;
 
 public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Class> {
 	
+	/* ATTRIBUTES */
+	private List<Association> associationsToClean;
+	private List<Dependency> dependenciesToClean;
+	private List<Class> superClasses;
+	private List<Class> subClasses;
+	
 	/* CONSTRUCTOR */
 	public SimpleGeneralizationAdaptation(Class source) {
-		super(source);
+		associationsToClean = new ArrayList<>();
+		dependenciesToClean = new ArrayList<>();
+		superClasses = Classes.getAllSuperClasses(source);
+		subClasses = Classes.getAllSubclasses(source);
+		this.setSource(source);
+		this.setTarget(this.transform(source));
+		postTransformationClean();
 	}
 
 	/* METHODS */
+	public List<Class> getSuperClasses() {
+		return superClasses;
+	}
+
+	public List<Class> getSubClasses() {
+		return subClasses;
+	}
+	
 	// implementation of the IAdaptation interface
 	@Override
 	public Class transform(Class source) {
-		// start by creating the new class
+		Class target = initTargetClass(source);
+		
+		// add owned, inherited, and specializing attributes
+		initAllTargetClassAttributes(source, target);
+		
+		// add owned, inherited, and specializing associations
+		initAllTargetClassAssociations(source, target);
+		
+		// add owned, inherited, and specializing dependencies
+		initAllTargetClassDependencies(source, target);
+		
+		return target;
+	}
+
+	private Class initTargetClass(Class source) {
 		Class cls = UMLFactory.eINSTANCE.createClass();
 		
 		// initialize the class' name and package
 		cls.setName(source.getName());
 		cls.setPackage(source.getPackage());
-		
-		// get superclasses
-		EList<Class> superClasses = getAllSuperClasses(source);
-		
-		// get subclasses
-		EList<Class> subClasses = getAllSubclasses(source);
-		
-		// add attributes
-		/* attributes owned by C_ch */
+		return cls;
+	}
+	
+	private void initTargetClassAttributes(Class source, Class target) {
 		for (Property ownedAttribute: source.getOwnedAttributes())
-			cls.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
+			target.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
+	}
+
+	private void initAllTargetClassAttributes(Class source, Class target) {
+		/* owned attributes */
+		initTargetClassAttributes(source, target);
 		
-		/* attributes owned by C_ch's superclasses */
-		for (Class superClass: superClasses) {
-			for (Property superClassOwnedAttribute: superClass.getOwnedAttributes())
-				cls.createOwnedAttribute(superClassOwnedAttribute.getName(), superClassOwnedAttribute.getType());
-		}
+		/* inherited attributes (superclasses) */
+		for (Class superClass: superClasses)
+			initTargetClassAttributes(superClass, target);
 		
-		/* attributes owned by C_ch's subclasses */
+		/* specializing attributes (subclasses) */
 		for (Class subClass: subClasses) {
-			for (Property subClassOwnedAttribute: subClass.getOwnedAttributes())
-				cls.createOwnedAttribute(subClassOwnedAttribute.getName(), subClassOwnedAttribute.getType());
+			initTargetClassAttributes(subClass, target);
 			
 			/* boolean attribute for each subclass */
 //			cls.createOwnedAttribute(subClass.getName(), UMLPackage.LITERAL_BOOLEAN);
 		}
+	}
+	
+	private void initTargetClassAssociations(Class owner, Class target,
+			Association ownedAssociation) {
+		Association newOwnedAssociation = null;
+		Property newMemberEnd = null;
 		
-		// add associations
-		/* associations owned by C_ch */
-		for (Association ownedAssociation: source.getAssociations()) {
-			Association newOwnedAssociation = null;
-			Property clsMemberEnd = null;
+		if (Associations.isAssociationClass(ownedAssociation))
+			newOwnedAssociation = initTargetClassAssociationClasses((AssociationClass)ownedAssociation);			
+		
+		else
+			newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
+		
+		newOwnedAssociation.setPackage(ownedAssociation.getPackage());
+		newOwnedAssociation.setName(ownedAssociation.getName());
+		
+		for (Property memberEnd: ownedAssociation.getMemberEnds()) {
 			
-			if (Associations.isAssociationClass(ownedAssociation))
-				newOwnedAssociation = UMLFactory.eINSTANCE.createAssociationClass();
+			newMemberEnd = Associations.cloneMemberEnd(memberEnd);
+			Associations.adaptMemberEndOwnership(
+					newOwnedAssociation, newMemberEnd, memberEnd.isNavigable());
 			
+			if (memberEnd.getType() == owner && owner == source)
+				newMemberEnd.setType(target);
+			
+			if (memberEnd.getType() == owner && owner != source) {
+				newMemberEnd.setName(Strings.decapitalize(source.getName()));
+				newMemberEnd.setType(target);
+				newOwnedAssociation.setName(ownedAssociation.getName() + "-" + target.getName());
+			}
+		}
+		
+		if (owner == source || subClasses.contains(owner))
+			associationsToClean.add(ownedAssociation);
+	}
+
+	private AssociationClass initTargetClassAssociationClasses(AssociationClass ownedAssociation) {
+		AssociationClass newOwnedAssociation = UMLFactory.eINSTANCE.createAssociationClass();
+		
+		ownedAssociation.getOwnedAttributes()
+		.stream()
+		.filter(attribute -> 
+			!ownedAssociation.getMemberEnds()
+				.stream()
+				.map(Property::getName)
+				.collect(Collectors.toList())
+				.contains(attribute.getName()))
+		.forEach(attribute -> 
+			newOwnedAssociation.createOwnedAttribute(attribute.getName(), attribute.getType()));
+		
+		return newOwnedAssociation;
+	}
+	
+	private void initAllTargetClassAssociations(Class source, Class target) {
+		/* owned associations */
+		for (Association ownedAssociation: source.getAssociations())
+			initTargetClassAssociations(source, target, ownedAssociation);
+		
+		/* inherited associations (superclasses) */
+		for (Class superClass: superClasses)
+			for (Association ownedAssociation: superClass.getAssociations())
+				initTargetClassAssociations(superClass, target, ownedAssociation);
+		
+		/* specializing associations (subclasses) */
+		for (Class subClass: subClasses)
+			for (Association ownedAssociation: subClass.getAssociations())
+				initTargetClassAssociations(subClass, target, ownedAssociation);
+	}
+	
+	private void initTargetClassClientDependencies(Class dependingClient, Class target, Dependency dependency) {
+		Dependency newDependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.getNearestPackage().getPackagedElements().add(newDependency);
+		
+		if (dependingClient != source)
+			newDependency.setName(dependency.getName() + "-" + target.getName());
+		else
+			newDependency.setName(dependency.getName());
+		
+		for (NamedElement client: dependency.getClients()) {
+			
+			if (client == dependingClient)
+				newDependency.getClients().add(target);
 			else
-				newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
+				newDependency.getClients().add(client);
 			
-			for (Property memberEnd: ownedAssociation.getMemberEnds()) {
-				if (memberEnd.getType() != source)
-					Associations.becomeMemberEnd(
-							Associations.copyMemberEnd(memberEnd),
-							newOwnedAssociation
-					);
-				else {
-					clsMemberEnd = Associations.copyMemberEnd(memberEnd);
-					clsMemberEnd.setType(cls);
-					Associations.becomeMemberEnd(clsMemberEnd, newOwnedAssociation);
-				}
+			for (NamedElement supplier: dependency.getSuppliers())
+				newDependency.getSuppliers().add(supplier);
+		}
+		
+		if (dependingClient == source || subClasses.contains(dependingClient))
+			dependenciesToClean.add(dependency);
+	}
+	
+	private void initTargetClassSupplierDependencies(Class providingSupplier, Class target, Dependency dependency) {
+		Dependency newDependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.getNearestPackage().getPackagedElements().add(newDependency);
+		
+		if (providingSupplier != source)
+			newDependency.setName(dependency.getName() + "-" + target.getName());
+		else
+			newDependency.setName(dependency.getName());
+		
+		for (NamedElement client: dependency.getClients()) {
+			newDependency.getClients().add(client);
+			
+			for (NamedElement supplier: dependency.getSuppliers()) {
+				if (supplier == providingSupplier)
+					newDependency.getSuppliers().add(target);
+				else
+					newDependency.getSuppliers().add(supplier);
 			}
 		}
 		
-		/* associations owned by C_ch's superclasses */
-		for (Class superClass: superClasses) {
-			for (Association ownedAssociation: superClass.getAssociations()) {
-				Association newOwnedAssociation = null;
-				Property clsMemberEnd = null;
-				
-				if (Associations.isAssociationClass(ownedAssociation))
-					newOwnedAssociation = UMLFactory.eINSTANCE.createAssociationClass();
-				
-				else
-					newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
-				
-				for (Property memberEnd: ownedAssociation.getMemberEnds()) {
-					if (memberEnd.getType() != source)
-						Associations.becomeMemberEnd(
-								Associations.copyMemberEnd(memberEnd),
-								newOwnedAssociation
-						);
-					else {
-						clsMemberEnd = Associations.copyMemberEnd(memberEnd);
-						clsMemberEnd.setType(cls);
-						Associations.becomeMemberEnd(clsMemberEnd, newOwnedAssociation);
-					}
-				}
-			}
-		}
+		if (providingSupplier == source || subClasses.contains(providingSupplier))
+			dependenciesToClean.add(dependency);
+	}
+	
+	private void initAllTargetClassDependencies(Class source, Class target) {
+		/* client dependencies */
+		for (Dependency dependency: source.getClientDependencies())
+			initTargetClassClientDependencies(source, target, dependency);
 		
-		/* associations owned by C_ch's subclasses */
-		for (Class subClass: subClasses) {
-			for (Association ownedAssociation: subClass.getAssociations()) {
-				Association newOwnedAssociation = null;
-				Property clsMemberEnd = null;
-				
-				if (Associations.isAssociationClass(ownedAssociation))
-					newOwnedAssociation = UMLFactory.eINSTANCE.createAssociationClass();
-				
-				else
-					newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
-				
-				for (Property memberEnd: ownedAssociation.getMemberEnds()) {
-					if (memberEnd.getType() != source)
-						Associations.becomeMemberEnd(
-								Associations.copyMemberEnd(memberEnd),
-								newOwnedAssociation
-						);
-					else {
-						clsMemberEnd = Associations.copyMemberEnd(memberEnd);
-						clsMemberEnd.setType(cls);
-						Associations.becomeMemberEnd(clsMemberEnd, newOwnedAssociation);
-					}
-				}
-			}
-		}
+		/* supplier dependencies */
+		for (Dependency dependency: NamedElements.getSupplierDependencies(source))
+			initTargetClassSupplierDependencies(source, target, dependency);
+		
+		/* inherited client dependencies (superclasses) */
+		for (Class superClass: superClasses)
+			for (Dependency dependency: superClass.getClientDependencies())
+				initTargetClassClientDependencies(superClass, target, dependency);
+		
+		/* inherited supplier dependencies (superclasses) */
+		for (Class superClass: superClasses)
+			for (Dependency dependency: NamedElements.getSupplierDependencies(superClass))
+				initTargetClassSupplierDependencies(superClass, target, dependency);
+		
+		/* specializing client dependencies (subclasses) */
+		for (Class subClass: subClasses)
+			for (Dependency dependency: subClass.getClientDependencies())
+				initTargetClassClientDependencies(subClass, target, dependency);
+		
+		/* specializing supplier dependencies (subclasses) */
+		for (Class subClass: subClasses)
+			for (Dependency dependency: NamedElements.getSupplierDependencies(subClass))
+				initTargetClassSupplierDependencies(subClass, target, dependency);
+	}
+
+	private void postTransformationClean() {
+		// remove source's owned associations and its subclasses' associations
+		associationsToClean.stream().forEach(Association::destroy);
+		
+		// remove source's dependencies and its subclasses' dependencies
+		dependenciesToClean.stream().forEach(Dependency::destroy);
 		
 		// remove source and its collapsed subclasses
-		subClasses.stream().forEach(Class::destroy);
+		Classes.getAllSubclasses(source)
+		.stream().forEach(Class::destroy);
+		
 		source.destroy();
-		
-		return cls;
-	}
-	
-	public static EList<Package> getAllNestedPackages(Package pckg) {
-		EList<Package> allNestedPackages = new BasicEList<>();
-		
-		for (Package nestedPackage: pckg.getNestedPackages()) {
-			allNestedPackages.add(nestedPackage);
-			allNestedPackages.addAll(getAllNestedPackages(nestedPackage));
-		}
-		
-		return allNestedPackages;
-	}
-	
-	public static EList<Package> getAllNestedPackages(Model model) {
-		EList<Package> allNestedPackages = new BasicEList<>();
-		
-		for (Package nestedPackage: model.getNestedPackages()) {
-			allNestedPackages.add(nestedPackage);
-			allNestedPackages.addAll(getAllNestedPackages(nestedPackage));
-		}
-		
-		return allNestedPackages;
-	}
-	
-	public static EList<Class> getAllSuperClasses(Class source) {
-		EList<Class> superClasses = new BasicEList<>();
-		
-		for (Class superClass: source.getSuperClasses()) {
-			superClasses.add(superClass);
-			superClasses.addAll(getAllSuperClasses(superClass));
-		}
-		
-		return superClasses;
-	}
-	
-	public static EList<Class> getAllSubclasses(Class source) {
-		EList<Class> subClasses = new BasicEList<>();
-		
-		Model model = source.getModel();
-		for (Package nestedPackage: getAllNestedPackages(model)) {
-			for (Type ownedType: nestedPackage.getOwnedTypes()) {
-				if (ownedType instanceof Class) {
-					Class ownedClass = (Class) ownedType;
-					if (ownedClass.getSuperClasses().contains(source)) {
-						subClasses.add(ownedClass);
-						subClasses.addAll(getAllSubclasses(ownedClass));
-					}
-				}
-			}
-		}
-		
-		return subClasses;
 	}
 }

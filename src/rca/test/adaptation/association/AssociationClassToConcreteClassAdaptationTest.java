@@ -1,7 +1,7 @@
 package rca.test.adaptation.association;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
@@ -29,6 +29,7 @@ public class AssociationClassToConcreteClassAdaptationTest {
 		
 		AssociationClass associationClass = (AssociationClass) model.getPackagedElement(associationClassName);
 		int associationClassMemberEndsSize = associationClass.getMemberEnds().size();
+		int associationClassOwnedAttributesNumber = associationClass.getOwnedAttributes().size();
 		Class cls = new AssociationClassToConcreteClassAdaptation(associationClass).getTarget();
 		
 		manager.save(model, targetURI);
@@ -36,6 +37,7 @@ public class AssociationClassToConcreteClassAdaptationTest {
 		cls = (Class) model.getPackagedElement(targetClassName);
 		assertNotNull(cls);
 		assertEquals(cls.getName(), Strings.capitalize(associationClassName));
+		assertEquals(cls.getOwnedAttributes().size(), associationClassOwnedAttributesNumber);
 		assertEquals(cls.getAssociations().size(), associationClassMemberEndsSize);
 	}
 }
