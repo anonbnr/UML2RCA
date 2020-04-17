@@ -8,17 +8,19 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
+import uml2rca.java.uml2.uml.extensions.utility.Classes;
 import uml2rca.management.EcoreModelManager;
-import uml2rca.utility.Classes;
 
 public class SubclassingTest {
 	
 	@Test
 	public void testSubclassingMethod() {
-		EcoreModelManager manager = new EcoreModelManager();
-		String sourceURI = "model/test/adaptation/generalization/source/simpleGeneralization.uml";
+		String sourceFileName = "simpleGeneralization.uml";
+		String sourceURI = "model/test/adaptation/generalization/source/" + sourceFileName;
 		
-		Model model = (Model) manager.load(sourceURI);
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
 		Package package1 = (Package) model.getPackagedElement("package1");
 		Package package1Point1 = (Package) package1.getPackagedElement("package1.1");
 		Package package2 = (Package) model.getPackagedElement("package2");

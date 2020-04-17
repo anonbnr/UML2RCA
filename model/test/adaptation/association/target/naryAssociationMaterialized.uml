@@ -7,35 +7,35 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_bBcDIH4SEeq_vO1Ti1fjcA" name="A"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_bmYjQH4SEeq_vO1Ti1fjcA" name="B"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_dJAMkH4SEeq_vO1Ti1fjcA" name="C"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_hmKgcH87EeqQv9F8VtLhJA" name="NaryAssociation"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_hmqPsH87EeqQv9F8VtLhJA" name="B-NaryAssociation" memberEnd="_hmq2wH87EeqQv9F8VtLhJA _hmrd0H87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmq2wH87EeqQv9F8VtLhJA _hmrd0H87EeqQv9F8VtLhJA">
-      <ownedEnd xmi:id="_hmq2wH87EeqQv9F8VtLhJA" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_hmqPsH87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmq2wX87EeqQv9F8VtLhJA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmq2wn87EeqQv9F8VtLhJA" value="1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9qG8wICCEeqT7bRwO9FCBg" name="NaryAssociation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9qMcUICCEeqT7bRwO9FCBg" name="B-NaryAssociation" memberEnd="_9qNDYICCEeqT7bRwO9FCBg _9qNqcICCEeqT7bRwO9FCBg" navigableOwnedEnd="_9qNDYICCEeqT7bRwO9FCBg _9qNqcICCEeqT7bRwO9FCBg">
+      <ownedEnd xmi:id="_9qNDYICCEeqT7bRwO9FCBg" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_9qMcUICCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qNDYYCCEeqT7bRwO9FCBg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qNDYoCCEeqT7bRwO9FCBg" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_hmrd0H87EeqQv9F8VtLhJA" name="naryAssociation-B" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmqPsH87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmrd0X87EeqQv9F8VtLhJA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmrd0n87EeqQv9F8VtLhJA" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_hmsE4H87EeqQv9F8VtLhJA" name="A-NaryAssociation" memberEnd="_hmsE4X87EeqQv9F8VtLhJA _hmsE5H87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmsE4X87EeqQv9F8VtLhJA _hmsE5H87EeqQv9F8VtLhJA">
-      <ownedEnd xmi:id="_hmsE4X87EeqQv9F8VtLhJA" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_hmsE4H87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmsE4n87EeqQv9F8VtLhJA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmsE4387EeqQv9F8VtLhJA" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_hmsE5H87EeqQv9F8VtLhJA" name="naryAssociation-A" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmsE4H87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmsr8H87EeqQv9F8VtLhJA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmsr8X87EeqQv9F8VtLhJA" value="1"/>
+      <ownedEnd xmi:id="_9qNqcICCEeqT7bRwO9FCBg" name="naryAssociation-B" type="_9qG8wICCEeqT7bRwO9FCBg" association="_9qMcUICCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qNqcYCCEeqT7bRwO9FCBg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qNqcoCCEeqT7bRwO9FCBg" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_hmsr8n87EeqQv9F8VtLhJA" name="C-NaryAssociation" memberEnd="_hmt6EH87EeqQv9F8VtLhJA _hmuhIH87EeqQv9F8VtLhJA" navigableOwnedEnd="_hmt6EH87EeqQv9F8VtLhJA _hmuhIH87EeqQv9F8VtLhJA">
-      <ownedEnd xmi:id="_hmt6EH87EeqQv9F8VtLhJA" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_hmsr8n87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmt6EX87EeqQv9F8VtLhJA"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmt6En87EeqQv9F8VtLhJA" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9qNqc4CCEeqT7bRwO9FCBg" name="A-NaryAssociation" memberEnd="_9qNqdICCEeqT7bRwO9FCBg _9qORgICCEeqT7bRwO9FCBg" navigableOwnedEnd="_9qNqdICCEeqT7bRwO9FCBg _9qORgICCEeqT7bRwO9FCBg">
+      <ownedEnd xmi:id="_9qNqdICCEeqT7bRwO9FCBg" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_9qNqc4CCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qNqdYCCEeqT7bRwO9FCBg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qNqdoCCEeqT7bRwO9FCBg" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_hmuhIH87EeqQv9F8VtLhJA" name="naryAssociation-C" type="_hmKgcH87EeqQv9F8VtLhJA" association="_hmsr8n87EeqQv9F8VtLhJA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hmuhIX87EeqQv9F8VtLhJA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hmuhIn87EeqQv9F8VtLhJA" value="1"/>
+      <ownedEnd xmi:id="_9qORgICCEeqT7bRwO9FCBg" name="naryAssociation-A" type="_9qG8wICCEeqT7bRwO9FCBg" association="_9qNqc4CCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qORgYCCEeqT7bRwO9FCBg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qORgoCCEeqT7bRwO9FCBg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9qORg4CCEeqT7bRwO9FCBg" name="C-NaryAssociation" memberEnd="_9qO4kICCEeqT7bRwO9FCBg _9qPfoICCEeqT7bRwO9FCBg" navigableOwnedEnd="_9qO4kICCEeqT7bRwO9FCBg _9qPfoICCEeqT7bRwO9FCBg">
+      <ownedEnd xmi:id="_9qO4kICCEeqT7bRwO9FCBg" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_9qORg4CCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qO4kYCCEeqT7bRwO9FCBg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qO4koCCEeqT7bRwO9FCBg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_9qPfoICCEeqT7bRwO9FCBg" name="naryAssociation-C" type="_9qG8wICCEeqT7bRwO9FCBg" association="_9qORg4CCEeqT7bRwO9FCBg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9qPfoYCCEeqT7bRwO9FCBg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9qPfooCCEeqT7bRwO9FCBg" value="1"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>

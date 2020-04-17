@@ -17,13 +17,14 @@ public class AggregationToAssociationAdaptationTest {
 	
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
 		String sourceFileName = "aggregation.uml";
 		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
 		String targetFileName = sourceFileName;
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		Model model = (Model) manager.load(sourceURI);
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
 		
 		String aggregationName = "contains";
 		String targetAssociationName = aggregationName;
@@ -37,11 +38,13 @@ public class AggregationToAssociationAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		manager.save(model, targetURI);
 		association = (Association) model.getPackagedElement(targetAssociationName);
 		assertNotNull(association);
 		
 		for (Property memberEnd: association.getMemberEnds())
 			assertNotEquals(memberEnd.getAggregation(), AggregationKind.SHARED_LITERAL);
+		
+		modelManager.saveStateAndExport(model, "Aggregation Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 }

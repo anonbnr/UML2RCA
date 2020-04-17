@@ -17,7 +17,7 @@ public class ClassToFContextConversionTest {
 	@Test
 	public void testTransformation() {
 		EcoreModelManager manager = new EcoreModelManager();
-		Model model = (Model) manager.load("model/test/conversion/class/source/class.uml");
+		Model model = (Model) manager.importModel("model/test/conversion/class/source/class.uml");
 		Package root = (Package) model.getPackagedElement("root");
 		Class cls = (Class) root.getPackagedElement("A");
 		FContext context = (new ClassToFContextConversion(cls)).getTarget();

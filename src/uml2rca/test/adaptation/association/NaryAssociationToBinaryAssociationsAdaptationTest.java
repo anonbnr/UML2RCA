@@ -18,16 +18,17 @@ public class NaryAssociationToBinaryAssociationsAdaptationTest {
 	
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
 		String sourceFileName = "naryAssociation.uml";
 		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
 		String targetFileName = "naryAssociationForgotten.uml";
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		Model model = (Model) manager.load(sourceURI);
-		Package root = (Package) model.getPackagedElement("root");
-		String naryAssociationName = "naryAssociation";
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
 		
+		Model model = modelManager.getModel();
+		Package root = (Package) model.getPackagedElement("root");
+		
+		String naryAssociationName = "naryAssociation";
 		Association naryAssociation = (Association) root.getPackagedElement(naryAssociationName);
 		int naryAssociationMemberEndsSize = naryAssociation.getMemberEnds().size();
 		EList<Association> associations = null;
@@ -38,19 +39,23 @@ public class NaryAssociationToBinaryAssociationsAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		manager.save(model, targetURI);
-		
-		Association associationAB = (Association) root.getPackagedElement("a-" + naryAssociationName + "-b");
+		Association associationAB = (Association) root.getPackagedElement(
+				"a-" + naryAssociationName + "-b");
 		if (associationAB == null)
-			associationAB = (Association) root.getPackagedElement("b-" + naryAssociationName + "-a");
+			associationAB = (Association) root.getPackagedElement(
+					"b-" + naryAssociationName + "-a");
 		
-		Association associationAC = (Association) root.getPackagedElement("a-" + naryAssociationName + "-c");
+		Association associationAC = (Association) root.getPackagedElement(
+				"a-" + naryAssociationName + "-c");
 		if (associationAC == null)
-			associationAC = (Association) root.getPackagedElement("c-" + naryAssociationName + "-a");
+			associationAC = (Association) root.getPackagedElement(
+					"c-" + naryAssociationName + "-a");
 		
-		Association associationBC = (Association) root.getPackagedElement("b-" + naryAssociationName + "-c");
+		Association associationBC = (Association) root.getPackagedElement(
+				"b-" + naryAssociationName + "-c");
 		if (associationBC == null)
-			associationBC = (Association) root.getPackagedElement("c-" + naryAssociationName + "-b");
+			associationBC = (Association) root.getPackagedElement(
+					"c-" + naryAssociationName + "-b");
 		
 		assertNotNull(associationAB);
 		assertNotNull(associationAC);
@@ -60,5 +65,10 @@ public class NaryAssociationToBinaryAssociationsAdaptationTest {
 		assertTrue(associations.contains(associationAC));
 		assertTrue(associations.contains(associationBC));
 		assertEquals(associations.size(), naryAssociationMemberEndsSize);
+		
+		modelManager.saveStateAndExport(model, 
+				"N-ary Association Adaptation (Forgotten association solution)", 
+				targetURI);
+		modelManager.displayStates();
 	}
 }

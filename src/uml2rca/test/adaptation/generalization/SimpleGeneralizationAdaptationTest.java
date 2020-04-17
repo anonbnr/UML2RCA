@@ -24,7 +24,7 @@ import uml2rca.management.EcoreModelManager;
 public class SimpleGeneralizationAdaptationTest {
 	
 	/* ATTRIBUTES */
-	private EcoreModelManager manager;
+	private EcoreModelManager modelManager;
 	private String sourceFileName;
 	private String sourceURI;
 	private String targetFileName;
@@ -64,15 +64,15 @@ public class SimpleGeneralizationAdaptationTest {
 	}
 	
 	public void initializeConfigurationAndManager() {
-		manager = new EcoreModelManager();
 		sourceFileName = "simpleGeneralization.uml";
 		sourceURI = "model/test/adaptation/generalization/source/" + sourceFileName;
 		targetFileName = sourceFileName;
 		targetURI = "model/test/adaptation/generalization/target/" + targetFileName;
+		modelManager = new EcoreModelManager(sourceURI);
 	}
 	
 	private void initializeModel() {
-		model = (Model) manager.load(sourceURI);
+		model = modelManager.getModel();
 	}
 	
 	private void initializePackages() {
@@ -127,22 +127,22 @@ public class SimpleGeneralizationAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		targetClass = adaptation.getTarget();
-		
-		manager.save(model, targetURI);
 		targetClass = (Class) chosenClassPackage.getPackagedElement(targetClassName);
 		
 		assertNotNull(targetClass);
 		assertEquals(targetClass.getName(), chosenClassName);
 		assertEquals(targetClass.getPackage(), chosenClassPackage);
+		
+		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 	
 	@Test
 	public void testAttributes() {
 		Package leafClassPackage = package2;
 		String leafClassName = "JournalArticle";
-		Package chosenClassPackage = package2;
-		String chosenClassName = "JournalArticle";
+		Package chosenClassPackage = package1;
+		String chosenClassName = "Document";
 		String targetClassName = chosenClassName;
 		Class leafClass = (Class)  leafClassPackage.getPackagedElement(leafClassName);
 		Class chosenClass = (Class) chosenClassPackage.getPackagedElement(chosenClassName);
@@ -156,14 +156,13 @@ public class SimpleGeneralizationAdaptationTest {
 			e.printStackTrace();
 		} 
 		
-		targetClass = adaptation.getTarget();
+		targetClass = (Class) chosenClassPackage.getPackagedElement(targetClassName);
+		assertNotNull(targetClass);
+		
 		List<String> targetAttributeNames = targetClass.getOwnedAttributes()
 				.stream()
 				.map(Property::getName)
 				.collect(Collectors.toList());
-		
-		manager.save(model, targetURI);
-		targetClass = (Class) chosenClassPackage.getPackagedElement(targetClassName);
 		
 		for (Property attribute: document.getOwnedAttributes())
 			assertTrue(targetAttributeNames.contains(attribute.getName()));
@@ -175,6 +174,9 @@ public class SimpleGeneralizationAdaptationTest {
 		for (Class subClass: adaptation.getSubClasses())
 			for (Property attribute: subClass.getOwnedAttributes())
 				assertTrue(targetAttributeNames.contains(attribute.getName()));
+		
+		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 	
 	@Ignore

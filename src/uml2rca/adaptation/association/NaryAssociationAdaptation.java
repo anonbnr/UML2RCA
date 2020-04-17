@@ -4,7 +4,7 @@ import org.eclipse.uml2.uml.Association;
 
 import core.adaptation.AbstractAdaptation;
 import uml2rca.exceptions.NotAnNAryAssociationException;
-import uml2rca.utility.Associations;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
  * an NaryAssociationAdaptation generic abstract class that is used to factor common state for all 

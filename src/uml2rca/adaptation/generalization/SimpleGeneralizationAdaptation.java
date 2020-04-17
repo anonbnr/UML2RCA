@@ -4,34 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.eclipse.uml2.uml.resource.UMLResource;
 
 import core.adaptation.AbstractAdaptation;
 import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
 import uml2rca.java.extensions.utility.Strings;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
+import uml2rca.java.uml2.uml.extensions.utility.Classes;
+import uml2rca.java.uml2.uml.extensions.utility.NamedElements;
 import uml2rca.management.EcoreModelManager;
-import uml2rca.utility.Associations;
-import uml2rca.utility.Classes;
-import uml2rca.utility.NamedElements;
 
 public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Class> {
 	
 	/* ATTRIBUTES */
-	private List<Association> associationsToClean;
-	private List<Dependency> dependenciesToClean;
-	private List<Class> superClasses;
-	private List<Class> subClasses;
-	private Package umlLibrary;
+	protected List<Association> associationsToClean;
+	protected List<Dependency> dependenciesToClean;
+	protected List<Class> superClasses;
+	protected List<Class> subClasses;
 	
 	/* CONSTRUCTOR */
 	public SimpleGeneralizationAdaptation(Class leaf, Class choice) 
@@ -46,7 +42,6 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 			throw new NotAValidLevelForGeneralizationAdaptationException(choice.getName()
 					+ " is neither " + leaf.getName() + " nor one of its superclasses");
 		
-		initUMLLibraryPackage(new EcoreModelManager());
 		associationsToClean = new ArrayList<>();
 		dependenciesToClean = new ArrayList<>();
 		superClasses = Classes.getAllSuperClasses(choice);
@@ -81,11 +76,6 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 		
 		return target;
 	}
-	
-	protected void initUMLLibraryPackage(EcoreModelManager manager) {
-		umlLibrary = manager.loadPackage(URI.createURI(
-				UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
-	}
 
 	protected Class initTargetClass(Class source) {
 		Class cls = UMLFactory.eINSTANCE.createClass();
@@ -115,7 +105,7 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 			
 			target.createOwnedAttribute(
 					Strings.decapitalize(subClass.getName()), 
-					umlLibrary.getOwnedType("Boolean"));
+					EcoreModelManager.UML_PRIMITIVE_TYPES_LIBRARY.getOwnedType("Boolean"));
 		}
 	}
 	

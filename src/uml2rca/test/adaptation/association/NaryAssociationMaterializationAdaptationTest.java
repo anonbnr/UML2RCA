@@ -18,18 +18,17 @@ public class NaryAssociationMaterializationAdaptationTest {
 
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
 		String sourceFileName = "naryAssociation.uml";
 		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
 		String targetFileName = "naryAssociationMaterialized.uml";
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		Model model = (Model) manager.load(sourceURI);
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
 		Package root = (Package) model.getPackagedElement("root");
 		
 		String naryAssociationName = "naryAssociation";
-		String targetClassName = Strings.capitalize(naryAssociationName);
-		
 		Association naryAssociation = (Association) root.getPackagedElement(naryAssociationName);
 		int naryAssociationMemberEndsSize = naryAssociation.getMemberEnds().size();
 		Class target = null;
@@ -40,11 +39,15 @@ public class NaryAssociationMaterializationAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		manager.save(model, targetURI);
-		
+		String targetClassName = Strings.capitalize(naryAssociationName);
 		target = (Class) root.getPackagedElement(targetClassName);
+		
 		assertNotNull(target);
 		assertEquals(target.getName(), Strings.capitalize(naryAssociation.getName()));
 		assertEquals(target.getAssociations().size(), naryAssociationMemberEndsSize);
+		
+		modelManager.saveStateAndExport(model, 
+				"N-ary Association Adaptation (Materialization Solution)", targetURI);
+		modelManager.displayStates();
 	}
 }

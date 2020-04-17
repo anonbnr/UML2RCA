@@ -11,7 +11,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
 import uml2rca.java.extensions.utility.Strings;
-import uml2rca.utility.Associations;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
  * an AssociationClassToConcreteClassAdaptation concrete class that is used to adapt a UML

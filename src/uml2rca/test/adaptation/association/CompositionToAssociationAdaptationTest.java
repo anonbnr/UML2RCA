@@ -17,13 +17,14 @@ public class CompositionToAssociationAdaptationTest {
 	
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
 		String sourceFileName = "composition.uml";
 		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
 		String targetFileName = sourceFileName;
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		Model model = (Model) manager.load(sourceURI);
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
 		
 		String compositionName = "contains";
 		String targetAssociationName = compositionName;
@@ -37,11 +38,13 @@ public class CompositionToAssociationAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		manager.save(model, targetURI);
 		association = (Association) model.getPackagedElement(targetAssociationName);
 		assertNotNull(association);
 		
 		for(Property memberEnd: association.getMemberEnds())
 			assertNotEquals(memberEnd.getAggregation(), AggregationKind.COMPOSITE_LITERAL);
+		
+		modelManager.saveStateAndExport(model, "Composition Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 }

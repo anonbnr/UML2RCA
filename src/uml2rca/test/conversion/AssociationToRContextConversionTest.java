@@ -16,7 +16,7 @@ public class AssociationToRContextConversionTest {
 	@Test
 	public void testTransformation() {
 		EcoreModelManager manager = new EcoreModelManager();
-		Model model = (Model) manager.load("model/test/conversion/association/source/association.uml");
+		Model model = (Model) manager.importModel("model/test/conversion/association/source/association.uml");
 		Association uses = (Association) model.getPackagedElement("uses");
 		
 		RContext rContextDefaultName = (new AssociationToRContextConversion(uses)).getTarget();

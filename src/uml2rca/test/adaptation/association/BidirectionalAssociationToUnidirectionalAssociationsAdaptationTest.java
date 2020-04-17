@@ -10,17 +10,24 @@ import org.junit.Test;
 
 import uml2rca.adaptation.association.BidirectionalAssociationToUnidirectionalAssociationsAdaptation;
 import uml2rca.exceptions.NotABidirectionalAssociationException;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
 import uml2rca.management.EcoreModelManager;
-import uml2rca.utility.Associations;
 
 public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationTest {
 
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
-		Model model = (Model) manager.load("model/test/adaptation/association/source/bidirectional.uml");
+		String sourceFileName = "bidirectional.uml";
+		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
+		String targetFileName = sourceFileName;
+		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		Association bidirectional = (Association) model.getPackagedElement("bidirectional");
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
+		
+		String bidirectionalName = "bidirectional";
+		Association bidirectional = (Association) model.getPackagedElement(bidirectionalName);
 		BidirectionalAssociationToUnidirectionalAssociationsAdaptation adaptation = null;
 		
 		try {
@@ -30,9 +37,10 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationTest 
 			e.printStackTrace();
 		}
 		
-		manager.save(model, "model/test/adaptation/association/target/bidirectional.uml");
-		Association first = (Association) model.getMember("first-bidirectional");
-		Association second = (Association) model.getMember("second-bidirectional");
+		String firstName = "first-bidirectional";
+		String secondName = "second-bidirectional";
+		Association first = (Association) model.getMember(firstName);
+		Association second = (Association) model.getMember(secondName);
 		
 		assertEquals(adaptation.getTarget().size(), 2);
 		assertNotNull(first);
@@ -41,5 +49,8 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationTest 
 		assertTrue(adaptation.getTarget().contains(second));
 		assertTrue(Associations.isUnidirectional(first));
 		assertTrue(Associations.isUnidirectional(second));
+		
+		modelManager.saveStateAndExport(model, "Bidirectional Association Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 }

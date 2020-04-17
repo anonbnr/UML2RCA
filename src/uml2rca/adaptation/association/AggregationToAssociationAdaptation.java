@@ -5,7 +5,7 @@ import org.eclipse.uml2.uml.Association;
 
 import core.adaptation.AbstractAdaptation;
 import uml2rca.exceptions.NotAnAggregationException;
-import uml2rca.utility.Associations;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
  * an AggregationToAssociationAdaptation concrete class that is used to adapt a UML

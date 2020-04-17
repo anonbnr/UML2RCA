@@ -21,11 +21,18 @@ public class DependencyToAssociationAdaptationTest {
 
 	@Test
 	public void testTransformation() {
-		EcoreModelManager manager = new EcoreModelManager();
-		Model model = (Model) manager.load("model/test/adaptation/association/source/dependency.uml");
+		String sourceFileName = "dependency.uml";
+		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
+		String targetFileName = sourceFileName;
+		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
+		
+		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		
+		Model model = modelManager.getModel();
 		Package root = (Package) model.getPackagedElement("root");
 		
-		Dependency dependency = (Dependency) root.getPackagedElement("dependsOn");
+		String dependencyName = "dependsOn";
+		Dependency dependency = (Dependency) root.getPackagedElement(dependencyName);
 		EList<Association> associations = null;
 		
 		try {
@@ -34,12 +41,12 @@ public class DependencyToAssociationAdaptationTest {
 			e.printStackTrace();
 		}
 		
+		String associationAToBName = "a-dependsOn-b";
+		String associationAToCName = "a-dependsOn-c";
+		Association associationAToB = (Association) root.getMember(associationAToBName);
+		Association associationAToC = (Association) root.getMember(associationAToCName);
+		
 		assertEquals(associations.size(), 2);
-		
-		manager.save(model, "model/test/adaptation/association/target/dependency.uml");
-		Association associationAToB = (Association) root.getMember("a-dependsOn-b");
-		Association associationAToC = (Association) root.getMember("a-dependsOn-c");
-		
 		assertNotNull(associationAToB);
 		assertNotNull(associationAToC);
 		assertTrue(associations.contains(associationAToB));
@@ -50,5 +57,8 @@ public class DependencyToAssociationAdaptationTest {
 		
 		for (Property memberEnd: associationAToC.getMemberEnds())
 			assertEquals(memberEnd.getAggregation(), AggregationKind.NONE_LITERAL);
+		
+		modelManager.saveStateAndExport(model, "Dependency Adaptation", targetURI);
+		modelManager.displayStates();
 	}
 }

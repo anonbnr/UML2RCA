@@ -7,7 +7,7 @@ import org.eclipse.uml2.uml.Property;
 
 import core.adaptation.AbstractAdaptation;
 import uml2rca.exceptions.NotAnNAryAssociationException;
-import uml2rca.utility.Associations;
+import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
  * an NaryAssociationToBinaryAssociationsAdaptation concrete class that is used to adapt 

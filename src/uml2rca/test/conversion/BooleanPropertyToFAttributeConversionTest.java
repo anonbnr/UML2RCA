@@ -18,7 +18,7 @@ public class BooleanPropertyToFAttributeConversionTest {
 	@Test
 	public void testTransformation() {
 		EcoreModelManager manager = new EcoreModelManager();
-		Model model = (Model) manager.load("model/test/conversion/attribute/source/attribute.uml");
+		Model model = (Model) manager.importModel("model/test/conversion/attribute/source/attribute.uml");
 		Package root = (Package) model.getPackagedElement("root");
 		Class cls = (Class) root.getPackagedElement("A");
 		Property booleanProp = cls.getAttributes().get(0);
