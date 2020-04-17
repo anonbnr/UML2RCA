@@ -1,4 +1,4 @@
-package uml2rca.utility;
+package uml2rca.java.uml2.uml.extensions.utility;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;

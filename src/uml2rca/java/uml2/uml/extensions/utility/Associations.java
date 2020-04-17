@@ -1,4 +1,4 @@
-package uml2rca.utility;
+package uml2rca.java.uml2.uml.extensions.utility;
 
 import java.util.stream.Collectors;
 
