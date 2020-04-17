@@ -17,8 +17,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import uml2rca.adaptation.generalization.SimpleGeneralizationAdaptation;
+import uml2rca.adaptation.generalization.conflict.resolution.DefaultRenameAttributeConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.conflict.resolution.KeepOneAttributeConflictResolutionStrategy;
 import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
+import uml2rca.java.extensions.utility.Strings;
 import uml2rca.management.EcoreModelManager;
 
 public class SimpleGeneralizationAdaptationTest {
@@ -141,8 +144,8 @@ public class SimpleGeneralizationAdaptationTest {
 	public void testAttributes() {
 		Package leafClassPackage = package2;
 		String leafClassName = "JournalArticle";
-		Package chosenClassPackage = package1;
-		String chosenClassName = "Document";
+		Package chosenClassPackage = package2;
+		String chosenClassName = "Article";
 		String targetClassName = chosenClassName;
 		Class leafClass = (Class)  leafClassPackage.getPackagedElement(leafClassName);
 		Class chosenClass = (Class) chosenClassPackage.getPackagedElement(chosenClassName);
@@ -164,7 +167,7 @@ public class SimpleGeneralizationAdaptationTest {
 				.map(Property::getName)
 				.collect(Collectors.toList());
 		
-		for (Property attribute: document.getOwnedAttributes())
+		for (Property attribute: chosenClass.getOwnedAttributes())
 			assertTrue(targetAttributeNames.contains(attribute.getName()));
 		
 		for (Class superClass: adaptation.getSuperClasses())
@@ -172,8 +175,27 @@ public class SimpleGeneralizationAdaptationTest {
 				assertTrue(targetAttributeNames.contains(attribute.getName()));
 		
 		for (Class subClass: adaptation.getSubClasses())
-			for (Property attribute: subClass.getOwnedAttributes())
-				assertTrue(targetAttributeNames.contains(attribute.getName()));
+			for (Property attribute: subClass.getOwnedAttributes()) {
+				if (adaptation.getAttributeConflictStrategy() instanceof 
+						DefaultRenameAttributeConflictResolutionStrategy)
+					assertTrue(
+							targetAttributeNames.contains(attribute.getName())
+							||
+							targetAttributeNames.contains(Strings.decapitalize(subClass.getName()) 
+									+ Strings.capitalize(attribute.getName()))
+							);
+				else if (adaptation.getAttributeConflictStrategy() instanceof 
+						DefaultRenameAttributeConflictResolutionStrategy)
+					assertTrue(
+							targetAttributeNames.contains(attribute.getName())
+							||
+							(targetAttributeNames.contains("expertNameProvidedForOriginallyOwnedAttribute")
+									&& targetAttributeNames.contains("expertNameProvidedForConflictingAttribute"))
+							);
+				else if (adaptation.getAttributeConflictStrategy() instanceof 
+						KeepOneAttributeConflictResolutionStrategy)
+					assertTrue(targetAttributeNames.contains(attribute.getName()));
+			}
 		
 		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);
 		modelManager.displayStates();

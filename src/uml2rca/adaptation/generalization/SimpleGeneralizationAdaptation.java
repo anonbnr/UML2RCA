@@ -1,6 +1,7 @@
 package uml2rca.adaptation.generalization;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,9 +11,17 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
+import uml2rca.adaptation.generalization.conflict.resolution.AssociationConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.conflict.resolution.AttributeConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.conflict.resolution.AttributeConflictResolutionStrategyType;
+import uml2rca.adaptation.generalization.conflict.resolution.DefaultRenameAttributeConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.conflict.resolution.ExpertRenameAttributeConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.conflict.resolution.KeepOneAttributeConflictResolutionStrategy;
+import uml2rca.exceptions.AttributeConflictResolutionStrategyException;
 import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
 import uml2rca.java.extensions.utility.Strings;
@@ -28,6 +37,8 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 	protected List<Dependency> dependenciesToClean;
 	protected List<Class> superClasses;
 	protected List<Class> subClasses;
+	protected AttributeConflictResolutionStrategy attributeConflictStrategy;
+	protected AssociationConflictResolutionStrategy associationConflictStrategy;
 	
 	/* CONSTRUCTOR */
 	public SimpleGeneralizationAdaptation(Class leaf, Class choice) 
@@ -60,13 +71,37 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 		return subClasses;
 	}
 	
+	public AttributeConflictResolutionStrategy getAttributeConflictStrategy() {
+		return attributeConflictStrategy;
+	}
+
+	public void setAttributeConflictStrategy(AttributeConflictResolutionStrategy 
+			attributeConflictStrategy) {
+		this.attributeConflictStrategy = attributeConflictStrategy;
+	}
+
+	public AssociationConflictResolutionStrategy getAssociationConflictStrategy() {
+		return associationConflictStrategy;
+	}
+
+	public void setAssociationConflictStrategy(AssociationConflictResolutionStrategy 
+			associationConflictStrategy) {
+		this.associationConflictStrategy = associationConflictStrategy;
+	}
+	
 	// implementation of the IAdaptation interface
 	@Override
 	public Class transform(Class source) {
 		Class target = initTargetClass(source);
 		
 		// add owned, inherited, and specializing attributes
-		initAllTargetClassAttributes(source, target);
+		try {
+			initAllTargetClassAttributes(source, target, 
+					AttributeConflictResolutionStrategyType.EXPERT_RENAME);
+		} catch (AttributeConflictResolutionStrategyException e) {
+			e.printStackTrace();
+			System.exit(-1);
+		}
 		
 		// add owned, inherited, and specializing associations
 		initAllTargetClassAssociations(source, target);
@@ -91,7 +126,9 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 			target.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
 	}
 
-	protected void initAllTargetClassAttributes(Class source, Class target) {
+	protected void initAllTargetClassAttributes(Class source, Class target, 
+			AttributeConflictResolutionStrategyType conflictStrategyType) 
+					throws AttributeConflictResolutionStrategyException {
 		/* owned attributes */
 		initTargetClassAttributes(source, target);
 		
@@ -101,14 +138,69 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 		
 		/* specializing attributes (subclasses) */
 		for (Class subClass: subClasses) {
-			initTargetClassAttributes(subClass, target);
-			
 			target.createOwnedAttribute(
 					Strings.decapitalize(subClass.getName()), 
 					EcoreModelManager.UML_PRIMITIVE_TYPES_LIBRARY.getOwnedType("Boolean"));
+			
+			initTargetClassForConflictingAttributes(target, subClasses, subClass, conflictStrategyType);
+		}
+	}
+
+	protected void initTargetClassForConflictingAttributes(Class target, 
+			List<Class> conflictScope, Class subClass,
+			AttributeConflictResolutionStrategyType conflictStrategyType)
+			throws AttributeConflictResolutionStrategyException {
+		
+		for (Property ownedAttribute: subClass.getOwnedAttributes()) {
+			
+			if (!Classes.hasAttribute(target, ownedAttribute.getName(), ownedAttribute.getType()))
+				target.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
+			
+			else {
+				Property originallyOwnedAttribute = getOriginallyOwnedAttribute(
+						ownedAttribute.getName(), ownedAttribute.getType(), 
+						conflictScope, subClass);
+				List<Property> conflicting = Arrays.asList(
+						originallyOwnedAttribute, ownedAttribute); 
+				
+				if (conflictStrategyType == 
+						AttributeConflictResolutionStrategyType.DEFAULT_RENAME)
+					attributeConflictStrategy = 
+						new DefaultRenameAttributeConflictResolutionStrategy(target, 
+								conflicting);
+				
+				else if (conflictStrategyType == 
+						AttributeConflictResolutionStrategyType.EXPERT_RENAME)
+					attributeConflictStrategy = 
+						new ExpertRenameAttributeConflictResolutionStrategy(target, 
+								conflicting, Arrays.asList(
+										"expertNameProvidedForOriginallyOwnedAttribute",
+										"expertNameProvidedForConflictingAttribute"));
+				
+				else if (conflictStrategyType == 
+						AttributeConflictResolutionStrategyType.KEEP_ONE)
+					attributeConflictStrategy = 
+						new KeepOneAttributeConflictResolutionStrategy(target, conflicting);
+			}
 		}
 	}
 	
+	protected Property getOriginallyOwnedAttribute(String name, Type type, 
+			List<Class> conflictScope, Class conflictingClass) {
+		
+		Property originalAttribute = null;
+		
+		for (Class subClass: conflictScope)
+			for (Property ownedAttribute: subClass.getOwnedAttributes())
+				if (subClass != conflictingClass
+					&& ownedAttribute.getName().equals(name)
+					&& ownedAttribute.getType() == type)
+					return ownedAttribute;
+		
+		return originalAttribute;
+	}
+	
+
 	protected void initTargetClassAssociations(Class owner, Class target,
 			Association ownedAssociation) {
 		Association newOwnedAssociation = null;

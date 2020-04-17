@@ -61,10 +61,16 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_SzHikH4tEeq_vO1Ti1fjcA" name="bookTitle">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_r1sbwICJEeq7edCWROTMNQ" name="type" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_QmvKkH4tEeq_vO1Ti1fjcA" name="JournalArticle">
       <generalization xmi:type="uml:Generalization" xmi:id="_iEqYsH-bEeq_vO1Ti1fjcA" general="_9gmnMH4sEeq_vO1Ti1fjcA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_WmcqQH4tEeq_vO1Ti1fjcA" name="journalName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_x2m1UICJEeq7edCWROTMNQ" name="type">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
     </packagedElement>

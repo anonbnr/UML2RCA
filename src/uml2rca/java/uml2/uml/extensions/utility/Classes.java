@@ -39,6 +39,14 @@ public class Classes {
 		return subClasses;
 	}
 	
+	public static boolean hasAttribute(Class cls, String name, Type type) {
+		return cls.getOwnedAttributes()
+		.stream()
+		.anyMatch(attribute -> 
+			attribute.getName().equals(name) 
+				&& attribute.getType().getName().equals(type.getName()));
+	}
+	
 	public static boolean isLeafInGeneralizationStructure(Class cls) {
 		return !getAllSuperClasses(cls).isEmpty() && getAllSubclasses(cls).isEmpty();
 	}
