@@ -8,5 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rca"/>
+	<classpathentry kind="lib" path="D:/Users/Bachar.RIMA/software/eclipse-modeling-2020-03-R-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.resources_5.5.0.v20200302-1312.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Bachar.RIMA/software/eclipse-modeling-2020-03-R-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.profile.standard_1.5.0.v20200302-1312.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

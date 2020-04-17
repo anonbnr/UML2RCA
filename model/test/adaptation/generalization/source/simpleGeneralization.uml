@@ -90,6 +90,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_9OGfMIAfEeqLK6VhnDaHRg" name="dependsOnJournal" client="_QmvKkH4tEeq_vO1Ti1fjcA _2N1OAH75Eeq_vO1Ti1fjcA" supplier="_34qEgIAfEeqLK6VhnDaHRg"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_543PcIAkEeqLK6VhnDaHRg" name="dependsOnArticle" client="_3b998IAeEeqLK6VhnDaHRg _iVaNIH5sEeq_vO1Ti1fjcA" supplier="_9gmnMH4sEeq_vO1Ti1fjcA _PNqusH8FEeq_vO1Ti1fjcA"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DPPEwIAsEeqLK6VhnDaHRg" name="JournalArticleInProceedings"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_8PIBEH8EEeq_vO1Ti1fjcA" name="package3">
     <packagedElement xmi:type="uml:Class" xmi:id="_PNqusH8FEeq_vO1Ti1fjcA" name="Editor">
