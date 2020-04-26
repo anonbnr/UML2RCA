@@ -9,7 +9,7 @@ import core.conflict.AbstractConflictCandidate;
 import core.conflict.AbstractConflictResolutionStrategy;
 import core.conflict.AbstractConflictScope;
 import core.conflict.IConflictDomain;
-import uml2rca.adaptation.generalization.conflict.resolution_strategy.IConflictResolutionStrategyType;
+import core.conflict.IConflictResolutionStrategyType;
 import uml2rca.java.uml2.uml.extensions.visitor.IUMLElementVisitor;
 
 public abstract class GeneralizationAdaptationClassAbstractVisitor<E> implements IUMLElementVisitor, IConflictDomain<Class, E> {
