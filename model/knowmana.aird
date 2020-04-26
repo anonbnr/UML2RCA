@@ -48,11 +48,15 @@
     <semanticResources>test/adaptation/association/source/naryAssociation.uml</semanticResources>
     <semanticResources>test/adaptation/association/source/naryAssociation_fr_FR.properties</semanticResources>
     <semanticResources>test/adaptation/association/target/naryAssociationMaterialized.uml</semanticResources>
+    <semanticResources>test/adaptation/association/target/naryAssociationForgotten.uml</semanticResources>
+    <semanticResources>test/adaptation/generalization/target/simpleGeneralization.uml</semanticResources>
+    <semanticResources>test/adaptation/generalization/target/multipleGeneralization.uml</semanticResources>
     <semanticResources>test/adaptation/generalization/source/simpleGeneralization.di</semanticResources>
     <semanticResources>test/adaptation/generalization/source/simpleGeneralization.notation</semanticResources>
     <semanticResources>test/adaptation/generalization/source/simpleGeneralization.uml</semanticResources>
-    <semanticResources>test/adaptation/association/target/naryAssociationForgotten.uml</semanticResources>
-    <semanticResources>test/adaptation/generalization/target/simpleGeneralization.uml</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/multipleGeneralization.notation</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/multipleGeneralization.di</semanticResources>
+    <semanticResources>test/adaptation/generalization/source/multipleGeneralization.uml</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_jhjE8EkKEeqZgOYK2Q1rMQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jqJnUEkKEeqZgOYK2Q1rMQ" name="knowmana" repPath="#_jjJAYEkKEeqZgOYK2Q1rMQ">

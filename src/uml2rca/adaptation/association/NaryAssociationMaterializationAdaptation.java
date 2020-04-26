@@ -32,7 +32,7 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  * @see AbstractAdaptation
  * @see Association
  */
-public class NaryAssociationMaterializationAdaptation extends NaryAssociationAdaptation<Class> {
+public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssociationAdaptation<Class> {
 	
 	/* CONSTRUCTOR */
 	public NaryAssociationMaterializationAdaptation(Association source)

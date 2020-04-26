@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import uml2rca.adaptation.association.NaryAssociationToBinaryAssociationsAdaptation;
 import uml2rca.exceptions.NotAnNAryAssociationException;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class NaryAssociationToBinaryAssociationsAdaptationTest {
 	

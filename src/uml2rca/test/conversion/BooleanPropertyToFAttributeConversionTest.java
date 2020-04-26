@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import rca.FAttribute;
 import uml2rca.conversion.BooleanAttributeToFAttributeConversion;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class BooleanPropertyToFAttributeConversionTest {
 	

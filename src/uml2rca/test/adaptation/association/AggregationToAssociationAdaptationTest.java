@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import uml2rca.adaptation.association.AggregationToAssociationAdaptation;
 import uml2rca.exceptions.NotABinaryAssociationException;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class AggregationToAssociationAdaptationTest {
 	

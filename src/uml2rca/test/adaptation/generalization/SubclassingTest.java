@@ -2,14 +2,15 @@ package uml2rca.test.adaptation.generalization;
 
 import static org.junit.Assert.assertTrue;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
 import uml2rca.java.uml2.uml.extensions.utility.Classes;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class SubclassingTest {
 	
@@ -32,12 +33,12 @@ public class SubclassingTest {
 		Class InProceedings = (Class) package2.getPackagedElement("InProceedings");
 		Class JournalArticle = (Class) package2.getPackagedElement("JournalArticle");
 		
-		EList<Class> DocumentSubClasses = Classes.getAllSubclasses(Document);
-		EList<Class> ReportSubClasses = Classes.getAllSubclasses(Report);
-		EList<Class> ThesisSubClasses = Classes.getAllSubclasses(Thesis);
-		EList<Class> ArticleSubClasses = Classes.getAllSubclasses(Article);
-		EList<Class> InProceedingsSubClasses = Classes.getAllSubclasses(InProceedings);
-		EList<Class> JournalArticleSubClasses = Classes.getAllSubclasses(JournalArticle);
+		List<Class> DocumentSubClasses = Classes.getAllSubclasses(Document);
+		List<Class> ReportSubClasses = Classes.getAllSubclasses(Report);
+		List<Class> ThesisSubClasses = Classes.getAllSubclasses(Thesis);
+		List<Class> ArticleSubClasses = Classes.getAllSubclasses(Article);
+		List<Class> InProceedingsSubClasses = Classes.getAllSubclasses(InProceedings);
+		List<Class> JournalArticleSubClasses = Classes.getAllSubclasses(JournalArticle);
 		
 		assertTrue(DocumentSubClasses.contains(Report));
 		assertTrue(DocumentSubClasses.contains(Thesis));

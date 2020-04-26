@@ -18,7 +18,7 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  * @see AbstractAdaptation
  * @see Association
  */
-public class NaryAssociationToBinaryAssociationsAdaptation extends NaryAssociationAdaptation<EList<Association>> {
+public class NaryAssociationToBinaryAssociationsAdaptation extends AbstractNaryAssociationAdaptation<EList<Association>> {
 	
 	/* CONSTRUCTOR */
 	public NaryAssociationToBinaryAssociationsAdaptation(Association source) 

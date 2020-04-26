@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import rca.FContext;
 import uml2rca.conversion.ClassToFContextConversion;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class ClassToFContextConversionTest {
 	

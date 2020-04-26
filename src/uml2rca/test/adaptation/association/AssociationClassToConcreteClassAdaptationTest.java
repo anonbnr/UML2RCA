@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import uml2rca.adaptation.association.AssociationClassToConcreteClassAdaptation;
 import uml2rca.java.extensions.utility.Strings;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class AssociationClassToConcreteClassAdaptationTest {
 

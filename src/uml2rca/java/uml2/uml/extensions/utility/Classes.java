@@ -1,27 +1,34 @@
 package uml2rca.java.uml2.uml.extensions.utility;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
 public class Classes {
 
-	public static EList<Class> getAllSuperClasses(Class cls) {
-		EList<Class> superClasses = new BasicEList<>();
+	public static List<Class> getAllSuperClasses(Class cls) {
+		List<Class> superClasses = new ArrayList<>();
 		
 		for (Class superClass: cls.getSuperClasses()) {
 			superClasses.add(superClass);
 			superClasses.addAll(getAllSuperClasses(superClass));
 		}
 		
+		superClasses = new ArrayList<>(
+				new HashSet<>(superClasses));
 		return superClasses;
 	}
 
-	public static EList<Class> getAllSubclasses(Class cls) {
-		EList<Class> subClasses = new BasicEList<>();
+	public static List<Class> getAllSubclasses(Class cls) {
+		List<Class> subClasses = new ArrayList<>();
 		
 		Model model = cls.getModel();
 		for (Package nestedPackage: Models.getAllNestedPackages(model)) {
@@ -36,15 +43,45 @@ public class Classes {
 			}
 		}
 		
+		subClasses = new ArrayList<>(
+				new HashSet<>(subClasses));
 		return subClasses;
 	}
 	
 	public static boolean hasAttribute(Class cls, String name, Type type) {
 		return cls.getOwnedAttributes()
-		.stream()
-		.anyMatch(attribute -> 
-			attribute.getName().equals(name) 
-				&& attribute.getType().getName().equals(type.getName()));
+				.stream()
+				.anyMatch(attribute -> 
+					attribute.getName().equals(name) 
+					&& attribute.getType().getName().equals(type.getName()));
+	}
+	
+	public static boolean hasAssociation(Class cls, String associationName, 
+			List<MutablePair<String, Type>> others) {
+		return cls.getAssociations()
+				.stream()
+				.anyMatch(association -> 
+					association.getName().equals(associationName) 
+					&& others
+						.stream()
+						.allMatch(memberEnd -> association.getMemberEnd(memberEnd.getLeft(), memberEnd.getRight()) != null));
+	}
+	
+	public static boolean hasAssociationClass(Class cls, String associationClassName, 
+			List<MutablePair<String, Type>> others, 
+			List<Property> associationOwnedAttributes) {
+		return cls.getAssociations()
+				.stream()
+				.anyMatch(association -> 
+					Associations.isAssociationClass(association)
+					&&
+					association.getName().equals(associationClassName) 
+					&& others
+						.stream()
+						.allMatch(memberEnd -> association.getMemberEnd(memberEnd.getLeft(), memberEnd.getRight()) != null)
+					&& associationOwnedAttributes
+						.stream()
+						.allMatch(attribute -> ((AssociationClass) association).getOwnedAttribute(attribute.getName(), attribute.getType()) != null));
 	}
 	
 	public static boolean isLeafInGeneralizationStructure(Class cls) {

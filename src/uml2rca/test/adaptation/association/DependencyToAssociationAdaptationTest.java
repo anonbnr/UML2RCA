@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import uml2rca.adaptation.association.DependencyToAssociationAdaptation;
 import uml2rca.exceptions.NotATypeException;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class DependencyToAssociationAdaptationTest {
 

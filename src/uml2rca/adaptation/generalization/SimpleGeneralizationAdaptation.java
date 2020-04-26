@@ -1,50 +1,59 @@
 package uml2rca.adaptation.generalization;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
-import uml2rca.adaptation.generalization.conflict.resolution.AssociationConflictResolutionStrategy;
-import uml2rca.adaptation.generalization.conflict.resolution.AttributeConflictResolutionStrategy;
-import uml2rca.adaptation.generalization.conflict.resolution.AttributeConflictResolutionStrategyType;
-import uml2rca.adaptation.generalization.conflict.resolution.DefaultRenameAttributeConflictResolutionStrategy;
-import uml2rca.adaptation.generalization.conflict.resolution.ExpertRenameAttributeConflictResolutionStrategy;
-import uml2rca.adaptation.generalization.conflict.resolution.KeepOneAttributeConflictResolutionStrategy;
-import uml2rca.exceptions.AttributeConflictResolutionStrategyException;
+import uml2rca.adaptation.generalization.association.conflict.resolution_strategy.AssociationConflictResolutionStrategyType;
+import uml2rca.adaptation.generalization.attribute.conflict.resolution_strategy.AttributeConflictResolutionStrategyType;
+import uml2rca.adaptation.generalization.dependency.conflict.resolution_strategy.DependencyConflictResolutionStrategyType;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAssociationClassVisitor;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAssociationVisitor;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAttributeVisitor;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationClassVisitor;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationDependencyVisitor;
+import uml2rca.exceptions.ConflictResolutionStrategyException;
 import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
-import uml2rca.java.extensions.utility.Strings;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
 import uml2rca.java.uml2.uml.extensions.utility.Classes;
 import uml2rca.java.uml2.uml.extensions.utility.NamedElements;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.java.uml2.uml.extensions.visitor.VisitableAssociation;
+import uml2rca.java.uml2.uml.extensions.visitor.VisitableAttribute;
+import uml2rca.java.uml2.uml.extensions.visitor.VisitableClass;
+import uml2rca.java.uml2.uml.extensions.visitor.VisitableDependency;
 
-public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Class> {
+public class SimpleGeneralizationAdaptation 
+	extends AbstractAdaptation<Class, Class> {
 	
 	/* ATTRIBUTES */
-	protected List<Association> associationsToClean;
-	protected List<Dependency> dependenciesToClean;
-	protected List<Class> superClasses;
-	protected List<Class> subClasses;
-	protected AttributeConflictResolutionStrategy attributeConflictStrategy;
-	protected AssociationConflictResolutionStrategy associationConflictStrategy;
+	protected VisitableClass visitableSource;
+	protected GeneralizationAdaptationClassVisitor classVisitor;
+	protected List<GeneralizationAdaptationAttributeVisitor> attributeVisitors;
+	protected List<GeneralizationAdaptationAssociationVisitor> associationVisitors;
+	protected List<GeneralizationAdaptationDependencyVisitor> dependencyVisitors;
+	protected List<Class> conflictScope;
 	
-	/* CONSTRUCTOR */
+	/* CONSTRUCTORS */
+	public SimpleGeneralizationAdaptation() {}
+	
 	public SimpleGeneralizationAdaptation(Class leaf, Class choice) 
 			throws NotALeafInGeneralizationHierarchyException,
 			NotAValidLevelForGeneralizationAdaptationException {
 		
+		preTransformInit(leaf, choice);
+		this.setTarget(this.transform(choice));
+		postTransformationClean();
+	}
+
+	protected void preTransformInit(Class leaf, Class choice)
+			throws NotALeafInGeneralizationHierarchyException, NotAValidLevelForGeneralizationAdaptationException {
 		if (!Classes.isLeafInGeneralizationStructure(leaf))
 			throw new NotALeafInGeneralizationHierarchyException(leaf.getName() 
 					+ " is not a leaf in a generalization hierarchy");
@@ -53,339 +62,252 @@ public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Cl
 			throw new NotAValidLevelForGeneralizationAdaptationException(choice.getName()
 					+ " is neither " + leaf.getName() + " nor one of its superclasses");
 		
-		associationsToClean = new ArrayList<>();
-		dependenciesToClean = new ArrayList<>();
-		superClasses = Classes.getAllSuperClasses(choice);
-		subClasses = Classes.getAllSubclasses(choice);
 		this.setSource(choice);
-		this.setTarget(this.transform(choice));
-		postTransformationClean();
+		visitableSource = new VisitableClass(choice);
+		attributeVisitors = new ArrayList<>();
+		associationVisitors = new ArrayList<>();
+		dependencyVisitors = new ArrayList<>();
+		conflictScope = visitableSource.getSubClasses();
 	}
 
 	/* METHODS */
-	public List<Class> getSuperClasses() {
-		return superClasses;
-	}
-
-	public List<Class> getSubClasses() {
-		return subClasses;
+	public VisitableClass getVisitableSource() {
+		return visitableSource;
 	}
 	
-	public AttributeConflictResolutionStrategy getAttributeConflictStrategy() {
-		return attributeConflictStrategy;
+	public List<GeneralizationAdaptationAttributeVisitor> getAttributeVisitors() {
+		return attributeVisitors;
 	}
 
-	public void setAttributeConflictStrategy(AttributeConflictResolutionStrategy 
-			attributeConflictStrategy) {
-		this.attributeConflictStrategy = attributeConflictStrategy;
-	}
-
-	public AssociationConflictResolutionStrategy getAssociationConflictStrategy() {
-		return associationConflictStrategy;
-	}
-
-	public void setAssociationConflictStrategy(AssociationConflictResolutionStrategy 
-			associationConflictStrategy) {
-		this.associationConflictStrategy = associationConflictStrategy;
+	public List<GeneralizationAdaptationAssociationVisitor> getAssociationVisitors() {
+		return associationVisitors;
 	}
 	
-	// implementation of the IAdaptation interface
+	public List<GeneralizationAdaptationDependencyVisitor> getDependencyVisitors() {
+		return dependencyVisitors;
+	}
+	
 	@Override
 	public Class transform(Class source) {
-		Class target = initTargetClass(source);
 		
-		// add owned, inherited, and specializing attributes
+		initTargetClass();
+		
 		try {
-			initAllTargetClassAttributes(source, target, 
-					AttributeConflictResolutionStrategyType.EXPERT_RENAME);
-		} catch (AttributeConflictResolutionStrategyException e) {
+			// add owned, inherited, and specializing attributes
+			initTargetClassAttributes();
+			
+			// add owned, inherited, and specializing associations
+			initTargetClassAssociations();
+			
+			// add owned, inherited, and specializing dependencies
+			initTargetClassDependencies();
+			
+		} catch (ConflictResolutionStrategyException e) {
 			e.printStackTrace();
 			System.exit(-1);
 		}
 		
-		// add owned, inherited, and specializing associations
-		initAllTargetClassAssociations(source, target);
-		
-		// add owned, inherited, and specializing dependencies
-		initAllTargetClassDependencies(source, target);
-		
-		return target;
+		return classVisitor.getTarget();
 	}
 
-	protected Class initTargetClass(Class source) {
-		Class cls = UMLFactory.eINSTANCE.createClass();
+	protected Class initTargetClass() {
+		classVisitor = new GeneralizationAdaptationClassVisitor(
+						source, source, null);
 		
-		// initialize the class' name and package
-		cls.setName(source.getName());
-		cls.setPackage(source.getPackage());
-		return cls;
+		visitableSource.accept(classVisitor);
+		return classVisitor.getTarget();
 	}
 	
-	protected void initTargetClassAttributes(Class source, Class target) {
-		for (Property ownedAttribute: source.getOwnedAttributes())
-			target.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
+	protected void initTargetClassAttribute(Property ownedAttribute, 
+			AttributeConflictResolutionStrategyType attributeConflictResolutionStrategyType) {
+		
+		VisitableAttribute ownedVisitableAttribute = new VisitableAttribute(ownedAttribute);
+		GeneralizationAdaptationAttributeVisitor attributeVisitor =
+				new GeneralizationAdaptationAttributeVisitor(classVisitor, conflictScope, attributeConflictResolutionStrategyType);
+		
+		ownedVisitableAttribute.accept(attributeVisitor);
+		attributeVisitors.add(attributeVisitor);
 	}
 
-	protected void initAllTargetClassAttributes(Class source, Class target, 
-			AttributeConflictResolutionStrategyType conflictStrategyType) 
-					throws AttributeConflictResolutionStrategyException {
+	protected void initTargetClassAttributes()
+			throws ConflictResolutionStrategyException {
 		/* owned attributes */
-		initTargetClassAttributes(source, target);
+		initTargetClassSourceAttributes(AttributeConflictResolutionStrategyType.NONE);
 		
 		/* inherited attributes (superclasses) */
-		for (Class superClass: superClasses)
-			initTargetClassAttributes(superClass, target);
+		initTargetClassInheritedAttributes(AttributeConflictResolutionStrategyType.NONE);
 		
 		/* specializing attributes (subclasses) */
-		for (Class subClass: subClasses) {
-			target.createOwnedAttribute(
-					Strings.decapitalize(subClass.getName()), 
-					EcoreModelManager.UML_PRIMITIVE_TYPES_LIBRARY.getOwnedType("Boolean"));
-			
-			initTargetClassForConflictingAttributes(target, subClasses, subClass, conflictStrategyType);
-		}
+		initTargetClassSpecializingAttributes(AttributeConflictResolutionStrategyType.DEFAULT_RENAME);
+		
+		classVisitor.setOwner(source);
 	}
 
-	protected void initTargetClassForConflictingAttributes(Class target, 
-			List<Class> conflictScope, Class subClass,
-			AttributeConflictResolutionStrategyType conflictStrategyType)
-			throws AttributeConflictResolutionStrategyException {
+	protected void initTargetClassSourceAttributes(AttributeConflictResolutionStrategyType
+			attributeConflictResolutionStrategyType) {
 		
-		for (Property ownedAttribute: subClass.getOwnedAttributes()) {
+		for (Property ownedAttribute: source.getAttributes())
+			initTargetClassAttribute(ownedAttribute, 
+					attributeConflictResolutionStrategyType);
+	}
+	
+	protected void initTargetClassInheritedAttributes(AttributeConflictResolutionStrategyType
+			attributeConflictResolutionStrategyType) {
+		
+		for (Class superClass: visitableSource.getSuperClasses()) {
+			classVisitor.setOwner(superClass);
 			
-			if (!Classes.hasAttribute(target, ownedAttribute.getName(), ownedAttribute.getType()))
-				target.createOwnedAttribute(ownedAttribute.getName(), ownedAttribute.getType());
-			
-			else {
-				Property originallyOwnedAttribute = getOriginallyOwnedAttribute(
-						ownedAttribute.getName(), ownedAttribute.getType(), 
-						conflictScope, subClass);
-				List<Property> conflicting = Arrays.asList(
-						originallyOwnedAttribute, ownedAttribute); 
-				
-				if (conflictStrategyType == 
-						AttributeConflictResolutionStrategyType.DEFAULT_RENAME)
-					attributeConflictStrategy = 
-						new DefaultRenameAttributeConflictResolutionStrategy(target, 
-								conflicting);
-				
-				else if (conflictStrategyType == 
-						AttributeConflictResolutionStrategyType.EXPERT_RENAME)
-					attributeConflictStrategy = 
-						new ExpertRenameAttributeConflictResolutionStrategy(target, 
-								conflicting, Arrays.asList(
-										"expertNameProvidedForOriginallyOwnedAttribute",
-										"expertNameProvidedForConflictingAttribute"));
-				
-				else if (conflictStrategyType == 
-						AttributeConflictResolutionStrategyType.KEEP_ONE)
-					attributeConflictStrategy = 
-						new KeepOneAttributeConflictResolutionStrategy(target, conflicting);
-			}
+			for (Property ownedAttribute: superClass.getAttributes())
+				initTargetClassAttribute(ownedAttribute,
+						attributeConflictResolutionStrategyType);
 		}
 	}
 	
-	protected Property getOriginallyOwnedAttribute(String name, Type type, 
-			List<Class> conflictScope, Class conflictingClass) {
+	protected void initTargetClassSpecializingAttributes(AttributeConflictResolutionStrategyType
+			attributeConflictResolutionStrategyType) {
 		
-		Property originalAttribute = null;
-		
-		for (Class subClass: conflictScope)
-			for (Property ownedAttribute: subClass.getOwnedAttributes())
-				if (subClass != conflictingClass
-					&& ownedAttribute.getName().equals(name)
-					&& ownedAttribute.getType() == type)
-					return ownedAttribute;
-		
-		return originalAttribute;
+		for (Class subClass: visitableSource.getSubClasses()) {
+			classVisitor.setOwner(subClass);
+			
+			for (Property ownedAttribute: subClass.getAttributes())
+				initTargetClassAttribute(ownedAttribute,
+						attributeConflictResolutionStrategyType);
+		}
 	}
 	
-
-	protected void initTargetClassAssociations(Class owner, Class target,
-			Association ownedAssociation) {
-		Association newOwnedAssociation = null;
+	protected void initTargetClassAssociation(Association ownedAssociation,
+			AssociationConflictResolutionStrategyType associationConflictResolutionStrategyType) {
+		
+		VisitableAssociation ownedVisitableAssociation = new VisitableAssociation(ownedAssociation);
+		GeneralizationAdaptationAssociationVisitor associationVisitor = null;
 		
 		if (Associations.isAssociationClass(ownedAssociation))
-			newOwnedAssociation = initTargetClassAssociationClasses((AssociationClass)ownedAssociation);			
+			associationVisitor = new GeneralizationAdaptationAssociationClassVisitor(classVisitor, conflictScope, 
+					associationConflictResolutionStrategyType);
 		
 		else
-			newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
+			associationVisitor = new GeneralizationAdaptationAssociationVisitor(classVisitor, conflictScope, 
+					associationConflictResolutionStrategyType);
 		
-		newOwnedAssociation.setPackage(ownedAssociation.getPackage());
-		newOwnedAssociation.setName(ownedAssociation.getName());
-		
-		if (Associations.isUnary(ownedAssociation))
-			initTargetClassUnaryAssociations(owner, target, ownedAssociation, newOwnedAssociation);
-		
-		else
-			initTargetClassNonUnaryAssociations(owner, target, ownedAssociation, newOwnedAssociation);	
-		
-		if (owner == source || subClasses.contains(owner))
-			associationsToClean.add(ownedAssociation);
-	}
-
-	protected void initTargetClassUnaryAssociations(Class owner, Class target, Association ownedAssociation,
-			Association newOwnedAssociation) {
-		Property newMemberEnd;
-		
-		for (Property memberEnd: ownedAssociation.getMemberEnds()) {
-			
-			newMemberEnd = Associations.cloneMemberEnd(memberEnd);
-			Associations.adaptMemberEndOwnership(
-					newOwnedAssociation, newMemberEnd, memberEnd.isNavigable());
-			
-			if (owner == source)
-				newMemberEnd.setType(target);
-			else if (memberEnd == ownedAssociation.getMemberEnds().get(0)) {
-				newMemberEnd.setName(Strings.decapitalize(source.getName()));
-				newMemberEnd.setType(target);
-				newOwnedAssociation.setName(ownedAssociation.getName() + "-" + target.getName());
-			}
-		}
+		ownedVisitableAssociation.accept(associationVisitor);
+		associationVisitors.add(associationVisitor);
 	}
 	
-	protected void initTargetClassNonUnaryAssociations(Class owner, Class target, Association ownedAssociation,
-			Association newOwnedAssociation) {
-		Property newMemberEnd;
-		
-		for (Property memberEnd: ownedAssociation.getMemberEnds()) {
-			
-			newMemberEnd = Associations.cloneMemberEnd(memberEnd);
-			Associations.adaptMemberEndOwnership(
-					newOwnedAssociation, newMemberEnd, memberEnd.isNavigable());
-			
-			if (memberEnd.getType() == owner && owner == source)
-				newMemberEnd.setType(target);
-			
-			if (memberEnd.getType() == owner && owner != source) {
-				newMemberEnd.setName(Strings.decapitalize(source.getName()));
-				newMemberEnd.setType(target);
-				newOwnedAssociation.setName(ownedAssociation.getName() + "-" + target.getName());
-			}
-		}
-	}
-
-	protected AssociationClass initTargetClassAssociationClasses(AssociationClass ownedAssociation) {
-		AssociationClass newOwnedAssociation = UMLFactory.eINSTANCE.createAssociationClass();
-		
-		ownedAssociation.getOwnedAttributes()
-		.stream()
-		.filter(attribute -> 
-			!ownedAssociation.getMemberEnds()
-				.stream()
-				.map(Property::getName)
-				.collect(Collectors.toList())
-				.contains(attribute.getName()))
-		.forEach(attribute -> 
-			newOwnedAssociation.createOwnedAttribute(attribute.getName(), attribute.getType()));
-		
-		return newOwnedAssociation;
-	}
-	
-	protected void initAllTargetClassAssociations(Class source, Class target) {
+	protected void initTargetClassAssociations() {
 		/* owned associations */
-		for (Association ownedAssociation: source.getAssociations())
-			initTargetClassAssociations(source, target, ownedAssociation);
+		initTargetClassSourceAssociations(AssociationConflictResolutionStrategyType.NONE);
 		
 		/* inherited associations (superclasses) */
-		for (Class superClass: superClasses)
-			for (Association ownedAssociation: superClass.getAssociations())
-				initTargetClassAssociations(superClass, target, ownedAssociation);
+		initTargetClassInheritedAssociations(AssociationConflictResolutionStrategyType.NONE);
 		
 		/* specializing associations (subclasses) */
-		for (Class subClass: subClasses)
+		initTargetClassSpecializingAssociations(AssociationConflictResolutionStrategyType.DEFAULT_RENAME);
+		
+		classVisitor.setOwner(source);
+	}
+
+	protected void initTargetClassSourceAssociations(AssociationConflictResolutionStrategyType
+			associationConflictResolutionStrategyType) {
+		
+		for (Association ownedAssociation: source.getAssociations())
+			initTargetClassAssociation(ownedAssociation, 
+					associationConflictResolutionStrategyType);
+	}
+	
+	protected void initTargetClassInheritedAssociations(AssociationConflictResolutionStrategyType
+			associationConflictResolutionStrategyType) {
+		for (Class superClass: visitableSource.getSuperClasses()) {
+			
+			classVisitor.setOwner(superClass);
+			
+			for (Association ownedAssociation: superClass.getAssociations())
+				initTargetClassAssociation(ownedAssociation,
+						associationConflictResolutionStrategyType);
+		}
+	}
+	
+	protected void initTargetClassSpecializingAssociations(AssociationConflictResolutionStrategyType
+			associationConflictResolutionStrategyType) {
+		
+		for (Class subClass: visitableSource.getSubClasses()) {
+			classVisitor.setOwner(subClass);
+			
 			for (Association ownedAssociation: subClass.getAssociations())
-				initTargetClassAssociations(subClass, target, ownedAssociation);
-	}
-	
-	protected void initTargetClassClientDependencies(Class dependingClient, Class target, Dependency dependency) {
-		Dependency newDependency = UMLFactory.eINSTANCE.createDependency();
-		dependency.getNearestPackage().getPackagedElements().add(newDependency);
-		
-		if (dependingClient != source)
-			newDependency.setName(dependency.getName() + "-" + target.getName());
-		else
-			newDependency.setName(dependency.getName());
-		
-		for (NamedElement client: dependency.getClients()) {
-			
-			if (client == dependingClient)
-				newDependency.getClients().add(target);
-			else
-				newDependency.getClients().add(client);
-			
-			for (NamedElement supplier: dependency.getSuppliers())
-				newDependency.getSuppliers().add(supplier);
+				initTargetClassAssociation(ownedAssociation,
+						associationConflictResolutionStrategyType);
 		}
-		
-		if (dependingClient == source || subClasses.contains(dependingClient))
-			dependenciesToClean.add(dependency);
 	}
 	
-	protected void initTargetClassSupplierDependencies(Class providingSupplier, Class target, Dependency dependency) {
-		Dependency newDependency = UMLFactory.eINSTANCE.createDependency();
-		dependency.getNearestPackage().getPackagedElements().add(newDependency);
+	protected void initTargetClassDependency(Dependency ownedDependency,
+			DependencyConflictResolutionStrategyType dependencyConflictResolutionStrategyType) {
 		
-		if (providingSupplier != source)
-			newDependency.setName(dependency.getName() + "-" + target.getName());
-		else
-			newDependency.setName(dependency.getName());
+		VisitableDependency ownedVisitableDependency = new VisitableDependency(ownedDependency);
+		GeneralizationAdaptationDependencyVisitor dependencyVisitor =
+				new GeneralizationAdaptationDependencyVisitor(classVisitor, conflictScope, dependencyConflictResolutionStrategyType);
 		
-		for (NamedElement client: dependency.getClients()) {
-			newDependency.getClients().add(client);
+		ownedVisitableDependency.accept(dependencyVisitor);
+		dependencyVisitors.add(dependencyVisitor);
+	}
+	
+	protected void initTargetClassDependencies() {
+		/* owned dependencies */
+		initTargetClassSourceDependencies(DependencyConflictResolutionStrategyType.NONE);
+		
+		/* inherited dependencies (superclasses) */
+		initTargetClassInheritedDependencies(DependencyConflictResolutionStrategyType.NONE);
+		
+		/* specializing dependencies (subclasses) */
+		initTargetClassSpecializingDependencies(DependencyConflictResolutionStrategyType.DEFAULT_RENAME);
+		
+		classVisitor.setOwner(source);
+	}
+
+	protected void initTargetClassSpecializingDependencies(
+			DependencyConflictResolutionStrategyType dependencyConflictResolutionStrategyType) {
+		
+		for (Class subClass: visitableSource.getSubClasses()) {
+			classVisitor.setOwner(subClass);
 			
-			for (NamedElement supplier: dependency.getSuppliers()) {
-				if (supplier == providingSupplier)
-					newDependency.getSuppliers().add(target);
-				else
-					newDependency.getSuppliers().add(supplier);
-			}
+			for (Dependency ownedDependency: NamedElements.getDependencies(subClass))
+				initTargetClassDependency(ownedDependency,
+						dependencyConflictResolutionStrategyType);
 		}
-		
-		if (providingSupplier == source || subClasses.contains(providingSupplier))
-			dependenciesToClean.add(dependency);
 	}
-	
-	protected void initAllTargetClassDependencies(Class source, Class target) {
-		/* client dependencies */
-		for (Dependency dependency: source.getClientDependencies())
-			initTargetClassClientDependencies(source, target, dependency);
+
+	protected void initTargetClassInheritedDependencies(
+			DependencyConflictResolutionStrategyType dependencyConflictResolutionStrategyType) {
 		
-		/* supplier dependencies */
-		for (Dependency dependency: NamedElements.getSupplierDependencies(source))
-			initTargetClassSupplierDependencies(source, target, dependency);
+		for (Class superClass: visitableSource.getSuperClasses()) {
+			classVisitor.setOwner(superClass);
+			
+			for (Dependency ownedDependency: NamedElements.getDependencies(superClass))
+				initTargetClassDependency(ownedDependency,
+						dependencyConflictResolutionStrategyType);
+		}
+	}
+
+	protected void initTargetClassSourceDependencies(
+			DependencyConflictResolutionStrategyType dependencyConflictResolutionStrategyType) {
 		
-		/* inherited client dependencies (superclasses) */
-		for (Class superClass: superClasses)
-			for (Dependency dependency: superClass.getClientDependencies())
-				initTargetClassClientDependencies(superClass, target, dependency);
-		
-		/* inherited supplier dependencies (superclasses) */
-		for (Class superClass: superClasses)
-			for (Dependency dependency: NamedElements.getSupplierDependencies(superClass))
-				initTargetClassSupplierDependencies(superClass, target, dependency);
-		
-		/* specializing client dependencies (subclasses) */
-		for (Class subClass: subClasses)
-			for (Dependency dependency: subClass.getClientDependencies())
-				initTargetClassClientDependencies(subClass, target, dependency);
-		
-		/* specializing supplier dependencies (subclasses) */
-		for (Class subClass: subClasses)
-			for (Dependency dependency: NamedElements.getSupplierDependencies(subClass))
-				initTargetClassSupplierDependencies(subClass, target, dependency);
+		for (Dependency ownedDependency: NamedElements.getDependencies(source))
+			initTargetClassDependency(ownedDependency, 
+					dependencyConflictResolutionStrategyType);
 	}
 
 	protected void postTransformationClean() {
-		// remove source's owned associations and its subclasses' associations
-		associationsToClean.stream().forEach(Association::destroy);
-		
-		// remove source's dependencies and its subclasses' dependencies
-		dependenciesToClean.stream().forEach(Dependency::destroy);
+		// remove source's owned associations & dependencies, and its subclasses' associations & dependencies
+		Stream
+		.concat(associationVisitors.stream(), dependencyVisitors.stream())
+		.map(visitor -> visitor.getToClean())
+		.forEach(toClean -> 
+			toClean
+			.stream()
+			.forEach(toCleanElement -> toCleanElement.destroy()));
 		
 		// remove source and its collapsed subclasses
-		Classes.getAllSubclasses(source)
-		.stream().forEach(Class::destroy);
+		visitableSource.getSubClasses()
+		.stream()
+		.forEach(Class::destroy);
 		
 		source.destroy();
 	}

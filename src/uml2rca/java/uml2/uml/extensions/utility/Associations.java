@@ -1,12 +1,14 @@
 package uml2rca.java.uml2.uml.extensions.utility;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
@@ -87,11 +89,11 @@ public class Associations {
 	}
 	
 	/**
-	 * Checks if an association is a unary (i.e. an entity associated to itself).
+	 * Checks if an association is reflexive (i.e. an entity associated to itself).
 	 * @param association the association to check.
-	 * @return true if the association is unary, false otherwise.
+	 * @return true if the association is reflexive, false otherwise.
 	 */
-	public static boolean isUnary(Association association) {
+	public static boolean isReflexive(Association association) {
 		return (association.isBinary() && 
 				association.getEndTypes().size() == 1);
 	}
@@ -182,30 +184,19 @@ public class Associations {
 			clone.setOwningAssociation(association);
 		clone.setIsNavigable(isNavigable);
 	}
-
-	public static Property cloneNonNavigableMemberEnd(Association association, Property nonNavigableEnd) {
-		Property newNonNavigableEnd = UMLFactory.eINSTANCE.createProperty();
-		newNonNavigableEnd.setOwningAssociation(association);
-		newNonNavigableEnd.setIsNavigable(false);
-		newNonNavigableEnd.setAggregation(nonNavigableEnd.getAggregation());
-		newNonNavigableEnd.setName(nonNavigableEnd.getName());
-		newNonNavigableEnd.setLower(nonNavigableEnd.getLower());
-		newNonNavigableEnd.setUpper(nonNavigableEnd.getUpper());
-		newNonNavigableEnd.setType(nonNavigableEnd.getType());
-		
-		return newNonNavigableEnd;
+	
+	public static List<Property> getOtherEndsInAssociation(Association association, Type targetEndType) {
+		return association.getMemberEnds()
+				.stream()
+				.filter(memberEnd -> memberEnd.getType() != targetEndType)
+				.collect(Collectors.toList());
 	}
-
-	public static void cloneNavigableMemberEndForBinaryAssociations(Association association, Property navigableEnd, Property otherEnd) {
-		Property newNavigableEnd;
-		Class otherEndClass = (Class) otherEnd.getType();
-		otherEndClass.createOwnedAttribute(navigableEnd.getName(), navigableEnd.getType());
-		
-		newNavigableEnd = otherEndClass.getOwnedAttribute(navigableEnd.getName(), navigableEnd.getType());
-		newNavigableEnd.setAssociation(association);
-		newNavigableEnd.setIsNavigable(true);
-		newNavigableEnd.setAggregation(navigableEnd.getAggregation());
-		newNavigableEnd.setLower(navigableEnd.getLower());
-		newNavigableEnd.setUpper(navigableEnd.getUpper());
+	
+	public static List<MutablePair<String, Type>> getOtherEndsInAssociationAsPairs(Association association, Type targetEndType) {
+		return association.getMemberEnds()
+				.stream()
+				.filter(memberEnd -> memberEnd.getType() != targetEndType)
+				.map(memberEnd -> MutablePair.of(memberEnd.getName(), memberEnd.getType()))
+				.collect(Collectors.toList());
 	}
 }

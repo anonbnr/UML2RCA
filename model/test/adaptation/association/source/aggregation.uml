@@ -11,10 +11,10 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GNzTQXztEeq_vO1Ti1fjcA" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GNz6UHztEeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_GN0hYHztEeq_vO1Ti1fjcA" name="a" type="_C3HrUHztEeq_vO1Ti1fjcA" association="_GNzTQHztEeq_vO1Ti1fjcA"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_GNz6UXztEeq_vO1Ti1fjcA" name="b" type="_EDTxoHztEeq_vO1Ti1fjcA" aggregation="shared" association="_GNzTQHztEeq_vO1Ti1fjcA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GNz6UnztEeq_vO1Ti1fjcA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GNz6U3ztEeq_vO1Ti1fjcA" value="1"/>
     </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GN0hYHztEeq_vO1Ti1fjcA" name="a" type="_C3HrUHztEeq_vO1Ti1fjcA" association="_GNzTQHztEeq_vO1Ti1fjcA"/>
   </packagedElement>
 </uml:Model>

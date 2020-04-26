@@ -17,44 +17,44 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import uml2rca.adaptation.generalization.SimpleGeneralizationAdaptation;
-import uml2rca.adaptation.generalization.conflict.resolution.DefaultRenameAttributeConflictResolutionStrategy;
-import uml2rca.adaptation.generalization.conflict.resolution.KeepOneAttributeConflictResolutionStrategy;
+import uml2rca.adaptation.generalization.attribute.conflict.resolution_strategy.AttributeConflictResolutionStrategyType;
+import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAttributeVisitor;
 import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
 import uml2rca.java.extensions.utility.Strings;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class SimpleGeneralizationAdaptationTest {
 	
 	/* ATTRIBUTES */
-	private EcoreModelManager modelManager;
-	private String sourceFileName;
-	private String sourceURI;
-	private String targetFileName;
-	private String targetURI;
-	private Model model;
-	private Package package1;
-	private Package package1Point1;
-	private Package package2;
-	private Package package3;
-	private Class document;
-	private Class report;
-	private Class thesis;
-	private Class article;
-	private Class journalArticle;
-	private Class inProceedings;
-	private Class publisher;
-	private Class dataSource;
-	private Class author;
-	private Class reviewer;
-	private Class editor;
-	private Class page;
-	private Association describedIn;
-	private Association edits;
-	private Association writes;
-	private Association reviews;
-	private Association publishes;
-	private Association providesData;
+	protected EcoreModelManager modelManager;
+	protected String sourceFileName;
+	protected String sourceURI;
+	protected String targetFileName;
+	protected String targetURI;
+	protected Model model;
+	protected Package package1;
+	protected Package package1Point1;
+	protected Package package2;
+	protected Package package3;
+	protected Class document;
+	protected Class report;
+	protected Class thesis;
+	protected Class article;
+	protected Class journalArticle;
+	protected Class inProceedings;
+	protected Class publisher;
+	protected Class dataSource;
+	protected Class author;
+	protected Class reviewer;
+	protected Class editor;
+	protected Class page;
+	protected Association describedIn;
+	protected Association edits;
+	protected Association writes;
+	protected Association reviews;
+	protected Association publishes;
+	protected Association providesData;
 	
 	/* METHODS */
 	@Before
@@ -144,8 +144,8 @@ public class SimpleGeneralizationAdaptationTest {
 	public void testAttributes() {
 		Package leafClassPackage = package2;
 		String leafClassName = "JournalArticle";
-		Package chosenClassPackage = package2;
-		String chosenClassName = "Article";
+		Package chosenClassPackage = package1;
+		String chosenClassName = "Document";
 		String targetClassName = chosenClassName;
 		Class leafClass = (Class)  leafClassPackage.getPackagedElement(leafClassName);
 		Class chosenClass = (Class) chosenClassPackage.getPackagedElement(chosenClassName);
@@ -157,7 +157,7 @@ public class SimpleGeneralizationAdaptationTest {
 					SimpleGeneralizationAdaptation(leafClass, chosenClass);
 		} catch (NotALeafInGeneralizationHierarchyException | NotAValidLevelForGeneralizationAdaptationException e) {
 			e.printStackTrace();
-		} 
+		}
 		
 		targetClass = (Class) chosenClassPackage.getPackagedElement(targetClassName);
 		assertNotNull(targetClass);
@@ -170,31 +170,35 @@ public class SimpleGeneralizationAdaptationTest {
 		for (Property attribute: chosenClass.getOwnedAttributes())
 			assertTrue(targetAttributeNames.contains(attribute.getName()));
 		
-		for (Class superClass: adaptation.getSuperClasses())
+		for (Class superClass: adaptation.getVisitableSource().getSuperClasses())
 			for (Property attribute: superClass.getOwnedAttributes())
 				assertTrue(targetAttributeNames.contains(attribute.getName()));
 		
-		for (Class subClass: adaptation.getSubClasses())
+		for (Class subClass: adaptation.getVisitableSource().getSubClasses())
 			for (Property attribute: subClass.getOwnedAttributes()) {
-				if (adaptation.getAttributeConflictStrategy() instanceof 
-						DefaultRenameAttributeConflictResolutionStrategy)
-					assertTrue(
-							targetAttributeNames.contains(attribute.getName())
-							||
-							targetAttributeNames.contains(Strings.decapitalize(subClass.getName()) 
-									+ Strings.capitalize(attribute.getName()))
-							);
-				else if (adaptation.getAttributeConflictStrategy() instanceof 
-						DefaultRenameAttributeConflictResolutionStrategy)
-					assertTrue(
-							targetAttributeNames.contains(attribute.getName())
-							||
-							(targetAttributeNames.contains("expertNameProvidedForOriginallyOwnedAttribute")
-									&& targetAttributeNames.contains("expertNameProvidedForConflictingAttribute"))
-							);
-				else if (adaptation.getAttributeConflictStrategy() instanceof 
-						KeepOneAttributeConflictResolutionStrategy)
-					assertTrue(targetAttributeNames.contains(attribute.getName()));
+				for (GeneralizationAdaptationAttributeVisitor attributeVisitor: adaptation.getAttributeVisitors()) {
+					
+					if (attributeVisitor.getConflictStrategyType() == AttributeConflictResolutionStrategyType.DEFAULT_RENAME) {
+						assertTrue(
+								targetAttributeNames.contains(attribute.getName())
+								||
+								targetAttributeNames.contains(Strings.decapitalize(subClass.getName()) 
+										+ Strings.capitalize(attribute.getName()))
+								);
+					}
+					
+					else if (attributeVisitor.getConflictStrategyType() == AttributeConflictResolutionStrategyType.EXPERT_RENAME) {
+						assertTrue(
+								targetAttributeNames.contains(attribute.getName())
+								||
+								(targetAttributeNames.contains("expertNameProvidedForOriginallyOwnedAttribute")
+										&& targetAttributeNames.contains("expertNameProvidedForConflictingAttribute"))
+								);
+					}
+					
+					else if (attributeVisitor.getConflictStrategyType() == AttributeConflictResolutionStrategyType.DISCARD)
+						assertTrue(targetAttributeNames.contains(attribute.getName()));
+				}
 			}
 		
 		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);

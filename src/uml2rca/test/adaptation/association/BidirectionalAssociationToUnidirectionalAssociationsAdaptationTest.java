@@ -11,7 +11,7 @@ import org.junit.Test;
 import uml2rca.adaptation.association.BidirectionalAssociationToUnidirectionalAssociationsAdaptation;
 import uml2rca.exceptions.NotABidirectionalAssociationException;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationTest {
 

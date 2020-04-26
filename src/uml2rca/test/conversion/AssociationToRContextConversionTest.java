@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import rca.RContext;
 import uml2rca.conversion.AssociationToRContextConversion;
-import uml2rca.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelManager;
 
 public class AssociationToRContextConversionTest {
 	
