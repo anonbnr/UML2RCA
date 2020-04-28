@@ -144,8 +144,8 @@ public class SimpleGeneralizationAdaptationTest {
 	public void testAttributes() {
 		Package leafClassPackage = package2;
 		String leafClassName = "JournalArticle";
-		Package chosenClassPackage = package1;
-		String chosenClassName = "Document";
+		Package chosenClassPackage = package2;
+		String chosenClassName = "JournalArticle";
 		String targetClassName = chosenClassName;
 		Class leafClass = (Class)  leafClassPackage.getPackagedElement(leafClassName);
 		Class chosenClass = (Class) chosenClassPackage.getPackagedElement(chosenClassName);

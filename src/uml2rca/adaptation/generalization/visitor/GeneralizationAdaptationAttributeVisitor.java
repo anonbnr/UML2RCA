@@ -110,7 +110,7 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 	
 	protected Property getPreAdaptationIndirectlyOwnedAttribute() {
 		for (Class scopeClass: conflictScope.getScope())
-			if (scopeClass != conflictScope.getConflictSource().getCandidate())
+			if (scopeClass != conflictScope.getConflictSource().getSource())
 				for (Property ownedAttribute: scopeClass.getOwnedAttributes())
 					if (ownedAttribute.getName().equals(visitedElement.getName())
 					&& ownedAttribute.getType() == visitedElement.getType())

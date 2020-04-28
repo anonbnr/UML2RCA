@@ -1,4 +1,4 @@
-package uml2rca.adaptation.association;
+package uml2rca.adaptation.dependency;
 
 import java.util.List;
 

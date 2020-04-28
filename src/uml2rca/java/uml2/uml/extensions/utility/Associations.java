@@ -7,6 +7,7 @@ import org.apache.commons.lang3.tuple.MutablePair;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -198,5 +199,44 @@ public class Associations {
 				.filter(memberEnd -> memberEnd.getType() != targetEndType)
 				.map(memberEnd -> MutablePair.of(memberEnd.getName(), memberEnd.getType()))
 				.collect(Collectors.toList());
+	}
+	
+	public static boolean hasAnAbstractMember(Association association) {
+		return association.getEndTypes()
+				.stream()
+				.anyMatch(type -> ((Class) type).isAbstract());
+	}
+	
+	public static Class getFirstAbstractMember(Association association) {
+		return association.getEndTypes()
+				.stream()
+				.map(type -> (Class) type)
+				.filter(cls -> cls.isAbstract())
+				.findFirst()
+				.get();
+	}
+	
+	public static Property getFirstMemberEndHavingType(Association association, Class memberEndType) {
+		return association.getMemberEnds()
+		.stream()
+		.filter(memberEnd -> memberEnd.getType() == memberEndType)
+		.findFirst()
+		.get();
+	}
+	
+	public static boolean associatesTypesInSameGeneralization(Association association) {
+		for (Type type1: association.getEndTypes()) {
+			List<Class> type1SuperClasses = Classes.getAllSuperClasses((Class) type1);
+			List<Class> type1SubClasses = Classes.getAllSubclasses((Class) type1);
+			
+			for (Type type2: association.getEndTypes()) {
+				if (type1 != type2 
+						&& (type1SuperClasses.contains(type2)
+								|| type1SubClasses.contains(type2)))
+					return true;
+			}
+		}
+		
+		return false;
 	}
 }

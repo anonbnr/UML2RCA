@@ -1,4 +1,4 @@
-package uml2rca.test.adaptation.association;
+package uml2rca.test.adaptation.dependency;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,7 +13,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.junit.Test;
 
-import uml2rca.adaptation.association.DependencyToAssociationAdaptation;
+import uml2rca.adaptation.dependency.DependencyToAssociationAdaptation;
 import uml2rca.exceptions.NotATypeException;
 import uml2rca.model.management.EcoreModelManager;
 
@@ -22,9 +22,9 @@ public class DependencyToAssociationAdaptationTest {
 	@Test
 	public void testTransformation() {
 		String sourceFileName = "dependency.uml";
-		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
+		String sourceURI = "model/test/adaptation/dependency/source/" + sourceFileName;
 		String targetFileName = sourceFileName;
-		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
+		String targetURI = "model/test/adaptation/dependency/target/" + targetFileName;
 		
 		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
 		

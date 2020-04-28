@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_lKw7wIhTEeq-m-1iFxdOsA" name="model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_lRqN8IhTEeq-m-1iFxdOsA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_k68aMIkbEeq6Q5ryj_M7TA" name="package1">
+    <packagedElement xmi:type="uml:Class" xmi:id="_nH0hcIkbEeq6Q5ryj_M7TA" name="Document" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_vY-fUIkbEeq6Q5ryj_M7TA" name="package1.1">
+      <packagedElement xmi:type="uml:Class" xmi:id="_tZjlQIkbEeq6Q5ryj_M7TA" name="Thesis">
+        <generalization xmi:type="uml:Generalization" xmi:id="_ZLFrYIkcEeq6Q5ryj_M7TA" general="_spgoYIkbEeq6Q5ryj_M7TA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_spgoYIkbEeq6Q5ryj_M7TA" name="Report">
+      <generalization xmi:type="uml:Generalization" xmi:id="_YvO10IkcEeq6Q5ryj_M7TA" general="_nH0hcIkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AqFawIkcEeq6Q5ryj_M7TA" name="DocumentPlatform"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-WGl8IkbEeq6Q5ryj_M7TA" name="Plant" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="__aZUgIkbEeq6Q5ryj_M7TA" name="Rose">
+      <generalization xmi:type="uml:Generalization" xmi:id="_aCLEYIkcEeq6Q5ryj_M7TA" general="_-WGl8IkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__wQPwIkbEeq6Q5ryj_M7TA" name="Tulip">
+      <generalization xmi:type="uml:Generalization" xmi:id="_ZpZYAIkcEeq6Q5ryj_M7TA" general="_-WGl8IkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_uehMwIkcEeq6Q5ryj_M7TA" name="describedIn" memberEnd="_ueia4okcEeq6Q5ryj_M7TA _uejB8IkcEeq6Q5ryj_M7TA _wU4RcIkcEeq6Q5ryj_M7TA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ueia4IkcEeq6Q5ryj_M7TA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ueia4YkcEeq6Q5ryj_M7TA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ueia4okcEeq6Q5ryj_M7TA" name="document" type="_nH0hcIkbEeq6Q5ryj_M7TA" association="_uehMwIkcEeq6Q5ryj_M7TA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_uejB8IkcEeq6Q5ryj_M7TA" name="plant" type="_-WGl8IkbEeq6Q5ryj_M7TA" association="_uehMwIkcEeq6Q5ryj_M7TA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_wU4RcIkcEeq6Q5ryj_M7TA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_uehMwIkcEeq6Q5ryj_M7TA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wU7UwIkcEeq6Q5ryj_M7TA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wU7UwYkcEeq6Q5ryj_M7TA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_l58ZEIkbEeq6Q5ryj_M7TA" name="package2">
+    <packagedElement xmi:type="uml:Class" xmi:id="_qIoAAIkbEeq6Q5ryj_M7TA" name="Article" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="_YV1eYIkcEeq6Q5ryj_M7TA" general="_nH0hcIkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7Ke-gIkbEeq6Q5ryj_M7TA" name="InProceedings">
+      <generalization xmi:type="uml:Generalization" xmi:id="_XQiqQIkcEeq6Q5ryj_M7TA" general="_qIoAAIkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6erBYIkbEeq6Q5ryj_M7TA" name="JournalArticle">
+      <generalization xmi:type="uml:Generalization" xmi:id="_W4uAIIkcEeq6Q5ryj_M7TA" general="_qIoAAIkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7sEooIkbEeq6Q5ryj_M7TA" name="JournalArticleInProceedings">
+      <generalization xmi:type="uml:Generalization" xmi:id="_WyxeQIkeEeq6Q5ryj_M7TA" general="_7Ke-gIkbEeq6Q5ryj_M7TA"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_XQq7MIkeEeq6Q5ryj_M7TA" general="_6erBYIkbEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_yJ31cIkiEeq6Q5ryj_M7TA" name="ImportedTo" memberEnd="_yJ5qookiEeq6Q5ryj_M7TA _yJ6RsIkiEeq6Q5ryj_M7TA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yJ5qoIkiEeq6Q5ryj_M7TA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yJ5qoYkiEeq6Q5ryj_M7TA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5X3GIIkiEeq6Q5ryj_M7TA" name="dateImportation">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_OJzEAIkjEeq6Q5ryj_M7TA" name="isReferencedInAnotherDocument">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_yJ5qookiEeq6Q5ryj_M7TA" name="document" type="_nH0hcIkbEeq6Q5ryj_M7TA" association="_yJ31cIkiEeq6Q5ryj_M7TA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_yJ6RsIkiEeq6Q5ryj_M7TA" name="plant" type="_-WGl8IkbEeq6Q5ryj_M7TA" association="_yJ31cIkiEeq6Q5ryj_M7TA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cvxukIkmEeq6Q5ryj_M7TA" name="basedOn" memberEnd="_cvzjwokmEeq6Q5ryj_M7TA _cv0K0IkmEeq6Q5ryj_M7TA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cvzjwIkmEeq6Q5ryj_M7TA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cvzjwYkmEeq6Q5ryj_M7TA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cvzjwokmEeq6Q5ryj_M7TA" name="predecessor" type="_nH0hcIkbEeq6Q5ryj_M7TA" association="_cvxukIkmEeq6Q5ryj_M7TA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cv0K0IkmEeq6Q5ryj_M7TA" name="document" type="_nH0hcIkbEeq6Q5ryj_M7TA" association="_cvxukIkmEeq6Q5ryj_M7TA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QAzsIIknEeq6Q5ryj_M7TA" name="attacks" memberEnd="_QA1hUoknEeq6Q5ryj_M7TA _QA2IYIknEeq6Q5ryj_M7TA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QA1hUIknEeq6Q5ryj_M7TA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QA1hUYknEeq6Q5ryj_M7TA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QA1hUoknEeq6Q5ryj_M7TA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_QAzsIIknEeq6Q5ryj_M7TA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QA2IYIknEeq6Q5ryj_M7TA" name="plant" type="_-WGl8IkbEeq6Q5ryj_M7TA" association="_QAzsIIknEeq6Q5ryj_M7TA"/>
+  </packagedElement>
+</uml:Model>

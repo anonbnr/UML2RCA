@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7Quy0IlPEeq6Q5ryj_M7TA" name="model">
+  <packageImport xmi:id="_7RkgUIlPEeq6Q5ryj_M7TA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Lr-dQIlQEeq6Q5ryj_M7TA" name="package1">
+    <packagedElement xmi:type="uml:Package" xmi:id="_MUmjgIlQEeq6Q5ryj_M7TA" name="package1.1">
+      <packagedElement xmi:type="uml:Class" xmi:id="_fn0goIlQEeq6Q5ryj_M7TA" name="Thesis">
+        <generalization xmi:id="_91EiYIlQEeq6Q5ryj_M7TA" general="_e5pMAIlQEeq6Q5ryj_M7TA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_T77hQIlQEeq6Q5ryj_M7TA" name="Document" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_S4zQUIlQEeq6Q5ryj_M7TA" name="DocumentPlatform"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_nZu9wIlQEeq6Q5ryj_M7TA" name="Rose">
+      <generalization xmi:id="__ezgUIlQEeq6Q5ryj_M7TA" general="_mu4p8IlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mu4p8IlQEeq6Q5ryj_M7TA" name="Plant" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_nB2CMIlQEeq6Q5ryj_M7TA" name="Tulip">
+      <generalization xmi:id="__DdBEIlQEeq6Q5ryj_M7TA" general="_mu4p8IlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_e5pMAIlQEeq6Q5ryj_M7TA" name="Report">
+      <generalization xmi:id="_-VegwIlQEeq6Q5ryj_M7TA" general="_T77hQIlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQKhwIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticleInProceedings-Tulip" client="_cxyusIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticleInProceedings-Rose" client="_cxyusIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEYlUEeqHA-KaeNy86w" name="dependsOnPlatform-Report-Tulip" client="_e5pMAIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEolUEeqHA-KaeNy86w" name="dependsOnPlatform-Report-Rose" client="_e5pMAIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIIlUEeqHA-KaeNy86w" name="dependsOnPlatform-InProceedings-Tulip" client="_bjz4oIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIYlUEeqHA-KaeNy86w" name="dependsOnPlatform-InProceedings-Rose" client="_bjz4oIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIolUEeqHA-KaeNy86w" name="dependsOnPlatform-Thesis-Tulip" client="_fn0goIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMI4lUEeqHA-KaeNy86w" name="dependsOnPlatform-Thesis-Rose" client="_fn0goIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMJIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticle-Tulip" client="_atk0MIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMJYlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticle-Rose" client="_atk0MIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_M5mG8IlQEeq6Q5ryj_M7TA" name="package2">
+    <packagedElement xmi:type="uml:Class" xmi:id="_atk0MIlQEeq6Q5ryj_M7TA" name="JournalArticle">
+      <generalization xmi:id="_lnJwYIlREeq6Q5ryj_M7TA" general="_Uy17IIlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Uy17IIlQEeq6Q5ryj_M7TA" name="Article" isAbstract="true">
+      <generalization xmi:id="_RDzoIIlREeq6Q5ryj_M7TA" general="_T77hQIlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bjz4oIlQEeq6Q5ryj_M7TA" name="InProceedings">
+      <generalization xmi:id="_lOTLgIlREeq6Q5ryj_M7TA" general="_Uy17IIlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cxyusIlQEeq6Q5ryj_M7TA" name="JournalArticleInProceedings">
+      <generalization xmi:id="_l9SYcIlREeq6Q5ryj_M7TA" general="_bjz4oIlQEeq6Q5ryj_M7TA"/>
+      <generalization xmi:id="_mQGmwIlREeq6Q5ryj_M7TA" general="_atk0MIlQEeq6Q5ryj_M7TA"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
