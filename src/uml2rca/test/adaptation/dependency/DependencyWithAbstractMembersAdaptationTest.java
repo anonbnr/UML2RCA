@@ -9,10 +9,12 @@ import org.eclipse.uml2.uml.Package;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.dependency.DependencyWithAbstractMembersAdaptation;
 import uml2rca.exceptions.NotADependencyWithAnAbstractMemberException;
 import uml2rca.exceptions.NotATypeException;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class DependencyWithAbstractMembersAdaptationTest {
 	
@@ -51,7 +53,11 @@ public class DependencyWithAbstractMembersAdaptationTest {
 		sourceURI = "model/test/adaptation/dependency/source/" + sourceFileName;
 		targetFileName = sourceFileName;
 		targetURI = "model/test/adaptation/dependency/target/" + targetFileName;
-		modelManager = new EcoreModelManager(sourceURI);
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initializeModel() {
@@ -90,7 +96,13 @@ public class DependencyWithAbstractMembersAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		modelManager.saveStateAndExport(model, "Dependencies with abstract members Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"Dependencies with abstract members Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }

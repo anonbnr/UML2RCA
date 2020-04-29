@@ -10,9 +10,11 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.NaryAssociationToBinaryAssociationsAdaptation;
 import uml2rca.exceptions.NotAnNAryAssociationException;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class NaryAssociationToBinaryAssociationsAdaptationTest {
 	
@@ -23,7 +25,12 @@ public class NaryAssociationToBinaryAssociationsAdaptationTest {
 		String targetFileName = "naryAssociationForgotten.uml";
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		EcoreModelManager modelManager = null;
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 		
 		Model model = modelManager.getModel();
 		Package root = (Package) model.getPackagedElement("root");
@@ -66,9 +73,14 @@ public class NaryAssociationToBinaryAssociationsAdaptationTest {
 		assertTrue(associations.contains(associationBC));
 		assertEquals(associations.size(), naryAssociationMemberEndsSize);
 		
-		modelManager.saveStateAndExport(model, 
-				"N-ary Association Adaptation (Forgotten association solution)", 
-				targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"N-ary Association Adaptation (Forgotten association solution)", 
+					EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }

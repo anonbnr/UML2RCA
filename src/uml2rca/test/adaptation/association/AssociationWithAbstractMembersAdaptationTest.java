@@ -10,10 +10,12 @@ import org.eclipse.uml2.uml.Package;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AssociationClassWithAbstractMembersAdaptation;
 import uml2rca.adaptation.association.AssociationWithAbstractMembersAdaptation;
 import uml2rca.exceptions.NotAnAssociationWithAnAbstractMemberException;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class AssociationWithAbstractMembersAdaptationTest {
 	
@@ -55,7 +57,12 @@ public class AssociationWithAbstractMembersAdaptationTest {
 		sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
 		targetFileName = sourceFileName;
 		targetURI = "model/test/adaptation/association/target/" + targetFileName;
-		modelManager = new EcoreModelManager(sourceURI);
+		
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initializeModel() {
@@ -115,7 +122,11 @@ public class AssociationWithAbstractMembersAdaptationTest {
 			e.printStackTrace();
 		}
 		
-		modelManager.saveStateAndExport(model, "Associations with abstract members Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, "Associations with abstract members Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 		modelManager.displayStates();
 	}
 }

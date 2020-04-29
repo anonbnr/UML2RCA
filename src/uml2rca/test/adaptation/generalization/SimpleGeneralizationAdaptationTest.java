@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.generalization.SimpleGeneralizationAdaptation;
 import uml2rca.adaptation.generalization.attribute.conflict.resolution_strategy.AttributeConflictResolutionStrategyType;
 import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAttributeVisitor;
@@ -23,6 +24,7 @@ import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class SimpleGeneralizationAdaptationTest {
 	
@@ -71,7 +73,11 @@ public class SimpleGeneralizationAdaptationTest {
 		sourceURI = "model/test/adaptation/generalization/source/" + sourceFileName;
 		targetFileName = sourceFileName;
 		targetURI = "model/test/adaptation/generalization/target/" + targetFileName;
-		modelManager = new EcoreModelManager(sourceURI);
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initializeModel() {
@@ -136,7 +142,13 @@ public class SimpleGeneralizationAdaptationTest {
 		assertEquals(targetClass.getName(), chosenClassName);
 		assertEquals(targetClass.getPackage(), chosenClassPackage);
 		
-		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"Simple Generalization Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 	
@@ -201,7 +213,13 @@ public class SimpleGeneralizationAdaptationTest {
 				}
 			}
 		
-		modelManager.saveStateAndExport(model, "Simple Generalization Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"Simple Generalization Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 	

@@ -9,6 +9,7 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.java.uml2.uml.extensions.utility.Classes;
 import uml2rca.model.management.EcoreModelManager;
 
@@ -19,7 +20,12 @@ public class SubclassingTest {
 		String sourceFileName = "simpleGeneralization.uml";
 		String sourceURI = "model/test/adaptation/generalization/source/" + sourceFileName;
 		
-		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		EcoreModelManager modelManager = null;
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 		
 		Model model = modelManager.getModel();
 		Package package1 = (Package) model.getPackagedElement("package1");

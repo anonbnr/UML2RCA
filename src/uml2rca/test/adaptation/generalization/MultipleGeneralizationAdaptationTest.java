@@ -10,6 +10,7 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.generalization.MultipleGeneralizationAdaptation;
 import uml2rca.adaptation.generalization.attribute.conflict.resolution_strategy.AttributeConflictResolutionStrategyType;
 import uml2rca.adaptation.generalization.visitor.GeneralizationAdaptationAttributeVisitor;
@@ -17,6 +18,7 @@ import uml2rca.exceptions.NotALeafInGeneralizationHierarchyException;
 import uml2rca.exceptions.NotAValidLevelForGeneralizationAdaptationException;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class MultipleGeneralizationAdaptationTest extends SimpleGeneralizationAdaptationTest {
 	
@@ -26,7 +28,11 @@ public class MultipleGeneralizationAdaptationTest extends SimpleGeneralizationAd
 		sourceURI = "model/test/adaptation/generalization/source/" + sourceFileName;
 		targetFileName = sourceFileName;
 		targetURI = "model/test/adaptation/generalization/target/" + targetFileName;
-		modelManager = new EcoreModelManager(sourceURI);
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -113,7 +119,13 @@ public class MultipleGeneralizationAdaptationTest extends SimpleGeneralizationAd
 				}
 			}
 		
-		modelManager.saveStateAndExport(model, "Multiple Generalization Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"Multiple Generalization Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }

@@ -3,13 +3,9 @@ package uml2rca.model.management;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import org.apache.commons.lang3.tuple.MutablePair;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -24,16 +20,10 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 
-import core.model.management.AbstractModelManager;
-import uml2rca.exceptions.NoModelStateFoundException;
+import core.model.management.AbstractStatefulModelManager;
+import core.model.management.NotAValidModelStateException;
 
-public class EcoreModelManager extends AbstractModelManager<EObject> {
-	
-	/* ATTRIBUTES */
-	private String path;
-	private Model model;
-	private MutablePair<Model, String> currentState;
-	private LinkedList<MutablePair<Model, String>> states;
+public class EcoreModelManager extends AbstractStatefulModelManager<Model, String> {
 	
 	/* STATIC ATTRIBUTES */
 	public static Package UML_PRIMITIVE_TYPES_LIBRARY; // the UML library of primitive types
@@ -44,26 +34,15 @@ public class EcoreModelManager extends AbstractModelManager<EObject> {
 	}
 
 	/* CONSTRUCTORS */
-	public EcoreModelManager() {}
-	
-	public EcoreModelManager(String path) {
-		this.states = new LinkedList<MutablePair<Model, String>>();
-		loadState(path, "Initial state");
+	public EcoreModelManager(String path) 
+			throws InstantiationException, IllegalAccessException, 
+			NotAValidModelStateException {
+		
+		super(path);
+		importAndLoadState(path, "Initial state", EcoreModelState.class);
 	}
 	
-	/* METHODS */
-	public String getPath() {
-		return path;
-	}
-
-	public Model getModel() {
-		return model;
-	}
-
-	public MutablePair<Model, String> getCurrentState() {
-		return currentState;
-	}
-	
+	/* METHODS */	
 	private void registerUMLResourceFactoryForUMLExtension() {
 		Resource.Factory.Registry.INSTANCE
 		.getExtensionToFactoryMap()
@@ -89,10 +68,10 @@ public class EcoreModelManager extends AbstractModelManager<EObject> {
 	}
 	
 	@Override
-	public EObject importModel(String stringURI) {
+	public Model importModel(String path) {
 		
 		// Create the URI for the model element to load
-		URI uri = URI.createURI(stringURI);
+		URI uri = URI.createURI(path);
 		
 		// Register the UML Resource Factory for the UML resource extension
 		registerUMLResourceFactoryForUMLExtension();
@@ -112,19 +91,19 @@ public class EcoreModelManager extends AbstractModelManager<EObject> {
 			resource.load(options);
 	   } catch(Exception e) {
 		   
-		   System.err.println("Error: cannot load model from " + stringURI + ": " + e);
+		   System.err.println("Error: cannot load model from " + path + ": " + e);
 		   e.printStackTrace();
 		   return null;
 	   }
 		
-		return resource.getContents().get(0);
+		return (Model) resource.getContents().get(0);
 	}
 	
 	@Override
-	public boolean exportModel(EObject modelElement, String stringURI) {
+	public boolean exportModel(Model model, String path) {
 		
 		// Create the URI for the model element to save
-		URI uri = URI.createURI(stringURI);
+		URI uri = URI.createURI(path);
 		
 		// Register the UML Resource Factory for the UML resource extension
 		registerUMLResourceFactoryForUMLExtension();
@@ -136,96 +115,19 @@ public class EcoreModelManager extends AbstractModelManager<EObject> {
 		Resource resource = resourceSet.createResource(uri);
 		
 		// Add the model to the resource
-		resource.getContents().add(modelElement);
+		resource.getContents().add(model);
 		
 		// Persist the contents of the resource
 		try {
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
 			
-			System.err.println("Error: cannot save model at " + stringURI + ": " + e);
+			System.err.println("Error: cannot save model at " + path + ": " + e);
 			e.printStackTrace();
 			return false;
 	   }
 		
 		return true;
-	}
-	
-	private boolean addState(MutablePair<Model, String> state) {
-		return states.add(state);
-	}
-	
-	public boolean hasState(String stateDescription) {
-		return states.stream()
-				.map(pair -> pair.getRight())
-				.anyMatch(description -> description.equals(stateDescription));
-	}
-	
-	public void saveState(Model model, String stateDescription) {
-		this.model = model;
-		this.currentState = MutablePair.of(model, stateDescription); 
-		addState(this.currentState);
-	}
-	
-	public boolean saveStateAndExport(EObject modelElement, String stateDescription, String path) {
-		boolean result = exportModel(modelElement, path);
-		
-		if (modelElement instanceof Model) {
-			this.path = path;
-			saveState((Model) modelElement, stateDescription);
-		}
-		
-		return result;
-	}
-	
-	public Model loadState(String stateDescription) throws NoModelStateFoundException {
-		
-		if (hasState(stateDescription)) {
-			currentState = states.stream()
-			.filter(pair -> pair.getRight().equals(stateDescription))
-			.collect(Collectors.toList())
-			.get(0);
-			
-			model = currentState.getLeft();
-		}
-		
-		else
-			throw new NoModelStateFoundException(stateDescription);
-		
-		return model;
-	}
-	
-	public Model loadInitialState() {
-		return states.getFirst().getLeft();
-	}
-	
-	public EObject loadState(String path, String stateDescription) {
-		EObject result = importModel(path);
-		
-		if (result instanceof Model) {
-			this.path = path;
-			this.model = (Model) result;
-			this.currentState = MutablePair.of(model, stateDescription);
-			
-			if (hasState(stateDescription)) {
-				states.stream()
-						.filter(pair -> pair.getRight().equals(stateDescription))
-						.collect(Collectors.toList())
-						.get(0)
-						.setLeft(model);
-			}
-			
-			else
-				addState(this.currentState);
-		}
-		
-		return result;
-	}
-	
-	public void displayStates() {
-		states.stream()
-		.map(pair -> pair.getRight())
-		.forEach(System.out::println);
 	}
 
 	/* STATIC METHODS */

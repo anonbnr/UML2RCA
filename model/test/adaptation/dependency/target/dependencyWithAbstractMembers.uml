@@ -21,16 +21,16 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_e5pMAIlQEeq6Q5ryj_M7TA" name="Report">
       <generalization xmi:id="_-VegwIlQEeq6Q5ryj_M7TA" general="_T77hQIlQEeq6Q5ryj_M7TA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQKhwIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticleInProceedings-Tulip" client="_cxyusIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticleInProceedings-Rose" client="_cxyusIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEYlUEeqHA-KaeNy86w" name="dependsOnPlatform-Report-Tulip" client="_e5pMAIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQNlEolUEeqHA-KaeNy86w" name="dependsOnPlatform-Report-Rose" client="_e5pMAIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIIlUEeqHA-KaeNy86w" name="dependsOnPlatform-InProceedings-Tulip" client="_bjz4oIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIYlUEeqHA-KaeNy86w" name="dependsOnPlatform-InProceedings-Rose" client="_bjz4oIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMIolUEeqHA-KaeNy86w" name="dependsOnPlatform-Thesis-Tulip" client="_fn0goIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMI4lUEeqHA-KaeNy86w" name="dependsOnPlatform-Thesis-Rose" client="_fn0goIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMJIlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticle-Tulip" client="_atk0MIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_RQOMJYlUEeqHA-KaeNy86w" name="dependsOnPlatform-JournalArticle-Rose" client="_atk0MIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kK_EIoGEeqjbbSHHcuY2A" name="dependsOnPlatform-JournalArticleInProceedings-Tulip" client="_cxyusIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kOpcIoGEeqjbbSHHcuY2A" name="dependsOnPlatform-JournalArticleInProceedings-Rose" client="_cxyusIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kOpcYoGEeqjbbSHHcuY2A" name="dependsOnPlatform-Report-Tulip" client="_e5pMAIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kOpcooGEeqjbbSHHcuY2A" name="dependsOnPlatform-Report-Rose" client="_e5pMAIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kOpc4oGEeqjbbSHHcuY2A" name="dependsOnPlatform-InProceedings-Tulip" client="_bjz4oIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kPQgIoGEeqjbbSHHcuY2A" name="dependsOnPlatform-InProceedings-Rose" client="_bjz4oIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kPQgYoGEeqjbbSHHcuY2A" name="dependsOnPlatform-Thesis-Tulip" client="_fn0goIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kPQgooGEeqjbbSHHcuY2A" name="dependsOnPlatform-Thesis-Rose" client="_fn0goIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kPQg4oGEeqjbbSHHcuY2A" name="dependsOnPlatform-JournalArticle-Tulip" client="_atk0MIlQEeq6Q5ryj_M7TA _nB2CMIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7kPQhIoGEeqjbbSHHcuY2A" name="dependsOnPlatform-JournalArticle-Rose" client="_atk0MIlQEeq6Q5ryj_M7TA _nZu9wIlQEeq6Q5ryj_M7TA" supplier="_S4zQUIlQEeq6Q5ryj_M7TA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_M5mG8IlQEeq6Q5ryj_M7TA" name="package2">
     <packagedElement xmi:type="uml:Class" xmi:id="_atk0MIlQEeq6Q5ryj_M7TA" name="JournalArticle">

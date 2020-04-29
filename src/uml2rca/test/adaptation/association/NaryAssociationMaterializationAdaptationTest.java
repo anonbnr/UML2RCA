@@ -9,10 +9,12 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.NaryAssociationMaterializationAdaptation;
 import uml2rca.exceptions.NotAnNAryAssociationException;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class NaryAssociationMaterializationAdaptationTest {
 
@@ -23,7 +25,12 @@ public class NaryAssociationMaterializationAdaptationTest {
 		String targetFileName = "naryAssociationMaterialized.uml";
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		EcoreModelManager modelManager = null;
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e1) {
+			e1.printStackTrace();
+		}
 		
 		Model model = modelManager.getModel();
 		Package root = (Package) model.getPackagedElement("root");
@@ -46,8 +53,14 @@ public class NaryAssociationMaterializationAdaptationTest {
 		assertEquals(target.getName(), Strings.capitalize(naryAssociation.getName()));
 		assertEquals(target.getAssociations().size(), naryAssociationMemberEndsSize);
 		
-		modelManager.saveStateAndExport(model, 
-				"N-ary Association Adaptation (Materialization Solution)", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"N-ary Association Adaptation (Materialization Solution)",
+					EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }

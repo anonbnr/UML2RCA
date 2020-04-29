@@ -13,9 +13,11 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.dependency.DependencyToAssociationAdaptation;
 import uml2rca.exceptions.NotATypeException;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class DependencyToAssociationAdaptationTest {
 
@@ -26,7 +28,12 @@ public class DependencyToAssociationAdaptationTest {
 		String targetFileName = sourceFileName;
 		String targetURI = "model/test/adaptation/dependency/target/" + targetFileName;
 		
-		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		EcoreModelManager modelManager = null;
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 		
 		Model model = modelManager.getModel();
 		Package root = (Package) model.getPackagedElement("root");
@@ -58,7 +65,13 @@ public class DependencyToAssociationAdaptationTest {
 		for (Property memberEnd: associationAToC.getMemberEnds())
 			assertEquals(memberEnd.getAggregation(), AggregationKind.NONE_LITERAL);
 		
-		modelManager.saveStateAndExport(model, "Dependency Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, 
+					"Dependency Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }

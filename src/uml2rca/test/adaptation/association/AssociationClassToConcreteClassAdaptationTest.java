@@ -8,9 +8,11 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.junit.Test;
 
+import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AssociationClassToConcreteClassAdaptation;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.model.management.EcoreModelManager;
+import uml2rca.model.management.EcoreModelState;
 
 public class AssociationClassToConcreteClassAdaptationTest {
 
@@ -21,7 +23,12 @@ public class AssociationClassToConcreteClassAdaptationTest {
 		String targetFileName = sourceFileName;
 		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		EcoreModelManager modelManager = new EcoreModelManager(sourceURI);
+		EcoreModelManager modelManager = null;
+		try {
+			modelManager = new EcoreModelManager(sourceURI);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
 		
 		Model model = modelManager.getModel();
 		
@@ -39,7 +46,12 @@ public class AssociationClassToConcreteClassAdaptationTest {
 		assertEquals(cls.getOwnedAttributes().size(), associationClassOwnedAttributesNumber);
 		assertEquals(cls.getAssociations().size(), associationClassMemberEndsSize);
 		
-		modelManager.saveStateAndExport(model, "Association Class Adaptation", targetURI);
+		try {
+			modelManager.saveStateAndExport(targetURI, model, "Association Class Adaptation", EcoreModelState.class);
+		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			e.printStackTrace();
+		}
+		
 		modelManager.displayStates();
 	}
 }
