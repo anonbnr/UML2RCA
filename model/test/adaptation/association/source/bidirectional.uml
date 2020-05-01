@@ -14,4 +14,14 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_SxDgAn0PEeq_vO1Ti1fjcA" name="b" type="_JH3YMH0PEeq_vO1Ti1fjcA" association="_SxCR4H0PEeq_vO1Ti1fjcA"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_SxEHEH0PEeq_vO1Ti1fjcA" name="a" type="_Ihrh8H0PEeq_vO1Ti1fjcA" association="_SxCR4H0PEeq_vO1Ti1fjcA"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_1HRiQIu1EeqTkq6yTMRcJQ" name="nonBidirectional" memberEnd="_1HY3AIu1EeqTkq6yTMRcJQ _1HZeEou1EeqTkq6yTMRcJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1HXB0Iu1EeqTkq6yTMRcJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1HXo4Iu1EeqTkq6yTMRcJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1HZeEou1EeqTkq6yTMRcJQ" name="a" type="_Ihrh8H0PEeq_vO1Ti1fjcA" association="_1HRiQIu1EeqTkq6yTMRcJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1HY3AIu1EeqTkq6yTMRcJQ" name="b" type="_JH3YMH0PEeq_vO1Ti1fjcA" association="_1HRiQIu1EeqTkq6yTMRcJQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1HZeEIu1EeqTkq6yTMRcJQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1HZeEYu1EeqTkq6yTMRcJQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

@@ -1,9 +1,9 @@
 package uml2rca.adaptation.association;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Property;
 
 import core.adaptation.AbstractAdaptation;
@@ -21,7 +21,7 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  * @see AbstractAdaptation
  * @see Association
  */
-public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation extends AbstractAdaptation<Association, EList<Association>> {
+public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation extends AbstractAdaptation<Association, List<Association>> {
 	
 	/* CONSTRUCTOR */
 	/**
@@ -45,61 +45,41 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptation exte
 	/* METHODS */
 	// implementation of the IAdaptation interface
 	@Override
-	public EList<Association> transform(Association source) {
+	public List<Association> transform(Association source) {
 		
-		EList<Association> uniAssociations = new BasicEList<>();
+		List<Association> uniAssociations = initTargetUnidirectionalAssociations(source);
+		
+		return uniAssociations;
+	}
+
+	protected List<Association> initTargetUnidirectionalAssociations(Association source) {
+		List<Association> uniAssociations = new ArrayList<>();
+		
 		Property firstEnd = source.getMemberEnds().get(0);
 		Property secondEnd = source.getMemberEnds().get(1);
 		
-		uniAssociations.add(initUnidirectionalAssociation(
+		uniAssociations.add(initTargetUnidirectionalAssociation(
 				source, firstEnd, secondEnd, "first-" + source.getName()));
 		
-		uniAssociations.add(initUnidirectionalAssociation(
+		uniAssociations.add(initTargetUnidirectionalAssociation(
 				source, secondEnd, firstEnd, "second-" + source.getName()));
 		
 		return uniAssociations;
 	}
 
-	private Association initUnidirectionalAssociation(Association source, Property navigableEnd, Property nonNavigableEnd, String newName) {
-		Association uniAssociation = Associations.cloneIntoUnidirectionalAssociation(navigableEnd, nonNavigableEnd);
+	private Association initTargetUnidirectionalAssociation(Association source, Property navigableEnd, 
+			Property nonNavigableEnd, String newName) {
+		
+		Association uniAssociation = Associations.cloneIntoUnidirectionalAssociation(navigableEnd, 
+				nonNavigableEnd);
+		
 		uniAssociation.setPackage(source.getPackage());
 		uniAssociation.setName(newName);
 		
 		return uniAssociation;
 	}
 	
-	private EList<Property> getAssociatedClassifiersOwnedAttributesToClean(
-			Association unidirectionalAssociation, Property navigableEnd) {
-		
-		EList<Property> toClean = new BasicEList<>();
-		
-		for (Property end: unidirectionalAssociation.getMemberEnds()) {
-			Class endCls = (Class) end.getType();
-			
-			for (Property attribute: endCls.getAllAttributes()) {
-				if (attribute.getName().equals(navigableEnd.getName())
-						&& attribute.getType().equals(navigableEnd.getType())
-						&& attribute.getAssociation() == null)
-					toClean.add(attribute);
-			}
-		}
-		
-		return toClean;
-	}
-
-	private void cleanAssociatedClassifiersOwnedAttributes(Association unidirectionalAssociation) {
-		EList<Property> toClean = new BasicEList<>();
-		
-		for (Property end: unidirectionalAssociation.getMemberEnds())
-			if (end.isNavigable())
-				toClean.addAll(getAssociatedClassifiersOwnedAttributesToClean(unidirectionalAssociation, end));
-		
-		for (Property attribute: toClean)
-			attribute.destroy();
-	}
-	
-	private void postTransformationClean() {
-		target.stream().forEach(this::cleanAssociatedClassifiersOwnedAttributes);
+	private void postTransformationClean() {		
 		source.destroy();
 	}
 }

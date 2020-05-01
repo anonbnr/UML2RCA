@@ -9,7 +9,7 @@ import org.eclipse.uml2.uml.Property;
 
 import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AggregationToAssociationAdaptation;
-import uml2rca.exceptions.NotABinaryAssociationException;
+import uml2rca.exceptions.NotAnAggregationException;
 import uml2rca.model.management.EcoreModelManager;
 import uml2rca.test.core.UML2RCAbstractTransformationTest;
 
@@ -68,7 +68,7 @@ public class AggregationToAssociationAdaptationTest extends UML2RCAbstractTransf
 		try {
 			transformation = new AggregationToAssociationAdaptation(sourceAggregation);
 			targetAssociation = transformation.getTarget();
-		} catch (NotABinaryAssociationException e) {
+		} catch (NotAnAggregationException e) {
 			e.printStackTrace();
 		}
 		

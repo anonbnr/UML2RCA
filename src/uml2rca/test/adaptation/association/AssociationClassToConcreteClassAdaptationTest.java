@@ -92,10 +92,9 @@ public class AssociationClassToConcreteClassAdaptationTest extends UML2RCAbstrac
 
 	@Override
 	public void transformation() {
+		transformationStateDescription = "Association Class Adaptation";
 		transformation = new AssociationClassToConcreteClassAdaptation(sourceAssociationClass);
 		targetClass = transformation.getTarget();
-		
-		transformationStateDescription = "Association Class Adaptation";
 	}
 
 	@Override
@@ -108,7 +107,6 @@ public class AssociationClassToConcreteClassAdaptationTest extends UML2RCAbstrac
 	public void validateConcreteClass() {
 		targetClassName = Strings.capitalize(sourceAssociationClassName);
 		
-		assertEquals(targetClass, model.getPackagedElement(targetClassName));
 		assertEquals(targetClass.getPackage(), sourceAssociationClassPackage);
 		
 		assertEquals(targetClass.getOwnedAttributes().size(), sourceAssociationClassAttributes.size());
@@ -149,37 +147,22 @@ public class AssociationClassToConcreteClassAdaptationTest extends UML2RCAbstrac
 
 	protected void validateTargetMemberEnd(Association association, Property targetEnd) {
 		if (association.getEndTypes().contains(A)) {
-			validateTargetMemberEndName(targetEnd, A);
-			validateTargetMemberEndLower(targetEnd, B);
-			validateTargetMemberEndUpper(targetEnd, B);
-			validateTargetMemberEndNavigability(targetEnd, B);
+			assertEquals(targetEnd.getName(), 
+					Strings.decapitalize(targetClassName) + "-" + A.getName());
+			assertEquals(targetEnd.getLower(), sourceAssociationClassMemberEnds.get(B).getLower());
+			assertEquals(targetEnd.getUpper(), sourceAssociationClassMemberEnds.get(B).getUpper());
+			assertEquals(targetEnd.isNavigable(), sourceAssociationClassMemberEnds.get(B).isNavigable());
 		}
 		
 		else if (association.getEndTypes().contains(B)) {
-			validateTargetMemberEndName(targetEnd, B);
-			validateTargetMemberEndLower(targetEnd, A);
-			validateTargetMemberEndUpper(targetEnd, A);
-			validateTargetMemberEndNavigability(targetEnd, A);
+			assertEquals(targetEnd.getName(), 
+					Strings.decapitalize(targetClassName) + "-" + B.getName());
+			assertEquals(targetEnd.getLower(), sourceAssociationClassMemberEnds.get(A).getLower());
+			assertEquals(targetEnd.getUpper(), sourceAssociationClassMemberEnds.get(A).getUpper());
+			assertEquals(targetEnd.isNavigable(), sourceAssociationClassMemberEnds.get(A).isNavigable());
 		}
 		
 		assertEquals(targetEnd.getAggregation(), AggregationKind.NONE_LITERAL);
-	}
-
-	protected void validateTargetMemberEndName(Property targetEnd, Class nonTargetEndType) {
-		assertEquals(targetEnd.getName(), 
-				Strings.decapitalize(targetClassName) + "-" + nonTargetEndType.getName());
-	}
-	
-	protected void validateTargetMemberEndLower(Property targetEnd, Class originalTargetEndType) {
-		assertEquals(targetEnd.getLower(), sourceAssociationClassMemberEnds.get(originalTargetEndType).getLower());
-	}
-	
-	protected void validateTargetMemberEndUpper(Property targetEnd, Class originalTargetEndType) {
-		assertEquals(targetEnd.getUpper(), sourceAssociationClassMemberEnds.get(originalTargetEndType).getUpper());
-	}
-	
-	protected void validateTargetMemberEndNavigability(Property targetEnd, Class originalTargetEndType) {
-		assertEquals(targetEnd.isNavigable(), sourceAssociationClassMemberEnds.get(originalTargetEndType).isNavigable());
 	}
 	
 	protected void validateNonTargetMemberEnd(Association association, Property nonTargetEnd) {

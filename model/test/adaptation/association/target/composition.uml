@@ -17,4 +17,11 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1ucKkXz8Eeq_vO1Ti1fjcA" value="1"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_gRArwIu6EeqTkq6yTMRcJQ" name="nonComposition" memberEnd="_gRB54ou6EeqTkq6yTMRcJQ _gRCg8Iu6EeqTkq6yTMRcJQ">
+    <eAnnotations xmi:id="_gRB54Iu6EeqTkq6yTMRcJQ" source="org.eclipse.papyrus">
+      <details xmi:id="_gRB54Yu6EeqTkq6yTMRcJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_gRB54ou6EeqTkq6yTMRcJQ" name="b" type="_xmTQgHz8Eeq_vO1Ti1fjcA" association="_gRArwIu6EeqTkq6yTMRcJQ"/>
+    <ownedEnd xmi:id="_gRCg8Iu6EeqTkq6yTMRcJQ" name="a" type="_w49pYHz8Eeq_vO1Ti1fjcA" association="_gRArwIu6EeqTkq6yTMRcJQ"/>
+  </packagedElement>
 </uml:Model>
