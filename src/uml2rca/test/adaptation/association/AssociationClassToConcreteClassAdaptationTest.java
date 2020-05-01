@@ -1,57 +1,197 @@
 package uml2rca.test.adaptation.association;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Hashtable;
+import java.util.Map;
+
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Model;
-import org.junit.Test;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 
 import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AssociationClassToConcreteClassAdaptation;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.model.management.EcoreModelManager;
-import uml2rca.model.management.EcoreModelState;
+import uml2rca.test.core.UML2RCAbstractTransformationTest;
 
-public class AssociationClassToConcreteClassAdaptationTest {
+public class AssociationClassToConcreteClassAdaptationTest extends UML2RCAbstractTransformationTest {
 
-	@Test
-	public void testTransformation() {
-		String sourceFileName = "associationClass.uml";
-		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
-		String targetFileName = sourceFileName;
-		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
+	/* ATTRIBUTES */
+	protected Package root;
+	protected Class A;
+	protected Class B;
+	protected AssociationClass sourceAssociationClass;
+	protected String sourceAssociationClassName;
+	protected Package sourceAssociationClassPackage;
+	protected Map<String, Type> sourceAssociationClassAttributes;
+	protected Map<Type, Property> sourceAssociationClassMemberEnds;
+	protected AssociationClassToConcreteClassAdaptation transformation;
+	protected String targetClassName;
+	protected Class targetClass;
+	
+	/* METHODS */
+	@Override
+	public void initializeConfigurationAndManager() {
+		sourceFileName = "associationClass.uml";
+		sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
+		targetFileName = sourceFileName;
+		targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
-		EcoreModelManager modelManager = null;
 		try {
 			modelManager = new EcoreModelManager(sourceURI);
 		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void initializeModel() {
+		model = modelManager.getModel();
+	}
+
+	@Override
+	public void initializePackages() {
+		root = (Package) model.getPackagedElement("root");
+	}
+
+	@Override
+	public void initializeClasses() {
+		A = (Class) root.getPackagedElement("A");
+		B = (Class) root.getPackagedElement("B");
+	}
+
+	@Override
+	public void initializeAssociations() {
+
+	}
+
+	@Override
+	public void preTransformationInput() {
+		sourceAssociationClassName = "AssocClass";
+		sourceAssociationClass = (AssociationClass) model.getPackagedElement(sourceAssociationClassName);
+		sourceAssociationClassPackage = sourceAssociationClass.getPackage();
+
+		sourceAssociationClassAttributes = new Hashtable<>();		
+		sourceAssociationClass.getOwnedAttributes()
+		.stream()
+		.forEach(attribute -> 
+			sourceAssociationClassAttributes.put(attribute.getName(), attribute.getType()));
 		
-		Model model = modelManager.getModel();
+		sourceAssociationClassMemberEnds = new Hashtable<>();
+		sourceAssociationClass.getMemberEnds()
+		.stream()
+		.forEach(memberEnd -> sourceAssociationClassMemberEnds.put(memberEnd.getType(), memberEnd));
+	}
+
+	@Override
+	public void transformation() {
+		transformation = new AssociationClassToConcreteClassAdaptation(sourceAssociationClass);
+		targetClass = transformation.getTarget();
 		
-		String associationClassName = "AssocClass";
-		String targetClassName = Strings.capitalize(associationClassName);
+		transformationStateDescription = "Association Class Adaptation";
+	}
+
+	@Override
+	public void postTransformationAssertions() {
+		validateConcreteClass();
+		validateAssociations();
+		validatePostTransformationClean();
+	}
+
+	public void validateConcreteClass() {
+		targetClassName = Strings.capitalize(sourceAssociationClassName);
 		
-		AssociationClass associationClass = (AssociationClass) model.getPackagedElement(associationClassName);
-		int associationClassMemberEndsSize = associationClass.getMemberEnds().size();
-		int associationClassOwnedAttributesNumber = associationClass.getOwnedAttributes().size();
-		Class cls = new AssociationClassToConcreteClassAdaptation(associationClass).getTarget();
+		assertEquals(targetClass, model.getPackagedElement(targetClassName));
+		assertEquals(targetClass.getPackage(), sourceAssociationClassPackage);
 		
-		cls = (Class) model.getPackagedElement(targetClassName);
-		assertNotNull(cls);
-		assertEquals(cls.getName(), Strings.capitalize(associationClassName));
-		assertEquals(cls.getOwnedAttributes().size(), associationClassOwnedAttributesNumber);
-		assertEquals(cls.getAssociations().size(), associationClassMemberEndsSize);
+		assertEquals(targetClass.getOwnedAttributes().size(), sourceAssociationClassAttributes.size());
+		targetClass.getOwnedAttributes()
+		.stream()
+		.forEach(attribute -> {
+			assertTrue(sourceAssociationClassAttributes.containsKey(attribute.getName()));
+			assertEquals(sourceAssociationClassAttributes.get(attribute.getName()), attribute.getType());
+		});
 		
-		try {
-			modelManager.saveStateAndExport(targetURI, model, "Association Class Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
-			e.printStackTrace();
+		assertEquals(targetClass.getAssociations().size(), transformation.getAssociations().size());
+		targetClass.getAssociations()
+		.stream()
+		.forEach(association -> 
+			assertTrue(transformation.getAssociations().contains(association)));
+	}
+	
+	public void validateAssociations() {
+		
+		assertEquals(transformation.getAssociations().size(), sourceAssociationClassMemberEnds.size());
+		
+		transformation.getAssociations()
+		.stream()
+		.forEach(association -> {
+			assertEquals(association, model.getPackagedElement(association.getName()));
+			
+			association.getMemberEnds()
+			.stream()
+			.forEach(memberEnd -> {
+				if (memberEnd.getType() == targetClass)
+					validateTargetMemberEnd(association, memberEnd);
+				
+				else
+					validateNonTargetMemberEnd(association, memberEnd);
+			});
+		});
+	}
+
+	protected void validateTargetMemberEnd(Association association, Property targetEnd) {
+		if (association.getEndTypes().contains(A)) {
+			validateTargetMemberEndName(targetEnd, A);
+			validateTargetMemberEndLower(targetEnd, B);
+			validateTargetMemberEndUpper(targetEnd, B);
+			validateTargetMemberEndNavigability(targetEnd, B);
 		}
 		
-		modelManager.displayStates();
+		else if (association.getEndTypes().contains(B)) {
+			validateTargetMemberEndName(targetEnd, B);
+			validateTargetMemberEndLower(targetEnd, A);
+			validateTargetMemberEndUpper(targetEnd, A);
+			validateTargetMemberEndNavigability(targetEnd, A);
+		}
+		
+		assertEquals(targetEnd.getAggregation(), AggregationKind.NONE_LITERAL);
+	}
+
+	protected void validateTargetMemberEndName(Property targetEnd, Class nonTargetEndType) {
+		assertEquals(targetEnd.getName(), 
+				Strings.decapitalize(targetClassName) + "-" + nonTargetEndType.getName());
+	}
+	
+	protected void validateTargetMemberEndLower(Property targetEnd, Class originalTargetEndType) {
+		assertEquals(targetEnd.getLower(), sourceAssociationClassMemberEnds.get(originalTargetEndType).getLower());
+	}
+	
+	protected void validateTargetMemberEndUpper(Property targetEnd, Class originalTargetEndType) {
+		assertEquals(targetEnd.getUpper(), sourceAssociationClassMemberEnds.get(originalTargetEndType).getUpper());
+	}
+	
+	protected void validateTargetMemberEndNavigability(Property targetEnd, Class originalTargetEndType) {
+		assertEquals(targetEnd.isNavigable(), sourceAssociationClassMemberEnds.get(originalTargetEndType).isNavigable());
+	}
+	
+	protected void validateNonTargetMemberEnd(Association association, Property nonTargetEnd) {
+		assertEquals(association.getName(), nonTargetEnd.getType().getName() + "-" + targetClassName);
+		assertEquals(nonTargetEnd.getName(), sourceAssociationClassMemberEnds.get(nonTargetEnd.getType()).getName());
+		assertEquals(nonTargetEnd.getLower(), 1);
+		assertEquals(nonTargetEnd.getUpper(), 1);
+		assertEquals(nonTargetEnd.getAggregation(), sourceAssociationClassMemberEnds.get(nonTargetEnd.getType()).getAggregation());
+	}
+	
+	protected void validatePostTransformationClean() {
+		assertFalse(sourceAssociationClassPackage
+				.getPackagedElements().contains(sourceAssociationClass));
 	}
 }

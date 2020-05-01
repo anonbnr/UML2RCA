@@ -1,62 +1,87 @@
 package uml2rca.test.adaptation.association;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Property;
-import org.junit.Test;
 
 import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AggregationToAssociationAdaptation;
 import uml2rca.exceptions.NotABinaryAssociationException;
 import uml2rca.model.management.EcoreModelManager;
-import uml2rca.model.management.EcoreModelState;
+import uml2rca.test.core.UML2RCAbstractTransformationTest;
 
-public class AggregationToAssociationAdaptationTest {
+public class AggregationToAssociationAdaptationTest extends UML2RCAbstractTransformationTest {
 	
-	@Test
-	public void testTransformation() {
-		String sourceFileName = "aggregation.uml";
-		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
-		String targetFileName = sourceFileName;
-		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
-		
-		EcoreModelManager modelManager = null;
+	/* ATTRIBUTES */
+	protected String sourceAggregationName;
+	protected Association sourceAggregation;
+	protected AggregationToAssociationAdaptation transformation;
+	protected String targetAssociationName;
+	protected Association targetAssociation;	
+
+	/* METHODS */
+	@Override
+	public void initializeConfigurationAndManager() {
+		sourceFileName = "aggregation.uml";
+		sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
+		targetFileName = sourceFileName;
+		targetURI = "model/test/adaptation/association/target/" + targetFileName;
 		
 		try {
 			modelManager = new EcoreModelManager(sourceURI);
 		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
 			e.printStackTrace();
 		}
-		
-		Model model = modelManager.getModel();
-		
-		String aggregationName = "contains";
-		String targetAssociationName = aggregationName;
-		
-		Association aggregation = (Association) model.getPackagedElement(aggregationName);
-		Association association = null;
-		
+	}
+
+	@Override
+	public void initializeModel() {
+		model = modelManager.getModel();
+	}
+
+	@Override
+	public void initializePackages() {
+
+	}
+
+	@Override
+	public void initializeClasses() {
+
+	}
+
+	@Override
+	public void initializeAssociations() {
+
+	}
+
+	@Override
+	public void preTransformationInput() {
+		sourceAggregationName = "contains";
+		sourceAggregation = (Association) model.getPackagedElement(sourceAggregationName);
+	}
+
+	@Override
+	public void transformation() {
 		try {
-			association = (new AggregationToAssociationAdaptation(aggregation)).getTarget();
+			transformation = new AggregationToAssociationAdaptation(sourceAggregation);
+			targetAssociation = transformation.getTarget();
 		} catch (NotABinaryAssociationException e) {
 			e.printStackTrace();
 		}
 		
-		association = (Association) model.getPackagedElement(targetAssociationName);
-		assertNotNull(association);
+		transformationStateDescription = "Aggregation Adaptation";
+	}
+
+	@Override
+	public void postTransformationAssertions() {
+		targetAssociationName = sourceAggregationName;
 		
-		for (Property memberEnd: association.getMemberEnds())
+		assertEquals(targetAssociation, model.getPackagedElement(targetAssociationName));
+		
+		for (Property memberEnd: targetAssociation.getMemberEnds())
 			assertNotEquals(memberEnd.getAggregation(), AggregationKind.SHARED_LITERAL);
-		
-		try {
-			modelManager.saveStateAndExport(targetURI, model, "Aggregation Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
-			e.printStackTrace();
-		}
-		modelManager.displayStates();
 	}
 }

@@ -168,11 +168,11 @@ public class Associations {
 	public static Property cloneMemberEnd(Property memberEnd) {
 		Property newMemberEnd = UMLFactory.eINSTANCE.createProperty();
 		
-		newMemberEnd.setAggregation(memberEnd.getAggregation());
+		newMemberEnd.setType(memberEnd.getType());
 		newMemberEnd.setName(memberEnd.getName());
 		newMemberEnd.setLower(memberEnd.getLower());
 		newMemberEnd.setUpper(memberEnd.getUpper());
-		newMemberEnd.setType(memberEnd.getType());
+		newMemberEnd.setAggregation(memberEnd.getAggregation());
 		
 		return newMemberEnd;
 	}

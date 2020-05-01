@@ -1,7 +1,8 @@
 package uml2rca.adaptation.association;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
@@ -32,13 +33,22 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  */
 public class AssociationClassToConcreteClassAdaptation extends AbstractAdaptation<AssociationClass, Class> {
 	
+	/* ATTRIBUTES */
+	List<Association> associations;
+	
 	/* CONSTRUCTOR */
 	public AssociationClassToConcreteClassAdaptation(AssociationClass source) {
-		super(source);
+		this.setSource(source);
+		associations = new ArrayList<>();
+		this.setTarget(this.transform(source));
 		postTransformationClean();
 	}
 
-	/* METHOD */
+	/* METHODS */
+	public List<Association> getAssociations() {
+		return associations;
+	}
+	
 	// implementation of the IAdaptation interface
 	@Override
 	public Class transform(AssociationClass source) {
@@ -72,11 +82,38 @@ public class AssociationClassToConcreteClassAdaptation extends AbstractAdaptatio
 		initMaterializedClassAssociation(source, cls, secondEnd, firstEnd);
 	}
 
-	private void initMaterializedClassAssociation(AssociationClass source, Class target, Property nonTargetEnd, Property targetEnd) {
+	private void initMaterializedClassAssociation(AssociationClass source, 
+			Class target, Property nonTargetEnd, Property targetEnd) {
 		
 		Association association = UMLFactory.eINSTANCE.createAssociation();
-		association.setName(nonTargetEnd.getType().getName() + "-" + target.getName());
 		association.setPackage(source.getPackage());
+		association.setName(nonTargetEnd.getType().getName() + "-" + target.getName());
+		
+		initMaterializedClassAssociationTargetEnd(association, target, targetEnd, nonTargetEnd);
+		initMaterializedClassAssociationNonTargetEnd(association, nonTargetEnd);
+		
+		associations.add(association);
+	}
+
+	protected void initMaterializedClassAssociationTargetEnd(Association association, 
+			Class target, Property targetEnd, Property nonTargetEnd) {
+		
+		Property newTargetEnd = Associations.cloneMemberEnd(targetEnd);
+		Associations.adaptMemberEndOwnership(
+				association, newTargetEnd, targetEnd.isNavigable());
+		
+		newTargetEnd.setType(target);
+		newTargetEnd.setName(
+				Strings.decapitalize(target.getName()) 
+				+ "-" 
+				+ nonTargetEnd.getType().getName()
+		);
+		
+		newTargetEnd.setAggregation(AggregationKind.NONE_LITERAL);
+	}
+
+	protected void initMaterializedClassAssociationNonTargetEnd(
+			Association association, Property nonTargetEnd) {
 		
 		Property newNonTargetEnd = Associations.cloneMemberEnd(nonTargetEnd);
 		Associations.adaptMemberEndOwnership(
@@ -84,52 +121,9 @@ public class AssociationClassToConcreteClassAdaptation extends AbstractAdaptatio
 		
 		newNonTargetEnd.setLower(1);
 		newNonTargetEnd.setUpper(1);
-		
-		Property newTargetEnd = Associations.cloneMemberEnd(targetEnd);
-		Associations.adaptMemberEndOwnership(
-				association, newTargetEnd, targetEnd.isNavigable());
-		
-		newTargetEnd.setAggregation(AggregationKind.NONE_LITERAL);
-		newTargetEnd.setName(
-				Strings.decapitalize(target.getName()) 
-				+ "-" 
-				+ nonTargetEnd.getType().getName()
-		);
-		
-		newTargetEnd.setType(target);
-	}
-	
-	private EList<Property> getAssociatedClassifiersOwnedAttributesToClean(AssociationClass associationClass, Property navigableEnd) {
-		
-		EList<Property> toClean = new BasicEList<>();
-		
-		for (Property end: associationClass.getMemberEnds()) {
-			Class endCls = (Class) end.getType();
-			
-			for (Property attribute: endCls.getAllAttributes()) {
-				if (attribute.getName().equals(navigableEnd.getName())
-						&& attribute.getType().equals(navigableEnd.getType())
-						&& attribute.getAssociation() == associationClass)
-					toClean.add(attribute);
-			}
-		}
-		
-		return toClean;
-	}
-	
-	private void cleanAssociatedClassifiersOwnedAttributes(AssociationClass associationClass) {
-		EList<Property> toClean = new BasicEList<>();
-		
-		for (Property end: associationClass.getMemberEnds())
-			if (end.isNavigable())
-				toClean.addAll(getAssociatedClassifiersOwnedAttributesToClean(associationClass, end));
-		
-		for (Property attribute: toClean)
-			attribute.destroy();
 	}
 	
 	private void postTransformationClean() {
-		cleanAssociatedClassifiersOwnedAttributes(source);
 		source.destroy();
 	}
 }
