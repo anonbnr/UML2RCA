@@ -131,7 +131,7 @@ public class AssociationClassToConcreteClassAdaptationTest extends UML2RCAbstrac
 		transformation.getAssociations()
 		.stream()
 		.forEach(association -> {
-			assertEquals(association, model.getPackagedElement(association.getName()));
+			assertEquals(association.getPackage(), sourceAssociationClassPackage);
 			
 			association.getMemberEnds()
 			.stream()

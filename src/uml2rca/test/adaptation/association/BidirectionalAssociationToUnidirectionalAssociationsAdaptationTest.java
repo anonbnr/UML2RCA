@@ -50,7 +50,6 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationTest
 		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override

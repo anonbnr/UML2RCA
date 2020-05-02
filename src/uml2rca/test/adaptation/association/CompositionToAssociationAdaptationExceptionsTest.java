@@ -17,11 +17,6 @@ public class CompositionToAssociationAdaptationExceptionsTest extends Compositio
 		nonComposition = (Association) model.getPackagedElement("nonComposition");
 	}
 	
-	@Override
-	public void tearDown() {
-		
-	}
-	
 	@Ignore
 	@Override
 	public void testTransformation() {
@@ -31,5 +26,10 @@ public class CompositionToAssociationAdaptationExceptionsTest extends Compositio
 	@Test(expected=NotACompositionException.class)
 	public void testNotACompositionException() throws NotACompositionException {
 			transformation = new CompositionToAssociationAdaptation(nonComposition);
+	}
+	
+	@Override
+	public void tearDown() {
+		
 	}
 }

@@ -19,4 +19,11 @@
       </ownedEnd>
     </packagedElement>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_D39jkIxfEeqTkq6yTMRcJQ" name="nonNaryAssociation" memberEnd="_D3-xsYxfEeqTkq6yTMRcJQ _D3_YwIxfEeqTkq6yTMRcJQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_D3-KoIxfEeqTkq6yTMRcJQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_D3-xsIxfEeqTkq6yTMRcJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3-xsYxfEeqTkq6yTMRcJQ" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_D39jkIxfEeqTkq6yTMRcJQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_D3_YwIxfEeqTkq6yTMRcJQ" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_D39jkIxfEeqTkq6yTMRcJQ"/>
+  </packagedElement>
 </uml:Model>

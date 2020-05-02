@@ -12,14 +12,10 @@ public class AggregationToAssociationAdaptationExceptionsTest extends Aggregatio
 	/* ATTRIBUTES */
 	protected Association nonAggregation;
 	
+	/* METHODS */
 	@Override
 	public void initializeAssociations() {
 		nonAggregation = (Association) model.getPackagedElement("nonAggregation");
-	}
-	
-	@Override
-	public void tearDown() {
-		
 	}
 	
 	@Ignore
@@ -31,5 +27,10 @@ public class AggregationToAssociationAdaptationExceptionsTest extends Aggregatio
 	@Test(expected=NotAnAggregationException.class)
 	public void testNotAnAggregationException() throws NotAnAggregationException {
 			transformation = new AggregationToAssociationAdaptation(nonAggregation);
+	}
+	
+	@Override
+	public void tearDown() {
+		
 	}
 }

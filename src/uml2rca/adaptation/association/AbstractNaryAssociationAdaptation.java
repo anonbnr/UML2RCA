@@ -1,9 +1,12 @@
 package uml2rca.adaptation.association;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.Association;
 
 import core.adaptation.AbstractAdaptation;
-import uml2rca.exceptions.NotAnNAryAssociationException;
+import uml2rca.exceptions.NotAnNaryAssociationException;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
@@ -18,19 +21,27 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  */
 public abstract class AbstractNaryAssociationAdaptation<T> extends AbstractAdaptation<Association, T> {
 	
+	/* ATTRIBUTES */
+	protected List<Association> associations;
+	
 	/* CONSTRUCTOR */
 	public AbstractNaryAssociationAdaptation(Association source)
-			throws NotAnNAryAssociationException {
+			throws NotAnNaryAssociationException {
 		
 		if(!Associations.isNary(source))
-			throw new NotAnNAryAssociationException(source.getName() + 
+			throw new NotAnNaryAssociationException(source.getName() + 
 					" is not an n-ary association");
 		
 		this.setSource(source);
+		associations = new ArrayList<>();
 		this.setTarget(this.transform(source));
 		this.postTransformationClean();
 	}
 	
 	/* METHODS */
+	public List<Association> getAssociations() {
+		return associations;
+	}
+	
 	protected abstract void postTransformationClean();
 }

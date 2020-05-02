@@ -18,11 +18,6 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationExcep
 		nonBidirectional = (Association) model.getPackagedElement("nonBidirectional");
 	}
 	
-	@Override
-	public void tearDown() {
-		
-	}
-	
 	@Ignore
 	@Override
 	public void testTransformation() {
@@ -33,5 +28,10 @@ public class BidirectionalAssociationToUnidirectionalAssociationsAdaptationExcep
 	public void testNotABidirectionalAssociationException() throws NotABidirectionalAssociationException {
 			transformation = new BidirectionalAssociationToUnidirectionalAssociationsAdaptation(
 					nonBidirectional);
+	}
+	
+	@Override
+	public void tearDown() {
+		
 	}
 }

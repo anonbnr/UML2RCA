@@ -1,86 +1,85 @@
 package uml2rca.test.adaptation.association;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.Package;
-import org.junit.Test;
+import org.eclipse.uml2.uml.Property;
+import org.hamcrest.CoreMatchers;
 
-import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.NaryAssociationToBinaryAssociationsAdaptation;
-import uml2rca.exceptions.NotAnNAryAssociationException;
-import uml2rca.model.management.EcoreModelManager;
-import uml2rca.model.management.EcoreModelState;
+import uml2rca.exceptions.NotAnNaryAssociationException;
 
-public class NaryAssociationToBinaryAssociationsAdaptationTest {
+public class NaryAssociationToBinaryAssociationsAdaptationTest extends AbstractNaryAssociationAdaptationTest<List<Association>> {
+
+	/* METHODS */
+	@Override
+	public void initializeConfigurationAndManager() {
+		super.initializeConfigurationAndManager();
+		
+		targetFileName = "naryAssociationForgotten.uml";
+		targetURI = "model/test/adaptation/association/target/" + targetFileName;
+	}
 	
-	@Test
-	public void testTransformation() {
-		String sourceFileName = "naryAssociation.uml";
-		String sourceURI = "model/test/adaptation/association/source/" + sourceFileName;
-		String targetFileName = "naryAssociationForgotten.uml";
-		String targetURI = "model/test/adaptation/association/target/" + targetFileName;
+	@Override
+	public void initializeAssociations() {
 		
-		EcoreModelManager modelManager = null;
+	}
+
+	@Override
+	public void transformation() {
+		transformationStateDescription = "N-ary Association Adaptation (Forgotten association solution)";
+		
 		try {
-			modelManager = new EcoreModelManager(sourceURI);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+			transformation = new NaryAssociationToBinaryAssociationsAdaptation(sourceNaryAssociation);
+		} catch (NotAnNaryAssociationException e) {
 			e.printStackTrace();
 		}
 		
-		Model model = modelManager.getModel();
-		Package root = (Package) model.getPackagedElement("root");
+		target = transformation.getTarget();
+	}
+
+	@Override
+	public void postTransformationAssertions() {
+		validateAssociations();
+		validatePostTransformationClean();
+	}
+	
+	public void validateAssociations() {
 		
-		String naryAssociationName = "naryAssociation";
-		Association naryAssociation = (Association) root.getPackagedElement(naryAssociationName);
-		int naryAssociationMemberEndsSize = naryAssociation.getMemberEnds().size();
-		EList<Association> associations = null;
+		assertEquals(transformation.getAssociations().size(), sourceNaryAssociationMemberEnds.size());
 		
-		try {
-			associations = new NaryAssociationToBinaryAssociationsAdaptation(naryAssociation).getTarget();
-		} catch (NotAnNAryAssociationException e) {
-			e.printStackTrace();
-		}
+		transformation.getAssociations()
+		.stream()
+		.forEach(association -> {
+			assertEquals(association.getPackage(), sourceNaryAssociationPackage);
+			validateTargetAssociationName(association);
+			
+			association.getMemberEnds()
+			.stream()
+			.forEach(memberEnd -> validateTargetAssociationMemberEnd(association, memberEnd));
+		});
+	}
+
+	protected void validateTargetAssociationName(Association association) {
+		List<String> memberEndNames = association.getMemberEnds()
+		.stream()
+		.map(Property::getName)
+		.collect(Collectors.toList());
 		
-		Association associationAB = (Association) root.getPackagedElement(
-				"a-" + naryAssociationName + "-b");
-		if (associationAB == null)
-			associationAB = (Association) root.getPackagedElement(
-					"b-" + naryAssociationName + "-a");
-		
-		Association associationAC = (Association) root.getPackagedElement(
-				"a-" + naryAssociationName + "-c");
-		if (associationAC == null)
-			associationAC = (Association) root.getPackagedElement(
-					"c-" + naryAssociationName + "-a");
-		
-		Association associationBC = (Association) root.getPackagedElement(
-				"b-" + naryAssociationName + "-c");
-		if (associationBC == null)
-			associationBC = (Association) root.getPackagedElement(
-					"c-" + naryAssociationName + "-b");
-		
-		assertNotNull(associationAB);
-		assertNotNull(associationAC);
-		assertNotNull(associationBC);
-		
-		assertTrue(associations.contains(associationAB));
-		assertTrue(associations.contains(associationAC));
-		assertTrue(associations.contains(associationBC));
-		assertEquals(associations.size(), naryAssociationMemberEndsSize);
-		
-		try {
-			modelManager.saveStateAndExport(targetURI, model, 
-					"N-ary Association Adaptation (Forgotten association solution)", 
-					EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
-			e.printStackTrace();
-		}
-		
-		modelManager.displayStates();
+		assertThat(association.getName(), CoreMatchers.either(
+				CoreMatchers.is(memberEndNames.get(0) + "-" + sourceNaryAssociationName + "-" + memberEndNames.get(1)))
+				.or(CoreMatchers.is(memberEndNames.get(1) + "-" + sourceNaryAssociationName + "-" + memberEndNames.get(0))));
+	}
+
+	protected void validateTargetAssociationMemberEnd(Association association, Property memberEnd) {
+		assertEquals(memberEnd.getName(), sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getName());
+		assertEquals(memberEnd.getLower(), sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getLower());
+		assertEquals(memberEnd.getUpper(), sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getUpper());
+		assertEquals(memberEnd.getAggregation(), sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getAggregation());
+		assertEquals(memberEnd.isNavigable(), sourceNaryAssociationMemberEnds.get(memberEnd.getType()).isNavigable());
 	}
 }

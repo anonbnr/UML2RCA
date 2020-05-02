@@ -1,12 +1,13 @@
 package uml2rca.adaptation.association;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 
 import core.adaptation.AbstractAdaptation;
-import uml2rca.exceptions.NotAnNAryAssociationException;
+import uml2rca.exceptions.NotAnNaryAssociationException;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
 /**
@@ -18,21 +19,22 @@ import uml2rca.java.uml2.uml.extensions.utility.Associations;
  * @see AbstractAdaptation
  * @see Association
  */
-public class NaryAssociationToBinaryAssociationsAdaptation extends AbstractNaryAssociationAdaptation<EList<Association>> {
+public class NaryAssociationToBinaryAssociationsAdaptation extends AbstractNaryAssociationAdaptation<List<Association>> {
 	
 	/* CONSTRUCTOR */
 	public NaryAssociationToBinaryAssociationsAdaptation(Association source) 
-			throws NotAnNAryAssociationException {
+			throws NotAnNaryAssociationException {
 		super(source);
+		associations = target;
 	}
 
 	/* METHODS */
 	// implementation of the IAdaptation interface
 	@Override
-	public EList<Association> transform(Association source) {
+	public List<Association> transform(Association source) {
 		
-		EList<Property> memberEnds = source.getMemberEnds();
-		EList<Association> binaryAssociations = new BasicEList<>();
+		List<Property> memberEnds = source.getMemberEnds();
+		List<Association> binaryAssociations = new ArrayList<>();
 		Property iEnd = null, jEnd = null;
 		
 		for (int i = 0; i < memberEnds.size(); i++) {
@@ -40,7 +42,7 @@ public class NaryAssociationToBinaryAssociationsAdaptation extends AbstractNaryA
 			
 			for (int j = i + 1; j < memberEnds.size(); j++) {
 				jEnd = memberEnds.get(j);
-				binaryAssociations.add(initBinaryAssociation(
+				binaryAssociations.add(initTargetBinaryAssociation(
 						source, iEnd, jEnd, 
 						iEnd.getName() + "-" + source.getName() + "-" + jEnd.getName()));
 			}
@@ -49,7 +51,9 @@ public class NaryAssociationToBinaryAssociationsAdaptation extends AbstractNaryA
 		return binaryAssociations;
 	}
 
-	private Association initBinaryAssociation(Association source, Property firstEnd, Property secondEnd, String newName) {
+	private Association initTargetBinaryAssociation(Association source, Property firstEnd, Property secondEnd, 
+			String newName) {
+		
 		Association binaryAssociation = Associations.cloneIntoBinaryAssociation(firstEnd, secondEnd);
 		binaryAssociation.setPackage(source.getPackage());
 		binaryAssociation.setName(newName);

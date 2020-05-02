@@ -3,8 +3,6 @@ package uml2rca.adaptation.association;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
@@ -12,7 +10,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
-import uml2rca.exceptions.NotAnNAryAssociationException;
+import uml2rca.exceptions.NotAnNaryAssociationException;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
 
@@ -36,11 +34,10 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 	
 	/* CONSTRUCTOR */
 	public NaryAssociationMaterializationAdaptation(Association source)
-			throws NotAnNAryAssociationException {
+			throws NotAnNaryAssociationException {
 		super(source);
 	}
-
-	/* METHODS */	
+	
 	// implementation of the IAdaptation interface
 	@Override
 	public Class transform(Association source) {
@@ -60,7 +57,7 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 	
 	private void initMaterializedClassAssociations(Association source, Class target) {
 		
-		EList<Property> memberEnds = source.getMemberEnds();
+		List<Property> memberEnds = source.getMemberEnds();
 		
 		for (Property end: memberEnds) {
 			boolean targetEndNavigability = getMaterializedClassMemberEndNavigability(memberEnds, end);
@@ -68,7 +65,9 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 		}
 	}
 	
-	private boolean getMaterializedClassMemberEndNavigability(EList<Property> memberEnds, Property nonTargetEnd) {
+	public static boolean getMaterializedClassMemberEndNavigability(List<Property> memberEnds, 
+			Property nonTargetEnd) {
+		
 		List<Property> otherEnds = new ArrayList<>();
 		otherEnds.addAll(memberEnds);
 		otherEnds.remove(nonTargetEnd);
@@ -83,8 +82,9 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 	
 	private void initMaterializedClassAssociation(Association source, Class target, Property nonTargetEnd, boolean navigabilityOfTargetEnd) {
 		Association association = UMLFactory.eINSTANCE.createAssociation();
-		association.setName(nonTargetEnd.getType().getName() + "-" + target.getName());
+		
 		association.setPackage(source.getPackage());
+		association.setName(nonTargetEnd.getType().getName() + "-" + target.getName());
 		
 		Property newNonTargetEnd = Associations.cloneMemberEnd(nonTargetEnd);
 		Associations.adaptMemberEndOwnership(
@@ -93,7 +93,7 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 		Property newTargetEnd = UMLFactory.eINSTANCE.createProperty();
 		Associations.adaptMemberEndOwnership(association, newTargetEnd, navigabilityOfTargetEnd);
 		
-		newTargetEnd.setAggregation(AggregationKind.NONE_LITERAL);
+		newTargetEnd.setType(target);
 		newTargetEnd.setName(
 				Strings.decapitalize(target.getName()) 
 				+ "-" 
@@ -101,41 +101,13 @@ public class NaryAssociationMaterializationAdaptation extends AbstractNaryAssoci
 		);
 		newTargetEnd.setLower(1);
 		newTargetEnd.setUpper(1);
-		newTargetEnd.setType(target);
-	}
-	
-	private EList<Property> getAssociatedClassifiersOwnedAttributesToClean(Property navigableEnd) {
-			
-		EList<Property> toClean = new BasicEList<>();
+		newTargetEnd.setAggregation(AggregationKind.NONE_LITERAL);
 		
-		for (Property end: source.getMemberEnds()) {
-			Class endCls = (Class) end.getType();
-			
-			for (Property attribute: endCls.getAllAttributes()) {
-				if (attribute.getName().equals(navigableEnd.getName())
-						&& attribute.getType().equals(navigableEnd.getType())
-						&& attribute.getAssociation() == source)
-					toClean.add(attribute);
-			}
-		}
-		
-		return toClean;
-	}
-	
-	private void cleanAssociatedClassifiersOwnedAttributes() {
-		EList<Property> toClean = new BasicEList<>();
-		
-		for (Property end: source.getMemberEnds())
-			if (end.isNavigable())
-				toClean.addAll(getAssociatedClassifiersOwnedAttributesToClean(end));
-				
-		for (Property attribute: toClean)
-			attribute.destroy();
+		associations.add(association);
 	}
 	
 	@Override
 	protected void postTransformationClean() {
-		cleanAssociatedClassifiersOwnedAttributes();
 		source.destroy();
 	}
 }
