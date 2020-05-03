@@ -29,16 +29,16 @@ public class DefaultRenameDependencyConflictResolutionStrategy extends AbstractR
 		
 		Class originalOwningClass = null;
 		
-		if (preTransformationConflictingDependency.getClients().contains(conflictScope.getConflictSource().getSource())
-				|| preTransformationConflictingDependency.getSuppliers().contains(conflictScope.getConflictSource().getSource()))
-			originalOwningClass = conflictScope.getConflictSource().getSource();
+		if (preTransformationConflictingDependency.getClients().contains(conflictScope.getConflictSource().getEntity())
+				|| preTransformationConflictingDependency.getSuppliers().contains(conflictScope.getConflictSource().getEntity()))
+			originalOwningClass = conflictScope.getConflictSource().getEntity();
 		
 		else
 			originalOwningClass = (Class) Stream
 			.concat(preTransformationConflictingDependency.getClients().stream(),
 					preTransformationConflictingDependency.getSuppliers().stream())
 			.filter(namedElement -> 
-				namedElement != conflictScope.getConflictSource().getSource()
+				namedElement != conflictScope.getConflictSource().getEntity()
 					&& conflictScope.getScope().contains(namedElement))
 			.findFirst()
 			.get();

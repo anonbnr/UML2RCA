@@ -68,7 +68,7 @@ public class DependencyToAssociationAdaptationTest {
 		try {
 			modelManager.saveStateAndExport(targetURI, model, 
 					"Dependency Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		

@@ -11,5 +11,11 @@ package core.transformation;
  * @see ITransformationStrategy
  */
 public interface ITransformer {
+	
+	/* METHODS */
+	/**
+	 * Returns this transformer's transformation strategy
+	 * @return this transformer's transformation strategy
+	 */
 	ITransformationStrategy strategy();
 }

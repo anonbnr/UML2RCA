@@ -27,13 +27,13 @@ public class DefaultRenameAssociationConflictResolutionStrategy extends Abstract
 		
 		Class originalOwningClass = null;
 		
-		if (preTransformationConflictingAssociation.getEndTypes().contains(conflictScope.getConflictSource().getSource()))
-			originalOwningClass = conflictScope.getConflictSource().getSource();
+		if (preTransformationConflictingAssociation.getEndTypes().contains(conflictScope.getConflictSource().getEntity()))
+			originalOwningClass = conflictScope.getConflictSource().getEntity();
 		else 
 			originalOwningClass = (Class) preTransformationConflictingAssociation.getEndTypes()
 					.stream()
 					.filter(type -> 
-						type != conflictScope.getConflictSource().getSource() 
+						type != conflictScope.getConflictSource().getEntity() 
 							&& conflictScope.getScope().contains(type))
 					.findFirst()
 					.get();

@@ -2,18 +2,12 @@ package core.conflict;
 
 import java.util.Collection;
 /**
- * an AbstractConflictScope generic abstract class that defines a conflict scope entity.<br><br> 
- * 
- * For a given conflict domain, if a conflict arises, then it must occur in a conflict scope within 
- * the conflict domain in hand. A conflict scope, for example, can designate a set of a classes 
- * within a generalization hierarchy.<br><br>
- * 
- * If a conflict arises, then it is caused by a conflict source entity, having the same type as the
- * entities defining a conflict scope for a conflict domain.<br><br>
+ * an AbstractConflictScope generic abstract class that is used to factor 
+ * the common interface and state of all concrete conflict scope classes.<br><br> 
  * 
  * It must be specialized by all concrete conflict scope classes.
  *
- * @author Bachar.RIMA
+ * @author Bachar Rima
  * @see IConflictDomain
  * @see AbstractConflictSource
  *
@@ -21,39 +15,64 @@ import java.util.Collection;
  * @param <E> The type of entities that underly the conflict incurred by the conflict source entity
  * of this conflict scope.
  */
-public abstract class AbstractConflictScope<T, E> {
+public abstract class AbstractConflictScope<T, E> implements IConflictScope<T, E> {
 	
 	/* ATTRIBUTES */
+	/**
+	 * The conflict scope's conflict domain
+	 */
 	protected IConflictDomain<T, E> conflictDomain;
+	
+	/**
+	 * The conflict scope's underlying scope entities that define it
+	 */
 	protected Collection<T> scope;
+	
+	/**
+	 * The conflict scope's conflict source
+	 */
 	protected AbstractConflictSource<T, E> conflictSource;
 	
 	/* CONSTRUCTOR */
-	public AbstractConflictScope(IConflictDomain<T, E> conflictDomain, Collection<T> scope, 
-			AbstractConflictSource<T, E> conflictSource) {
+	/**
+	 * Creates a conflict scope having conflictDomain as its conflict domain and scope as
+	 * the underlying scope entities that define its scope
+	 * @param conflictDomain a conflict domain to define this conflict scope's conflict domain
+	 * @param scope the collection of entities to define this conflict scope's underlying scope
+	 */
+	public AbstractConflictScope(IConflictDomain<T, E> conflictDomain, Collection<T> scope) {
 		
 		this.conflictDomain = conflictDomain;
 		this.scope = scope;
-		this.conflictSource = conflictSource;
 	}
 	
 	/* METHODS */
+	@Override
 	public IConflictDomain<T, E> getConflictDomain() {
 		return conflictDomain;
 	}
 	
+	@Override
+	public void setConflictDomain(IConflictDomain<T, E> conflictDomain) {
+		this.conflictDomain = conflictDomain;
+	}
+	
+	@Override
 	public Collection<T> getScope() {
 		return scope;
 	}
 	
+	@Override
 	public void setScope(Collection<T> scope) {
 		this.scope = scope;
 	}
 	
+	@Override
 	public AbstractConflictSource<T, E> getConflictSource() {
 		return conflictSource;
 	}
 
+	@Override
 	public void setConflictSource(AbstractConflictSource<T, E> conflictSource) {
 		this.conflictSource = conflictSource;
 	}

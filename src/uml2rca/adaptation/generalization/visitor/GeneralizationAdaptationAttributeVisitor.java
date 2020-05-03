@@ -28,11 +28,10 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 			Collection<Class> scope, AttributeConflictResolutionStrategyType conflictStrategyType) {
 		
 		super(sourceClassVisitor, conflictStrategyType);
-		this.conflictScope = new GeneralizationAdaptationClassAttributeConflictScope(this, scope, 
-				new OwningClassAttributeConflictSource(sourceClassVisitor.getOwner()));
+		this.conflictScope = new GeneralizationAdaptationClassAttributeConflictScope(this, scope);
 		
-		this.conflictCandidate = new GeneralizationAdaptationClassAttributeConflictCandidate(this, conflictScope, 
-				sourceClassVisitor.getOwner());
+		this.conflictCandidate = new GeneralizationAdaptationClassAttributeConflictCandidate(this, 
+				conflictScope, sourceClassVisitor.getOwner());
 	}
 
 	/* METHODS */
@@ -55,7 +54,8 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 			createBooleanSubClassAttribute();
 		
 		if (conflictCandidate.satisfiesConflictCondition()) {
-			conflictScope.setConflictSource(new OwningClassAttributeConflictSource(sourceClassVisitor.getOwner()));
+			conflictScope.setConflictSource(
+					new OwningClassAttributeConflictSource(conflictScope, sourceClassVisitor.getOwner()));
 			initAttributeConflictResolutionStrategy();
 		}
 		
@@ -72,7 +72,8 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 		
 		if (conflictStrategyType == AttributeConflictResolutionStrategyType.DEFAULT_RENAME) {
 			initConflictSourcePostTransformationConflictingAttributes();
-			conflictStrategy = new DefaultRenameAttributeConflictResolutionStrategy(sourceClassVisitor.getTarget(), conflictScope);
+			conflictStrategy = new DefaultRenameAttributeConflictResolutionStrategy(
+					sourceClassVisitor.getTarget(), conflictScope);
 		}
 			
 		else if (conflictStrategyType == AttributeConflictResolutionStrategyType.EXPERT_RENAME) {
@@ -81,12 +82,13 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 					"expertNameProvidedForOriginallyOwnedAttribute",
 					"expertNameProvidedForConflictingAttribute");
 			
-			conflictStrategy = new ExpertRenameAttributeConflictResolutionStrategy(sourceClassVisitor.getTarget(), 
-					conflictScope, expertProvidedNames);
+			conflictStrategy = new ExpertRenameAttributeConflictResolutionStrategy(
+					sourceClassVisitor.getTarget(), conflictScope, expertProvidedNames);
 		}
 			
 		else if (conflictStrategyType == AttributeConflictResolutionStrategyType.DISCARD)
-			conflictStrategy = new DiscardConflictingAttributeConflictResolutionStrategy(sourceClassVisitor.getTarget(), conflictScope);
+			conflictStrategy = new DiscardConflictingAttributeConflictResolutionStrategy(
+					sourceClassVisitor.getTarget(), conflictScope);
 	}
 	
 	protected boolean hasBooleanSubClassAttribute() {
@@ -110,7 +112,7 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 	
 	protected Property getPreAdaptationIndirectlyOwnedAttribute() {
 		for (Class scopeClass: conflictScope.getScope())
-			if (scopeClass != conflictScope.getConflictSource().getSource())
+			if (scopeClass != conflictScope.getConflictSource().getEntity())
 				for (Property ownedAttribute: scopeClass.getOwnedAttributes())
 					if (ownedAttribute.getName().equals(visitedElement.getName())
 					&& ownedAttribute.getType() == visitedElement.getType())
@@ -128,7 +130,8 @@ public class GeneralizationAdaptationAttributeVisitor extends GeneralizationAdap
 				.filter(ownedAttribute -> ownedAttribute.getName().equals(visitedElement.getName())
 						&& ownedAttribute.getType() == visitedElement.getType())
 				.forEach(conflictingAttribute -> 
-					conflictScope.getConflictSource().addPostTransformationConflictingElement(conflictingAttribute));
+					conflictScope.getConflictSource()
+						.addPostTransformationConflictingElement(conflictingAttribute));
 	}
 	
 	@Override

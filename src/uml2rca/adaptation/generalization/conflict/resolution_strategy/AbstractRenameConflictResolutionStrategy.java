@@ -5,7 +5,8 @@ import org.eclipse.uml2.uml.NamedElement;
 import core.conflict.AbstractConflictResolutionStrategy;
 import core.conflict.AbstractConflictScope;
 
-public abstract class AbstractRenameConflictResolutionStrategy<T, E extends NamedElement> extends AbstractConflictResolutionStrategy<T, E> {
+public abstract class AbstractRenameConflictResolutionStrategy<T, E extends NamedElement> 
+	extends AbstractConflictResolutionStrategy<T, E> {
 	
 	/* CONSTRUCTOR */
 	public AbstractRenameConflictResolutionStrategy(T target, AbstractConflictScope<T, E> conflictScope) {
@@ -15,7 +16,7 @@ public abstract class AbstractRenameConflictResolutionStrategy<T, E extends Name
 	
 	/* METHODS */
 	@Override
-	protected void resolve() {
+	public void resolve() {
 		conflictScope.getConflictSource()
 		.getPostTransformationConflictingElements()
 		.stream()

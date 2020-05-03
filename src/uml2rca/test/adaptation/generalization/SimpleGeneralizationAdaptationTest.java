@@ -145,7 +145,7 @@ public class SimpleGeneralizationAdaptationTest {
 		try {
 			modelManager.saveStateAndExport(targetURI, model, 
 					"Simple Generalization Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		
@@ -216,7 +216,7 @@ public class SimpleGeneralizationAdaptationTest {
 		try {
 			modelManager.saveStateAndExport(targetURI, model, 
 					"Simple Generalization Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		

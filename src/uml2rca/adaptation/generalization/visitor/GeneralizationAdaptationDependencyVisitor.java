@@ -31,8 +31,7 @@ public class GeneralizationAdaptationDependencyVisitor extends GeneralizationAda
 			Collection<Class> scope, DependencyConflictResolutionStrategyType conflictStrategyType) {
 		
 		super(sourceClassVisitor, conflictStrategyType);
-		this.conflictScope = new GeneralizationAdaptationClassDependencyConflictScope(this, scope,
-				new OwningClassDependencyConflictSource(sourceClassVisitor.getOwner()));
+		this.conflictScope = new GeneralizationAdaptationClassDependencyConflictScope(this, scope);
 		
 		this.conflictCandidate = new GeneralizationAdaptationClassDependencyConflictCandidate(this, conflictScope, 
 				sourceClassVisitor.getOwner());
@@ -58,7 +57,8 @@ public class GeneralizationAdaptationDependencyVisitor extends GeneralizationAda
 	protected void initTargetClassDependency() throws ConflictResolutionStrategyException {
 		
 		if (conflictCandidate.satisfiesConflictCondition()) {
-			conflictScope.setConflictSource(new OwningClassDependencyConflictSource(sourceClassVisitor.getOwner()));
+			conflictScope.setConflictSource(
+					new OwningClassDependencyConflictSource(conflictScope, sourceClassVisitor.getOwner()));
 			initDependencyConflictResolutionStrategy();
 		}
 		
@@ -154,7 +154,7 @@ public class GeneralizationAdaptationDependencyVisitor extends GeneralizationAda
 		return conflictScope.getScope()
 			.stream()
 			.filter(scopeClass ->
-				scopeClass != conflictScope.getConflictSource().getSource() 
+				scopeClass != conflictScope.getConflictSource().getEntity() 
 				&& NamedElements.hasDependency(scopeClass, visitedElement.getName(), others))
 			.map(scopeClass -> NamedElements.getDependencies(scopeClass, visitedElement.getName(), others))
 			.flatMap(list -> list.stream())

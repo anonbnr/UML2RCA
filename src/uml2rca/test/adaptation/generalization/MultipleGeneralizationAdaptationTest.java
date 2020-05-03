@@ -122,7 +122,7 @@ public class MultipleGeneralizationAdaptationTest extends SimpleGeneralizationAd
 		try {
 			modelManager.saveStateAndExport(targetURI, model, 
 					"Multiple Generalization Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		

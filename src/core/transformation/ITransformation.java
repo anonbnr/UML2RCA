@@ -15,10 +15,36 @@ package core.transformation;
  * @param <T> The type of the target element to obtain.
  */
 public interface ITransformation<S,T> {
+	
+	/* METHODS */
 	/**
-	 * An atomic metamodeling transformation operation of a
-	 * source model element conforming to a random metamodel into
-	 * a target model element conforming to another random metamodel.
+	 * Returns this transformation's source
+	 * @return this transformation's source
+	 */
+	S getSource();
+	
+	/**
+	 * Sets this transformation's source
+	 * @param source the value to set this transformation's source
+	 */
+	void setSource(S source);
+	
+	/**
+	 * Returns this transformation's target
+	 * @return this transformation's target
+	 */
+	T getTarget();
+	
+	/**
+	 * Sets this transformation's target
+	 * @param target the value to set this transformation's target
+	 */
+	void setTarget(T target);
+	
+	/**
+	 * Transforms a source model element conforming to a random metamodel into
+	 * a target model element conforming to another random metamodel (possibly the same)
+	 * in an atomic manner.
 	 * @param source the source model element to transform.
 	 * @return the target model element.
 	 */

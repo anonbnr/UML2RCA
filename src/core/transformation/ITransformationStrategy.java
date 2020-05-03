@@ -19,9 +19,9 @@ import java.util.Collection;
  */
 public interface ITransformationStrategy {
 	
+	/* METHODS */
 	/**
-	 * an operation that returns the collection of atomic metamodeling
-	 * transformation operations composing the strategy
+	 * Returns the collection of atomic metamodeling transformation operations composing the strategy
 	 * @return the collection of transformation operations composing the strategy
 	 */
 	Collection<ITransformation<?,?>> transformations();

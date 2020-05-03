@@ -4,76 +4,70 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * an AbstractConflictSource abstract class that defines a conflict source entity.<br><br>
+ * an AbstractConflictSource abstract class that is used to factor 
+ * the common interface and state of all concrete conflict source classes.<br><br>
  * 
- * A conflict candidate entity that satisfies a conflict predicate is considered to be a conflict source entity
- * If a conflict arises, then it is caused by a conflict source entity. A conflict source entity, 
- * for example, can designate a class belonging to a conflict scope, itself defined by a set of classes 
- * within a conflict domain entity. The conflict domain entity could be a metamodeling transformation 
- * class whose execution might give rise to a conflict, when a target class end up owning two identical 
- * attributes, one of which belongs to the conflict source entity.<br><br>
- * 
- * The underlying cause for a conflict is manifested by a set of conflicting elements that are 
- * associated to the originating conflict source entity. Both original entities (i.e. pre-transformation) 
- * and target entities (i.e. post-transformation) are provided to indicate the cause of the conflict,
- * and are used to implement a conflict resolution strategy.<br><br>
- *
  * It must be specialized by all concrete conflict source classes.
  * 
- * @author Bachar.RIMA
+ * @author Bachar Rima
  *
- * @param <T> The type of the conflict source entity.
- * @param <E> The type of entities that underly the conflict arising by this conflict source entity.
+ * @param <T> The type of the conflict source entity (the same type 
+ * of the entities that define the conflict scope for this conflict source entity).
+ * @param <E> The type of entities that underly the conflict arising by this conflict source entity
  */
-public abstract class AbstractConflictSource<T, E> implements IConflictCandidate<T> {
+public abstract class AbstractConflictSource<T, E> extends AbstractConflictCandidate<T, E> 
+	implements IConflictSource<T, E> {
 
 	/* ATTRIBUTES */
-	protected T source;
+	/**
+	 * The conflict source's list of pre-transformation original elements
+	 */
 	protected List<E> preTransformationConflictingElements;
+	
+	/**
+	 * The conflict source's list of post-transformation target elements
+	 */
 	protected List<E> postTransformationConflictingElements;
 	
 	/* CONSTRUCTOR */
-	public AbstractConflictSource(T source) {
-		this.source = source;
+	/**
+	 * Creates a conflict source having entity as its underlying entity and conflictScope
+	 * as its associated conflict scope. It also initializes its lists of pre/post-transformation
+	 * elements as empty array lists.
+	 * @param conflictScope a conflict scope to define the conflict scope of this conflict source
+	 * @param entity an entity to be used as this conflict source's underlying entity
+	 */
+	public AbstractConflictSource(AbstractConflictScope<T, E> conflictScope, T entity) {
+		super(conflictScope, entity);
 		preTransformationConflictingElements = new ArrayList<>();
 		postTransformationConflictingElements = new ArrayList<>();
 	}
 
 	/* METHODS */
-	public T getSource() {
-		return source;
-	}
-	
-	public void setSource(T source) {
-		this.source = source;
-	}
-	
+	@Override
 	public List<E> getPreTransformationConflictingElements() {
 		return preTransformationConflictingElements;
 	}
 	
+	@Override
 	public boolean addPreTransformationConflictingElement(E element) {
 		return preTransformationConflictingElements.add(element);
 	}
 
+	@Override
 	public List<E> getPostTransformationConflictingElements() {
 		return postTransformationConflictingElements;
 	}
 	
+	@Override
 	public boolean addPostTransformationConflictingElement(E element) {
 		return postTransformationConflictingElements.add(element);
 	}
 	
-	@Override
-	public T getCandidate() {
-		return getSource();
-	}
-
-	@Override
-	public void setCandidate(T candidate) {
-		setSource(candidate);
-	}
-	
+	/**
+	 * Always returns true, since a conflict source always satisfies a
+	 * conflict predicate with respect to its conflict scope
+	 */
 	@Override
 	public boolean satisfiesConflictCondition() {
 		return true;

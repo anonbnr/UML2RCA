@@ -11,7 +11,7 @@ package core.conflict;
  * 
  * It must be implemented by any concrete class designating a conflict domain.
  *  
- * @author Bachar.RIMA
+ * @author Bachar Rima
  * @see AbstractConflictScope
  * @see IConflictCandidate
  * @see AbstractConflictSource
@@ -24,8 +24,27 @@ package core.conflict;
 public interface IConflictDomain<T, E> {
 	
 	/* METHODS */
+	/**
+	 * Returns this conflict domain's active conflict scope
+	 * @return this conflict domain's active conflict scope
+	 */
 	AbstractConflictScope<T, E> getConflictScope();
+	
+	/**
+	 * Returns this conflict domain's active conflict candidate
+	 * @return this conflict domain's active conflict candidate
+	 */
 	AbstractConflictCandidate<T, E> getConflictCandidate();
+	
+	/**
+	 * Return this conflict domain's active conflict resolution strategy
+	 * @return this conflict domain's active conflict resolution strategy
+	 */
 	AbstractConflictResolutionStrategy<T, E> getConflictStrategy();
+	
+	/**
+	 * Return this conflict domain's active conflict resolution strategy type
+	 * @return this conflict domain's active conflict resolution strategy type
+	 */
 	IConflictResolutionStrategyType getConflictStrategyType();
 }

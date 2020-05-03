@@ -124,7 +124,7 @@ public class AssociationWithAbstractMembersAdaptationTest {
 		
 		try {
 			modelManager.saveStateAndExport(targetURI, model, "Associations with abstract members Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		modelManager.displayStates();

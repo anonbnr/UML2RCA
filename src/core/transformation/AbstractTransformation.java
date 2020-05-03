@@ -14,14 +14,24 @@ package core.transformation;
 public abstract class AbstractTransformation<S, T> implements ITransformation<S, T> {
 	
 	/* ATTRIBUTES */
+	/**
+	 * The transformation's source
+	 */
 	protected S source;
+	
+	/**
+	 * The transformation's target
+	 */
 	protected T target;
 	
 	/* CONSTRUCTORS */
+	/**
+	 * Creates an empty transformation
+	 */
 	public AbstractTransformation() {}
 	
 	/**
-	 * creates an instance of AbstractTransformation from a source element
+	 * Creates an transformation from a source element
 	 * and applies the transformation afterwards to directly get the target.
 	 * @param source a source element to transform.
 	 */
@@ -31,9 +41,23 @@ public abstract class AbstractTransformation<S, T> implements ITransformation<S,
 	}
 	
 	/* METHODS */
-	public S getSource() {return this.source;}
-	public void setSource(S source) {this.source = source;}
+	@Override
+	public S getSource() {
+		return this.source;
+	}
 	
-	public T getTarget() {return this.target;}
-	public void setTarget(T target) {this.target = target;}
+	@Override
+	public void setSource(S source) {
+		this.source = source;
+	}
+	
+	@Override
+	public T getTarget() {
+		return this.target;
+	}
+	
+	@Override
+	public void setTarget(T target) {
+		this.target = target;
+	}
 }

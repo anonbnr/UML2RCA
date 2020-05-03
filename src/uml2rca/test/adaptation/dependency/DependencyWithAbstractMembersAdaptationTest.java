@@ -99,7 +99,7 @@ public class DependencyWithAbstractMembersAdaptationTest {
 		try {
 			modelManager.saveStateAndExport(targetURI, model, 
 					"Dependencies with abstract members Adaptation", EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		

@@ -31,8 +31,7 @@ public class GeneralizationAdaptationAssociationVisitor extends GeneralizationAd
 			Collection<Class> scope, AssociationConflictResolutionStrategyType conflictStrategyType) {
 		
 		super(sourceClassVisitor, conflictStrategyType);
-		this.conflictScope = new GeneralizationAdaptationClassAssociationConflictScope(this, scope,
-				new OwningClassAssociationConflictSource(sourceClassVisitor.getOwner()));
+		this.conflictScope = new GeneralizationAdaptationClassAssociationConflictScope(this, scope);
 		
 		this.conflictCandidate = new GeneralizationAdaptationClassAssociationConflictCandidate(conflictScope, 
 				sourceClassVisitor.getOwner(), this);
@@ -67,7 +66,8 @@ public class GeneralizationAdaptationAssociationVisitor extends GeneralizationAd
 			return;
 		
 		if (conflictCandidate.satisfiesConflictCondition()) {
-			conflictScope.setConflictSource(new OwningClassAssociationConflictSource(sourceClassVisitor.getOwner()));
+			conflictScope.setConflictSource(
+					new OwningClassAssociationConflictSource(conflictScope, sourceClassVisitor.getOwner()));
 			initAssociationConflictResolutionStrategy();
 		}
 		
@@ -180,7 +180,7 @@ public class GeneralizationAdaptationAssociationVisitor extends GeneralizationAd
 		
 		for (Class scopeClass: conflictScope.getScope())
 			for (Association ownedAssociation: scopeClass.getAssociations())
-				if (scopeClass != conflictScope.getConflictSource().getSource()
+				if (scopeClass != conflictScope.getConflictSource().getEntity()
 					&& ownedAssociation.getName().equals(visitedElement.getName())
 					&& nonConflictingClassMemberEnds
 					.stream()

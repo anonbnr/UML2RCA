@@ -5,7 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import core.model.management.NotAValidModelStateException;
 import uml2rca.model.management.EcoreModelManager;
 import uml2rca.model.management.EcoreModelState;
 
@@ -41,7 +40,7 @@ public abstract class UML2RCAbstractTransformationTest {
 	public void tearDown() {
 		try {
 			modelManager.saveStateAndExport(targetURI, model, transformationStateDescription, EcoreModelState.class);
-		} catch (InstantiationException | IllegalAccessException | NotAValidModelStateException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		modelManager.displayStates();
