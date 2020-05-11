@@ -2,10 +2,10 @@ package core.transformation;
 
 /**
  * an ITransformation generic interface defining an atomic transformation operation
- * of a source element into a target element.<br/><br/>
+ * of a source element into a target element.<br><br>
  * 
  * This interface provides a generic transformation operation between model elements
- * conforming to two random metamodels, or possibly the same metamodel.<br/><br/>
+ * conforming to two random metamodels, or possibly the same metamodel.<br><br>
  * 
  * It must be implemented by all concrete atomic metamodeling transformation classes.
  * 

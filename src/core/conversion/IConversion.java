@@ -4,10 +4,10 @@ import core.transformation.ITransformation;
 
 /**
  * an IConversion generic interface defining an atomic conversion operation
- * of a source element into a target element.<br/><br/>
+ * of a source element into a target element.<br><br>
  * 
  * This interface provides a generic conversion operation between model elements
- * conforming to different metamodels (i.e. inter-metamodel transformation).<br/><br/>
+ * conforming to different metamodels (i.e. inter-metamodel transformation).<br><br>
  * 
  * It must be implemented by all concrete atomic metamodeling conversion classes.
  * 

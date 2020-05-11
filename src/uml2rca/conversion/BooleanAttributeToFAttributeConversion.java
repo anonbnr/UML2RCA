@@ -8,7 +8,7 @@ import rca.RCAFactory;
 
 /**
  * a BooleanAttributeToFAttributeConversion concrete class that is used to convert a R-UML-conforming boolean attribute
- * into an equivalent RCA formal attribute.<br/><br/>
+ * into an equivalent RCA formal attribute.<br><br>
  * 
  * The conversion consists of creating an equivalent target formal attribute
  * having the same name as the source boolean attribute.

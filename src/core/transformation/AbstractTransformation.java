@@ -2,7 +2,7 @@ package core.transformation;
 
 /**
  * an AbstractTransformation abstract class that is used to factor the common interface and state
- * of all concrete atomic metamodeling transformation classes.<br/><br/>
+ * of all concrete atomic metamodeling transformation classes.<br><br>
  * 
  * It must be specialized by all concrete metamodeling transformation classes.
  * @author Bachar Rima

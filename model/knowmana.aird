@@ -65,6 +65,7 @@
     <semanticResources>test/adaptation/dependency/source/dependencyWithAbstractMembers.uml</semanticResources>
     <semanticResources>test/adaptation/association/target/associationWithAbstractMembers.uml</semanticResources>
     <semanticResources>test/adaptation/dependency/target/dependencyWithAbstractMembers.uml</semanticResources>
+    <semanticResources>../doc/stylesheet.css</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_jhjE8EkKEeqZgOYK2Q1rMQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_jqJnUEkKEeqZgOYK2Q1rMQ" name="knowmana" repPath="#_jjJAYEkKEeqZgOYK2Q1rMQ">

@@ -9,7 +9,7 @@ import rca.RContext;
 /**
  * an AssociationToRContextsConversion concrete class that is used to convert a R-UML-conforming
  * unidirectional binary association, having no owned attributes, between concrete R-UML conforming
- * classes, into an equivalent RCA relational context.<br/><br/>
+ * classes, into an equivalent RCA relational context.<br><br>
  * 
  * The conversion consists of creating an equivalent target relational context 
  * having a name chosen by an expert or the same name as the source association in case no name
@@ -58,7 +58,7 @@ public class AssociationToRContextConversion extends AbstractConversion<Associat
 	}
 	
 	/**
-	 * Sets the name of an RCA target relational context.<br/><br/> 
+	 * Sets the name of an RCA target relational context.<br><br> 
 	 * 
 	 * If no name is provided by the expert, the source association's name 
 	 * will be used to name the target relational context.

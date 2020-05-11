@@ -48,11 +48,11 @@ public class DependencyWithAbstractMembersAdaptation extends AbstractRelationshi
 	 * It then cleans the post-adaptation residues.
 	 * @param source the source dependency to adapt
 	 * @throws NotATypeException if the provided source dependency has a client or a supplier that is not a typed element 
-	 * @throws NotAnAssociationWithAnAbstractMemberException if the provided source dependency 
+	 * @throws NotADependencyWithAnAbstractMemberException if the provided source dependency 
 	 * doesn't have abstract members
 	 */
 	public DependencyWithAbstractMembersAdaptation(Dependency source) 
-			throws NotATypeException, NotADependencyWithAnAbstractMemberException{
+			throws NotATypeException, NotADependencyWithAnAbstractMemberException {
 		
 		Dependencies.validateDependencyEnds(source, source.getClients());
 		Dependencies.validateDependencyEnds(source, source.getSuppliers());

@@ -86,7 +86,7 @@ public abstract class AbstractRelationshipWithAbstractMembersAdaptation<E extend
 	 * for each non abstract subclass <code>S</code> of <code>M</code>, 
 	 * it generates an intermediary relationship <code>I</code>
 	 * that's identical to <code>R</code>, but that replaces <code>M</code> with 
-	 * <code>S</code>, using the {@link #cloneAndAdaptIntermediaryRelationship(E, Class, Class)}
+	 * <code>S</code>, using the {@link #cloneAndAdaptIntermediaryRelationship(Relationship, Class, Class)}
 	 * method of this class, and enqueues <code>I</code> into the queue. It then
 	 * adds <code>R</code> to the list of intermediary relationships to clean.
 	 * If, on the other hand, <code>R</code> doesn't have any abstract member, 
@@ -163,7 +163,7 @@ public abstract class AbstractRelationshipWithAbstractMembersAdaptation<E extend
 	
 	/**
 	 * Clones the provided enqueued intermediary relationship, using the
-	 * {@link #cloneIntermediaryRelationship(E)} method of this class,
+	 * {@link #cloneIntermediaryRelationship(Relationship)} method of this class,
 	 * and adapts its first abstract member by replacing it with one of its non abstract subclasses,
 	 * using the {@link #adaptIntermediaryRelationship(Relationship, Class, Class)}.
 	 * @param intermediaryRelationship the intermediary relationship to clone 

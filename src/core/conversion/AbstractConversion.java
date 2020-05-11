@@ -4,7 +4,7 @@ import core.transformation.AbstractTransformation;
 
 /**
  * an AbstractConversion abstract class that is used to factor the common interface and state
- * of all concrete atomic metamodeling conversion classes.<br/><br/>
+ * of all concrete atomic metamodeling conversion classes.<br><br>
  * 
  * It must be specialized by all concrete metamodeling conversion classes.
  * 

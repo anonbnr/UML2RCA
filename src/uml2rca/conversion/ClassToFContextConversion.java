@@ -10,7 +10,7 @@ import rca.RCAFactory;
 
 /**
  * a ClassToFContextConversion concrete class that is used to convert a R-UML-conforming concrete class
- * into an equivalent RCA formal context.<br/><br/>
+ * into an equivalent RCA formal context.<br><br>
  * 
  * The conversion consists of creating an equivalent target formal context 
  * having the same name as the source concrete class.
