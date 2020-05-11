@@ -17,4 +17,11 @@
     </ownedEnd>
     <ownedEnd xmi:id="_GN0hYHztEeq_vO1Ti1fjcA" name="a" type="_C3HrUHztEeq_vO1Ti1fjcA" association="_GNzTQHztEeq_vO1Ti1fjcA"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dLpksIu3EeqTkq6yTMRcJQ" name="nonAggregation" memberEnd="_dLsA8Yu3EeqTkq6yTMRcJQ _dLsoAIu3EeqTkq6yTMRcJQ">
+    <eAnnotations xmi:id="_dLrZ4Iu3EeqTkq6yTMRcJQ" source="org.eclipse.papyrus">
+      <details xmi:id="_dLsA8Iu3EeqTkq6yTMRcJQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_dLsA8Yu3EeqTkq6yTMRcJQ" name="b" type="_EDTxoHztEeq_vO1Ti1fjcA" association="_dLpksIu3EeqTkq6yTMRcJQ"/>
+    <ownedEnd xmi:id="_dLsoAIu3EeqTkq6yTMRcJQ" name="a" type="_C3HrUHztEeq_vO1Ti1fjcA" association="_dLpksIu3EeqTkq6yTMRcJQ"/>
+  </packagedElement>
 </uml:Model>

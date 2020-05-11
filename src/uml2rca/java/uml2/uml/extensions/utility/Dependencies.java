@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Type;
+
+import uml2rca.exceptions.NotATypeException;
 
 public class Dependencies {
 
@@ -58,5 +61,21 @@ public class Dependencies {
 				.filter(cls -> cls == memberType)
 				.findFirst()
 				.get();
+	}
+	
+	/**
+	 * Checks whether the provided list of member ends of the dependency are typed elements
+	 * @param source the dependency to examine
+	 * @param ends the list of member ends to check 
+	 * @throws NotATypeException if the list of member ends has a member end that is not a typed element
+	 */
+	public static void validateDependencyEnds(Dependency source, List<NamedElement> ends) 
+			throws NotATypeException {
+		
+		if (!(ends
+		.stream()
+		.allMatch(end -> (end instanceof Type))))
+			throw new NotATypeException(source.getName() + 
+					" is a dependency having a non-type client/supplier");
 	}
 }

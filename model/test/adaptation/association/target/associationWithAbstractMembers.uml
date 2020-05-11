@@ -21,144 +21,144 @@
     <packagedElement xmi:type="uml:Class" xmi:id="__wQPwIkbEeq6Q5ryj_M7TA" name="Tulip">
       <generalization xmi:id="_ZpZYAIkcEeq6Q5ryj_M7TA" general="_-WGl8IkbEeq6Q5ryj_M7TA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4scgIlPEeq_YNBPPp_LEQ" name="describedIn-JournalArticleInProceedings-Tulip" memberEnd="_T4scgYlPEeq_YNBPPp_LEQ _T4schIlPEeq_YNBPPp_LEQ _T4sch4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4scgYlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T4scgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4scgolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4scg4lPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iI_8kJMXEeqg8dUcrPZnxA" name="describedIn-Thesis-Rose" memberEnd="_iI_8kZMXEeqg8dUcrPZnxA _iI_8lJMXEeqg8dUcrPZnxA _iI_8l5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iI_8kZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iI_8kJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iI_8kpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iI_8k5MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4schIlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T4scgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4schYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4scholPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iI_8lJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iI_8kJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iI_8lZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iI_8lpMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4sch4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4scgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4sciIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4sciYlPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4u4wIlPEeq_YNBPPp_LEQ" name="describedIn-JournalArticleInProceedings-Rose" memberEnd="_T4u4wYlPEeq_YNBPPp_LEQ _T4u4xIlPEeq_YNBPPp_LEQ _T4u4x4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4u4wYlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T4u4wIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4u4wolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4u4w4lPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T4u4xIlPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T4u4wIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4u4xYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4u4xolPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T4u4x4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4u4wIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4u4yIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4u4yYlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iI_8l5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iI_8kJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iI_8mJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iI_8mZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4wG4IlPEeq_YNBPPp_LEQ" name="describedIn-Report-Tulip" memberEnd="_T4wG4YlPEeq_YNBPPp_LEQ _T4wG5IlPEeq_YNBPPp_LEQ _T4wG54lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4wG4YlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T4wG4IlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4wG4olPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4wG44lPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJBKsJMXEeqg8dUcrPZnxA" name="describedIn-Thesis-Tulip" memberEnd="_iJBKsZMXEeqg8dUcrPZnxA _iJBKtJMXEeqg8dUcrPZnxA _iJBKt5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJBKsZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJBKsJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBKspMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBKs5MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4wG5IlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T4wG4IlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4wG5YlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4wG5olPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJBKtJMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJBKsJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBKtZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBKtpMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4wG54lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4wG4IlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4wG6IlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4wG6YlPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4xVAIlPEeq_YNBPPp_LEQ" name="describedIn-Report-Rose" memberEnd="_T4xVAYlPEeq_YNBPPp_LEQ _T4xVBIlPEeq_YNBPPp_LEQ _T4xVB4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4xVAYlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T4xVAIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4xVAolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4xVA4lPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T4xVBIlPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T4xVAIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4xVBYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4xVBolPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T4xVB4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4xVAIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4xVCIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4xVCYlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJBKt5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJBKsJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBKuJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBKuZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4yjIIlPEeq_YNBPPp_LEQ" name="describedIn-Thesis-Tulip" memberEnd="_T4yjIYlPEeq_YNBPPp_LEQ _T4yjJIlPEeq_YNBPPp_LEQ _T4yjJ4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4yjIYlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T4yjIIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4yjIolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4yjI4lPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJBxwJMXEeqg8dUcrPZnxA" name="describedIn-InProceedings-Rose" memberEnd="_iJBxwZMXEeqg8dUcrPZnxA _iJBxxJMXEeqg8dUcrPZnxA _iJBxx5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJBxwZMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJBxwJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBxwpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBxw5MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4yjJIlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T4yjIIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4yjJYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4yjJolPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJBxxJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJBxwJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBxxZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBxxpMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T4yjJ4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4yjIIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4yjKIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4yjKYlPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T4zxQIlPEeq_YNBPPp_LEQ" name="describedIn-Thesis-Rose" memberEnd="_T4zxQYlPEeq_YNBPPp_LEQ _T4zxRIlPEeq_YNBPPp_LEQ _T40YUIlPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T4zxQYlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T4zxQIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4zxQolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4zxQ4lPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T4zxRIlPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T4zxQIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4zxRYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4zxRolPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T40YUIlPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T4zxQIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T40YUYlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T40YUolPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJBxx5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJBxwJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJBxyJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJBxyZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T40_YIlPEeq_YNBPPp_LEQ" name="describedIn-InProceedings-Tulip" memberEnd="_T41mcIlPEeq_YNBPPp_LEQ _T41mc4lPEeq_YNBPPp_LEQ _T41mdolPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T41mcIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T40_YIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T41mcYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T41mcolPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJDm8JMXEeqg8dUcrPZnxA" name="describedIn-InProceedings-Tulip" memberEnd="_iJDm8ZMXEeqg8dUcrPZnxA _iJDm9JMXEeqg8dUcrPZnxA _iJDm95MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJDm8ZMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJDm8JMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJDm8pMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJDm85MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T41mc4lPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T40_YIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T41mdIlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T41mdYlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJDm9JMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJDm8JMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJDm9ZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJDm9pMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T41mdolPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T40_YIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T41md4lPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T41meIlPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T42NgIlPEeq_YNBPPp_LEQ" name="describedIn-InProceedings-Rose" memberEnd="_T420kIlPEeq_YNBPPp_LEQ _T420k4lPEeq_YNBPPp_LEQ _T420lolPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T420kIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T42NgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T420kYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T420kolPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T420k4lPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T42NgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T420lIlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T420lYlPEeq_YNBPPp_LEQ" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_T420lolPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T42NgIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T420l4lPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T420mIlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJDm95MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJDm8JMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJDm-JMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJDm-ZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T43boIlPEeq_YNBPPp_LEQ" name="describedIn-JournalArticle-Tulip" memberEnd="_T43boYlPEeq_YNBPPp_LEQ _T43bpIlPEeq_YNBPPp_LEQ _T43bp4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T43boYlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T43boIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T43boolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T43bo4lPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJFcIJMXEeqg8dUcrPZnxA" name="describedIn-JournalArticleInProceedings-Rose" memberEnd="_iJFcIZMXEeqg8dUcrPZnxA _iJFcJJMXEeqg8dUcrPZnxA _iJFcJ5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJFcIZMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJFcIJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJFcIpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJFcI5MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T43bpIlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T43boIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T43bpYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T43bpolPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJFcJJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJFcIJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJFcJZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJFcJpMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T43bp4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T43boIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T43bqIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T43bqYlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJFcJ5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJFcIJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJFcKJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJFcKZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_T44pwIlPEeq_YNBPPp_LEQ" name="describedIn-JournalArticle-Rose" memberEnd="_T44pwYlPEeq_YNBPPp_LEQ _T44pxIlPEeq_YNBPPp_LEQ _T44px4lPEeq_YNBPPp_LEQ">
-      <ownedEnd xmi:id="_T44pwYlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T44pwIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T44pwolPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T44pw4lPEeq_YNBPPp_LEQ" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJGqQJMXEeqg8dUcrPZnxA" name="describedIn-JournalArticleInProceedings-Tulip" memberEnd="_iJGqQZMXEeqg8dUcrPZnxA _iJGqRJMXEeqg8dUcrPZnxA _iJGqR5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJGqQZMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJGqQJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJGqQpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJGqQ5MXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T44pxIlPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T44pwIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T44pxYlPEeq_YNBPPp_LEQ" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T44pxolPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJGqRJMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJGqQJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJGqRZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJGqRpMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_T44px4lPEeq_YNBPPp_LEQ" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_T44pwIlPEeq_YNBPPp_LEQ">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T44pyIlPEeq_YNBPPp_LEQ"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T44pyYlPEeq_YNBPPp_LEQ" value="1"/>
+      <ownedEnd xmi:id="_iJGqR5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJGqQJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJGqSJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJGqSZMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJH4YJMXEeqg8dUcrPZnxA" name="describedIn-Report-Rose" memberEnd="_iJH4YZMXEeqg8dUcrPZnxA _iJH4ZJMXEeqg8dUcrPZnxA _iJH4Z5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJH4YZMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJH4YJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJH4YpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJH4Y5MXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJH4ZJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJH4YJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJH4ZZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJH4ZpMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJH4Z5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJH4YJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJH4aJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJH4aZMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJIfcJMXEeqg8dUcrPZnxA" name="describedIn-Report-Tulip" memberEnd="_iJIfcZMXEeqg8dUcrPZnxA _iJIfdJMXEeqg8dUcrPZnxA _iJIfd5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJIfcZMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJIfcJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJIfcpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJIfc5MXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJIfdJMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJIfcJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJIfdZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJIfdpMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJIfd5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJIfcJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJIfeJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJIfeZMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJJGgJMXEeqg8dUcrPZnxA" name="describedIn-JournalArticle-Rose" memberEnd="_iJJGgZMXEeqg8dUcrPZnxA _iJJGhJMXEeqg8dUcrPZnxA _iJJGh5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJJGgZMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJJGgJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJGgpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJGg5MXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJJGhJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJJGgJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJGhZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJGhpMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJJGh5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJJGgJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJGiJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJGiZMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iJJtkJMXEeqg8dUcrPZnxA" name="describedIn-JournalArticle-Tulip" memberEnd="_iJJtkZMXEeqg8dUcrPZnxA _iJJtlJMXEeqg8dUcrPZnxA _iJJtl5MXEeqg8dUcrPZnxA">
+      <ownedEnd xmi:id="_iJJtkZMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJJtkJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJtkpMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJtk5MXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJJtlJMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJJtkJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJtlZMXEeqg8dUcrPZnxA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJtlpMXEeqg8dUcrPZnxA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iJJtl5MXEeqg8dUcrPZnxA" name="documentPlatform" type="_AqFawIkcEeq6Q5ryj_M7TA" association="_iJJtkJMXEeqg8dUcrPZnxA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJJtmJMXEeqg8dUcrPZnxA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJJtmZMXEeqg8dUcrPZnxA" value="1"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
@@ -177,434 +177,434 @@
       <generalization xmi:id="_XQq7MIkeEeq6Q5ryj_M7TA" general="_6erBYIkbEeq6Q5ryj_M7TA"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T4_-gIlPEeq_YNBPPp_LEQ" name="basedOn-JournalArticleInProceedings-JournalArticleInProceedings" memberEnd="_T4_-gYlPEeq_YNBPPp_LEQ _T4_-hIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T4_-gYlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T4_-gIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4_-golPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4_-g4lPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJRpYJMXEeqg8dUcrPZnxA" name="basedOn-Thesis-Thesis" memberEnd="_iJRpYZMXEeqg8dUcrPZnxA _iJRpZJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJRpYZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJRpYJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJRpYpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJRpY5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T4_-hIlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T4_-gIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T4_-hYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T4_-holPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5AlkIlPEeq_YNBPPp_LEQ" name="basedOn-JournalArticleInProceedings-Report" memberEnd="_T5AlkYlPEeq_YNBPPp_LEQ _T5AllIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5AlkYlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5AlkIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5AlkolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Alk4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5AllIlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5AlkIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5AllYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5AllolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJRpZJMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJRpYJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJRpZZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJRpZpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5All4lPEeq_YNBPPp_LEQ" name="basedOn-JournalArticleInProceedings-Thesis" memberEnd="_T5AlmIlPEeq_YNBPPp_LEQ _T5Alm4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5AlmIlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5All4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5AlmYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5AlmolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJSQcJMXEeqg8dUcrPZnxA" name="basedOn-Thesis-InProceedings" memberEnd="_iJSQcZMXEeqg8dUcrPZnxA _iJSQdJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJSQcZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJSQcJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJSQcpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJSQc5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5Alm4lPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5All4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5AlnIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5AlnYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5BMoIlPEeq_YNBPPp_LEQ" name="basedOn-JournalArticleInProceedings-InProceedings" memberEnd="_T5BMoYlPEeq_YNBPPp_LEQ _T5BMpIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5BMoYlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5BMoIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BMoolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BMo4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5BMpIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5BMoIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BMpYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BMpolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJSQdJMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJSQcJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJSQdZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJSQdpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5BMp4lPEeq_YNBPPp_LEQ" name="basedOn-JournalArticleInProceedings-JournalArticle" memberEnd="_T5BMqIlPEeq_YNBPPp_LEQ _T5BMq4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5BMqIlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5BMp4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BMqYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BMqolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJS3gJMXEeqg8dUcrPZnxA" name="basedOn-Thesis-JournalArticleInProceedings" memberEnd="_iJS3gZMXEeqg8dUcrPZnxA _iJS3hJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJS3gZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJS3gJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJS3gpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJS3g5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5BMq4lPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5BMp4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BMrIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BMrYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5BzsIlPEeq_YNBPPp_LEQ" name="basedOn-Report-JournalArticleInProceedings" memberEnd="_T5BzsYlPEeq_YNBPPp_LEQ _T5BztIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5BzsYlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5BzsIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BzsolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Bzs4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5BztIlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5BzsIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BztYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BztolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJS3hJMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJS3gJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJS3hZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJS3hpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5Bzt4lPEeq_YNBPPp_LEQ" name="basedOn-Report-Report" memberEnd="_T5BzuIlPEeq_YNBPPp_LEQ _T5Bzu4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5BzuIlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5Bzt4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BzuYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BzuolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJS3h5MXEeqg8dUcrPZnxA" name="basedOn-Thesis-Report" memberEnd="_iJS3iJMXEeqg8dUcrPZnxA _iJS3i5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJS3iJMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJS3h5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJS3iZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJS3ipMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5Bzu4lPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5Bzt4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5BzvIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5BzvYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5CawIlPEeq_YNBPPp_LEQ" name="basedOn-Report-Thesis" memberEnd="_T5CawYlPEeq_YNBPPp_LEQ _T5CaxIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5CawYlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5CawIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5CawolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Caw4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5CaxIlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5CawIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5CaxYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5CaxolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJS3i5MXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJS3h5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJS3jJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJS3jZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5Cax4lPEeq_YNBPPp_LEQ" name="basedOn-Report-InProceedings" memberEnd="_T5CayIlPEeq_YNBPPp_LEQ _T5Cay4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5CayIlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5Cax4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5CayYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5CayolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJTekJMXEeqg8dUcrPZnxA" name="basedOn-Thesis-JournalArticle" memberEnd="_iJTekZMXEeqg8dUcrPZnxA _iJTelJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJTekZMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJTekJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJTekpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJTek5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5Cay4lPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5Cax4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5CazIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5CazYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5DB0IlPEeq_YNBPPp_LEQ" name="basedOn-Report-JournalArticle" memberEnd="_T5DB0YlPEeq_YNBPPp_LEQ _T5DB1IlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5DB0YlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5DB0IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5DB0olPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5DB04lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5DB1IlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5DB0IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5DB1YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5DB1olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJTelJMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJTekJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJTelZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJTelpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5DB14lPEeq_YNBPPp_LEQ" name="basedOn-Thesis-JournalArticleInProceedings" memberEnd="_T5DB2IlPEeq_YNBPPp_LEQ _T5DB24lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5DB2IlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5DB14lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5DB2YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5DB2olPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJUFoJMXEeqg8dUcrPZnxA" name="basedOn-InProceedings-Thesis" memberEnd="_iJUFoZMXEeqg8dUcrPZnxA _iJUFpJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJUFoZMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJUFoJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUFopMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUFo5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5DB24lPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5DB14lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5DB3IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5DB3YlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5Do4IlPEeq_YNBPPp_LEQ" name="basedOn-Thesis-Report" memberEnd="_T5Do4YlPEeq_YNBPPp_LEQ _T5Do5IlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5Do4YlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5Do4IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5Do4olPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Do44lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5Do5IlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5Do4IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5Do5YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Do5olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJUFpJMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJUFoJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUFpZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUFppMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5Do54lPEeq_YNBPPp_LEQ" name="basedOn-Thesis-Thesis" memberEnd="_T5Do6IlPEeq_YNBPPp_LEQ _T5Do64lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5Do6IlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5Do54lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5Do6YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Do6olPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJUFp5MXEeqg8dUcrPZnxA" name="basedOn-InProceedings-InProceedings" memberEnd="_iJUFqJMXEeqg8dUcrPZnxA _iJUFq5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJUFqJMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJUFp5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUFqZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUFqpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5Do64lPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5Do54lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5Do7IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5Do7YlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5EP8IlPEeq_YNBPPp_LEQ" name="basedOn-Thesis-InProceedings" memberEnd="_T5EP8YlPEeq_YNBPPp_LEQ _T5EP9IlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5EP8YlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5EP8IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5EP8olPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5EP84lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5EP9IlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5EP8IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5EP9YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5EP9olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJUFq5MXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJUFp5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUFrJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUFrZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5EP94lPEeq_YNBPPp_LEQ" name="basedOn-Thesis-JournalArticle" memberEnd="_T5EP-IlPEeq_YNBPPp_LEQ _T5EP-4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5EP-IlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5EP94lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5EP-YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5EP-olPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJUssJMXEeqg8dUcrPZnxA" name="basedOn-InProceedings-JournalArticleInProceedings" memberEnd="_iJUssZMXEeqg8dUcrPZnxA _iJUstJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJUssZMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJUssJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUsspMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUss5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5EP-4lPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5EP94lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5EP_IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5EP_YlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5E3AIlPEeq_YNBPPp_LEQ" name="basedOn-InProceedings-JournalArticleInProceedings" memberEnd="_T5E3AYlPEeq_YNBPPp_LEQ _T5E3BIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5E3AYlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5E3AIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5E3AolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5E3A4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5E3BIlPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5E3AIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5E3BYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5E3BolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJUstJMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJUssJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJUstZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJUstpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5E3B4lPEeq_YNBPPp_LEQ" name="basedOn-InProceedings-Report" memberEnd="_T5E3CIlPEeq_YNBPPp_LEQ _T5E3C4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5E3CIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5E3B4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5E3CYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5E3ColPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJVTwJMXEeqg8dUcrPZnxA" name="basedOn-InProceedings-Report" memberEnd="_iJVTwZMXEeqg8dUcrPZnxA _iJVTxJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJVTwZMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJVTwJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJVTwpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJVTw5MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5E3C4lPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5E3B4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5E3DIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5E3DYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5FeEIlPEeq_YNBPPp_LEQ" name="basedOn-InProceedings-Thesis" memberEnd="_T5FeEYlPEeq_YNBPPp_LEQ _T5FeFIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5FeEYlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5FeEIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5FeEolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5FeE4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5FeFIlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5FeEIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5FeFYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5FeFolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJVTxJMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJVTwJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJVTxZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJVTxpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5FeF4lPEeq_YNBPPp_LEQ" name="basedOn-InProceedings-InProceedings" memberEnd="_T5FeGIlPEeq_YNBPPp_LEQ _T5FeG4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5FeGIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5FeF4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5FeGYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5FeGolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJVTx5MXEeqg8dUcrPZnxA" name="basedOn-InProceedings-JournalArticle" memberEnd="_iJVTyJMXEeqg8dUcrPZnxA _iJVTy5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJVTyJMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJVTx5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJVTyZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJVTypMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5FeG4lPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5FeF4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5FeHIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5FeHYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5GFIIlPEeq_YNBPPp_LEQ" name="basedOn-InProceedings-JournalArticle" memberEnd="_T5GFIYlPEeq_YNBPPp_LEQ _T5GFJIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5GFIYlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5GFIIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GFIolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GFI4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5GFJIlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5GFIIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GFJYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GFJolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJVTy5MXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJVTx5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJVTzJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJVTzZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5GFJ4lPEeq_YNBPPp_LEQ" name="basedOn-JournalArticle-JournalArticleInProceedings" memberEnd="_T5GFKIlPEeq_YNBPPp_LEQ _T5GFK4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5GFKIlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5GFJ4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GFKYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GFKolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJV60JMXEeqg8dUcrPZnxA" name="basedOn-JournalArticleInProceedings-Thesis" memberEnd="_iJV60ZMXEeqg8dUcrPZnxA _iJV61JMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJV60ZMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJV60JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJV60pMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJV605MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5GFK4lPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5GFJ4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GFLIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GFLYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5GsMIlPEeq_YNBPPp_LEQ" name="basedOn-JournalArticle-Report" memberEnd="_T5GsMYlPEeq_YNBPPp_LEQ _T5GsNIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5GsMYlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5GsMIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GsMolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GsM4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5GsNIlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5GsMIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GsNYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GsNolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJV61JMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJV60JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJV61ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJV61pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5GsN4lPEeq_YNBPPp_LEQ" name="basedOn-JournalArticle-Thesis" memberEnd="_T5GsOIlPEeq_YNBPPp_LEQ _T5GsO4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5GsOIlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5GsN4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GsOYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GsOolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJV615MXEeqg8dUcrPZnxA" name="basedOn-JournalArticleInProceedings-InProceedings" memberEnd="_iJV62JMXEeqg8dUcrPZnxA _iJV625MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJV62JMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJV615MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJV62ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJV62pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5GsO4lPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5GsN4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5GsPIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5GsPYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5HTQIlPEeq_YNBPPp_LEQ" name="basedOn-JournalArticle-InProceedings" memberEnd="_T5HTQYlPEeq_YNBPPp_LEQ _T5HTRIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5HTQYlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5HTQIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5HTQolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5HTQ4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5HTRIlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5HTQIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5HTRYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5HTRolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJV625MXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJV615MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJV63JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJV63ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5HTR4lPEeq_YNBPPp_LEQ" name="basedOn-JournalArticle-JournalArticle" memberEnd="_T5HTSIlPEeq_YNBPPp_LEQ _T5HTS4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5HTSIlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5HTR4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5HTSYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5HTSolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJWh4JMXEeqg8dUcrPZnxA" name="basedOn-JournalArticleInProceedings-JournalArticleInProceedings" memberEnd="_iJWh4ZMXEeqg8dUcrPZnxA _iJWh5JMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJWh4ZMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJWh4JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh4pMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh45MXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5HTS4lPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5HTR4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5HTTIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5HTTYlPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5KWkIlPEeq_YNBPPp_LEQ" name="attacks-Tulip-Tulip" memberEnd="_T5KWkYlPEeq_YNBPPp_LEQ _T5KWlIlPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5KWkYlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5KWkIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5KWkolPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5KWk4lPEeq_YNBPPp_LEQ" value="1"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_T5KWlIlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5KWkIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5KWlYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5KWlolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJWh5JMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJWh4JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh5ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh5pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T5KWl4lPEeq_YNBPPp_LEQ" name="attacks-Tulip-Rose" memberEnd="_T5KWmIlPEeq_YNBPPp_LEQ _T5KWm4lPEeq_YNBPPp_LEQ">
-    <ownedEnd xmi:id="_T5KWmIlPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5KWl4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5KWmYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5KWmolPEeq_YNBPPp_LEQ" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJWh55MXEeqg8dUcrPZnxA" name="basedOn-JournalArticleInProceedings-Report" memberEnd="_iJWh6JMXEeqg8dUcrPZnxA _iJWh65MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJWh6JMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJWh55MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh6ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh6pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5KWm4lPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5KWl4lPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5KWnIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5KWnYlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJWh65MXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJWh55MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh7JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh7ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5oQoIlPEeq_YNBPPp_LEQ" name="ImportedTo-JournalArticleInProceedings-Tulip" memberEnd="_T5oQo4lPEeq_YNBPPp_LEQ _T5oQpolPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5oQoYlPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJWh7pMXEeqg8dUcrPZnxA" name="basedOn-JournalArticleInProceedings-JournalArticle" memberEnd="_iJWh75MXEeqg8dUcrPZnxA _iJWh8pMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJWh75MXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJWh7pMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh8JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh8ZMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJWh8pMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJWh7pMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJWh85MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJWh9JMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJXI8JMXEeqg8dUcrPZnxA" name="basedOn-Report-Thesis" memberEnd="_iJXI8ZMXEeqg8dUcrPZnxA _iJXI9JMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJXI8ZMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJXI8JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXI8pMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXI85MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJXI9JMXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJXI8JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXI9ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXI9pMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJXwAJMXEeqg8dUcrPZnxA" name="basedOn-Report-InProceedings" memberEnd="_iJXwAZMXEeqg8dUcrPZnxA _iJXwBJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJXwAZMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJXwAJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwApMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwA5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJXwBJMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJXwAJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwBZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwBpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJXwB5MXEeqg8dUcrPZnxA" name="basedOn-Report-JournalArticleInProceedings" memberEnd="_iJXwCJMXEeqg8dUcrPZnxA _iJXwC5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJXwCJMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJXwB5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwCZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwCpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJXwC5MXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJXwB5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwDJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwDZMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJXwDpMXEeqg8dUcrPZnxA" name="basedOn-Report-Report" memberEnd="_iJXwD5MXEeqg8dUcrPZnxA _iJXwEpMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJXwD5MXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJXwDpMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwEJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwEZMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJXwEpMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJXwDpMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJXwE5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJXwFJMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJYXEJMXEeqg8dUcrPZnxA" name="basedOn-Report-JournalArticle" memberEnd="_iJYXEZMXEeqg8dUcrPZnxA _iJYXFJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJYXEZMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJYXEJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXEpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXE5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJYXFJMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJYXEJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXFZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXFpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJYXF5MXEeqg8dUcrPZnxA" name="basedOn-JournalArticle-Thesis" memberEnd="_iJYXGJMXEeqg8dUcrPZnxA _iJYXG5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJYXGJMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJYXF5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXGZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXGpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJYXG5MXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJYXF5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXHJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXHZMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJYXHpMXEeqg8dUcrPZnxA" name="basedOn-JournalArticle-InProceedings" memberEnd="_iJYXH5MXEeqg8dUcrPZnxA _iJYXIpMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJYXH5MXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJYXHpMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXIJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXIZMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJYXIpMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJYXHpMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJYXI5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJYXJJMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJY-IJMXEeqg8dUcrPZnxA" name="basedOn-JournalArticle-JournalArticleInProceedings" memberEnd="_iJY-IZMXEeqg8dUcrPZnxA _iJY-JJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJY-IZMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJY-IJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJY-IpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJY-I5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJY-JJMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJY-IJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJY-JZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJY-JpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJY-J5MXEeqg8dUcrPZnxA" name="basedOn-JournalArticle-Report" memberEnd="_iJY-KJMXEeqg8dUcrPZnxA _iJY-K5MXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJY-KJMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJY-J5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJY-KZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJY-KpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJY-K5MXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJY-J5MXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJY-LJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJZlMJMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJZlMZMXEeqg8dUcrPZnxA" name="basedOn-JournalArticle-JournalArticle" memberEnd="_iJZlMpMXEeqg8dUcrPZnxA _iJZlNZMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJZlMpMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJZlMZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJZlM5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJZlNJMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJZlNZMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJZlMZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJZlNpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJZlN5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJcogJMXEeqg8dUcrPZnxA" name="attacks-Tulip-Rose" memberEnd="_iJcogZMXEeqg8dUcrPZnxA _iJcohJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJcogZMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJcogJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJcogpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJcog5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJcohJMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJcogJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJcohZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJcohpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iJdPkJMXEeqg8dUcrPZnxA" name="attacks-Tulip-Tulip" memberEnd="_iJdPkZMXEeqg8dUcrPZnxA _iJdPlJMXEeqg8dUcrPZnxA">
+    <ownedEnd xmi:id="_iJdPkZMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJdPkJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJdPkpMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJdPk5MXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iJdPlJMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJdPkJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJdPlZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJdPlpMXEeqg8dUcrPZnxA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ7JoJMXEeqg8dUcrPZnxA" name="ImportedTo-Thesis-Rose" memberEnd="_iJ7Jo5MXEeqg8dUcrPZnxA _iJ7JppMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ7JoZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5oQoolPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ7JopMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5oQo4lPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5oQoIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5oQpIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5oQpYlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ7Jo5MXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJ7JoJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ7JpJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ7JpZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5oQpolPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5oQoIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5oQp4lPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5oQqIlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ7JppMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJ7JoJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ7Jp5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ7JqJMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5o3sIlPEeq_YNBPPp_LEQ" name="ImportedTo-JournalArticleInProceedings-Rose" memberEnd="_T5o3s4lPEeq_YNBPPp_LEQ _T5o3tolPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5o3sYlPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ7wsJMXEeqg8dUcrPZnxA" name="ImportedTo-Thesis-Tulip" memberEnd="_iJ7ws5MXEeqg8dUcrPZnxA _iJ7wtpMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ7wsZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5o3solPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ7wspMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5o3s4lPEeq_YNBPPp_LEQ" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_T5o3sIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5o3tIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5o3tYlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ7ws5MXEeqg8dUcrPZnxA" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_iJ7wsJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ7wtJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ7wtZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5o3tolPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5o3sIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5o3t4lPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5o3uIlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ7wtpMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJ7wsJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ7wt5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ7wuJMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5o3uYlPEeq_YNBPPp_LEQ" name="ImportedTo-Report-Tulip" memberEnd="_T5o3vIlPEeq_YNBPPp_LEQ _T5o3v4lPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5o3uolPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ8XwJMXEeqg8dUcrPZnxA" name="ImportedTo-InProceedings-Rose" memberEnd="_iJ8Xw5MXEeqg8dUcrPZnxA _iJ8XxpMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ8XwZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5o3u4lPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ8XwpMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5o3vIlPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5o3uYlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5o3vYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5o3volPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8Xw5MXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJ8XwJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8XxJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8XxZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5o3v4lPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5o3uYlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5o3wIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5o3wYlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8XxpMXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJ8XwJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8Xx5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8XyJMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5pewIlPEeq_YNBPPp_LEQ" name="ImportedTo-Report-Rose" memberEnd="_T5pew4lPEeq_YNBPPp_LEQ _T5pexolPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5pewYlPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ8XyZMXEeqg8dUcrPZnxA" name="ImportedTo-InProceedings-Tulip" memberEnd="_iJ8XzJMXEeqg8dUcrPZnxA _iJ8Xz5MXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ8XypMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5pewolPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ8Xy5MXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5pew4lPEeq_YNBPPp_LEQ" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_T5pewIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pexIlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5pexYlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8XzJMXEeqg8dUcrPZnxA" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_iJ8XyZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8XzZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8XzpMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5pexolPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5pewIlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pex4lPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5peyIlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8Xz5MXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJ8XyZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8X0JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8-0JMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5peyYlPEeq_YNBPPp_LEQ" name="ImportedTo-Thesis-Tulip" memberEnd="_T5pezIlPEeq_YNBPPp_LEQ _T5pez4lPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5peyolPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ8-0ZMXEeqg8dUcrPZnxA" name="ImportedTo-JournalArticleInProceedings-Rose" memberEnd="_iJ8-1JMXEeqg8dUcrPZnxA _iJ8-15MXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ8-0pMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5pey4lPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ8-05MXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5pezIlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5peyYlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pezYlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5pezolPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8-1JMXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJ8-0ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8-1ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8-1pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5pez4lPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5peyYlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pe0IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5pe0YlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ8-15MXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJ8-0ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ8-2JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ8-2ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5pe0olPEeq_YNBPPp_LEQ" name="ImportedTo-Thesis-Rose" memberEnd="_T5pe1YlPEeq_YNBPPp_LEQ _T5pe2IlPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5pe04lPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ9l4JMXEeqg8dUcrPZnxA" name="ImportedTo-JournalArticleInProceedings-Tulip" memberEnd="_iJ9l45MXEeqg8dUcrPZnxA _iJ9l5pMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ9l4ZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5pe1IlPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ9l4pMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5pe1YlPEeq_YNBPPp_LEQ" name="thesis" type="_tZjlQIkbEeq6Q5ryj_M7TA" association="_T5pe0olPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pe1olPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5pe14lPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ9l45MXEeqg8dUcrPZnxA" name="journalArticleInProceedings" type="_7sEooIkbEeq6Q5ryj_M7TA" association="_iJ9l4JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ9l5JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ9l5ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5pe2IlPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5pe0olPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5pe2YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5pe2olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ9l5pMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJ9l4JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ9l55MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ9l6JMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5qF0IlPEeq_YNBPPp_LEQ" name="ImportedTo-InProceedings-Tulip" memberEnd="_T5qF04lPEeq_YNBPPp_LEQ _T5qF1olPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5qF0YlPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ9l6ZMXEeqg8dUcrPZnxA" name="ImportedTo-Report-Rose" memberEnd="_iJ9l7JMXEeqg8dUcrPZnxA _iJ9l75MXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ9l6pMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5qF0olPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ9l65MXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5qF04lPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5qF0IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qF1IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qF1YlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ9l7JMXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJ9l6ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ9l7ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ9l7pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5qF1olPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5qF0IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qF14lPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qF2IlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ9l75MXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJ9l6ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ9l8JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ9l8ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5qF2YlPEeq_YNBPPp_LEQ" name="ImportedTo-InProceedings-Rose" memberEnd="_T5qF3IlPEeq_YNBPPp_LEQ _T5qF34lPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5qF2olPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ-M8JMXEeqg8dUcrPZnxA" name="ImportedTo-Report-Tulip" memberEnd="_iJ-M85MXEeqg8dUcrPZnxA _iJ-M9pMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ-M8ZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5qF24lPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ-M8pMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5qF3IlPEeq_YNBPPp_LEQ" name="inProceedings" type="_7Ke-gIkbEeq6Q5ryj_M7TA" association="_T5qF2YlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qF3YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qF3olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-M85MXEeqg8dUcrPZnxA" name="report" type="_spgoYIkbEeq6Q5ryj_M7TA" association="_iJ-M8JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-M9JMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-M9ZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5qF34lPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5qF2YlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qF4IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qF4YlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-M9pMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJ-M8JMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-M95MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-M-JMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5qs4IlPEeq_YNBPPp_LEQ" name="ImportedTo-JournalArticle-Tulip" memberEnd="_T5qs44lPEeq_YNBPPp_LEQ _T5qs5olPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5qs4YlPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ-M-ZMXEeqg8dUcrPZnxA" name="ImportedTo-JournalArticle-Rose" memberEnd="_iJ-M_JMXEeqg8dUcrPZnxA _iJ-M_5MXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ-M-pMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5qs4olPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ-M-5MXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5qs44lPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5qs4IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qs5IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qs5YlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-M_JMXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJ-M-ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-M_ZMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-M_pMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5qs5olPEeq_YNBPPp_LEQ" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_T5qs4IlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qs54lPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qs6IlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-M_5MXEeqg8dUcrPZnxA" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_iJ-M-ZMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-NAJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-NAZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_T5qs6YlPEeq_YNBPPp_LEQ" name="ImportedTo-JournalArticle-Rose" memberEnd="_T5qs7IlPEeq_YNBPPp_LEQ _T5qs74lPEeq_YNBPPp_LEQ">
-    <ownedAttribute xmi:id="_T5qs6olPEeq_YNBPPp_LEQ" name="dateImportation">
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_iJ-0AJMXEeqg8dUcrPZnxA" name="ImportedTo-JournalArticle-Tulip" memberEnd="_iJ-0A5MXEeqg8dUcrPZnxA _iJ-0BpMXEeqg8dUcrPZnxA">
+    <ownedAttribute xmi:id="_iJ-0AZMXEeqg8dUcrPZnxA" name="dateImportation">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_T5qs64lPEeq_YNBPPp_LEQ" name="isReferencedInAnotherDocument">
+    <ownedAttribute xmi:id="_iJ-0ApMXEeqg8dUcrPZnxA" name="isReferencedInAnotherDocument">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedEnd xmi:id="_T5qs7IlPEeq_YNBPPp_LEQ" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_T5qs6YlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qs7YlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qs7olPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-0A5MXEeqg8dUcrPZnxA" name="journalArticle" type="_6erBYIkbEeq6Q5ryj_M7TA" association="_iJ-0AJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-0BJMXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-0BZMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_T5qs74lPEeq_YNBPPp_LEQ" name="rose" type="__aZUgIkbEeq6Q5ryj_M7TA" association="_T5qs6YlPEeq_YNBPPp_LEQ">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T5qs8IlPEeq_YNBPPp_LEQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T5qs8YlPEeq_YNBPPp_LEQ" value="1"/>
+    <ownedEnd xmi:id="_iJ-0BpMXEeqg8dUcrPZnxA" name="tulip" type="__wQPwIkbEeq6Q5ryj_M7TA" association="_iJ-0AJMXEeqg8dUcrPZnxA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iJ-0B5MXEeqg8dUcrPZnxA" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iJ-0CJMXEeqg8dUcrPZnxA" value="1"/>
     </ownedEnd>
   </packagedElement>
 </uml:Model>

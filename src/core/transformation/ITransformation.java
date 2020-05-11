@@ -42,6 +42,13 @@ public interface ITransformation<S,T> {
 	void setTarget(T target);
 	
 	/**
+	 * Executes some pre-transformation processing on the environment 
+	 * and state of the transformation class implementing this interface
+	 * @param source the source model element to transform.
+	 */
+	void preTransform(S source);
+	
+	/**
 	 * Transforms a source model element conforming to a random metamodel into
 	 * a target model element conforming to another random metamodel (possibly the same)
 	 * in an atomic manner.
@@ -49,4 +56,22 @@ public interface ITransformation<S,T> {
 	 * @return the target model element.
 	 */
 	T transform(S source);
+	
+	/**
+	 * Executes some post-transformation processing on the environment 
+	 * and state of the transformation class implementing this interface
+	 * @param source the source model element to transform.
+	 */
+	void postTransform(S source);
+	
+	/**
+	 * Applies the pre-transformation, transformation, and post-transformation methods as they
+	 * are defined by the transformation class implementing this interface
+	 * @param source the source model element to transform.
+	 */
+	default void apply(S source) {
+		preTransform(source);
+		setTarget(transform(source));
+		postTransform(source);
+	}
 }

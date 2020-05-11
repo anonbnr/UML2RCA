@@ -29,8 +29,7 @@ import uml2rca.java.uml2.uml.extensions.visitor.VisitableAttribute;
 import uml2rca.java.uml2.uml.extensions.visitor.VisitableClass;
 import uml2rca.java.uml2.uml.extensions.visitor.VisitableDependency;
 
-public class SimpleGeneralizationAdaptation 
-	extends AbstractAdaptation<Class, Class> {
+public class SimpleGeneralizationAdaptation extends AbstractAdaptation<Class, Class> {
 	
 	/* ATTRIBUTES */
 	protected VisitableClass visitableSource;
@@ -44,16 +43,9 @@ public class SimpleGeneralizationAdaptation
 	public SimpleGeneralizationAdaptation() {}
 	
 	public SimpleGeneralizationAdaptation(Class leaf, Class choice) 
-			throws NotALeafInGeneralizationHierarchyException,
+			throws NotALeafInGeneralizationHierarchyException, 
 			NotAValidLevelForGeneralizationAdaptationException {
 		
-		preTransformInit(leaf, choice);
-		this.setTarget(this.transform(choice));
-		postTransformationClean();
-	}
-
-	protected void preTransformInit(Class leaf, Class choice)
-			throws NotALeafInGeneralizationHierarchyException, NotAValidLevelForGeneralizationAdaptationException {
 		if (!Classes.isLeafInGeneralizationStructure(leaf))
 			throw new NotALeafInGeneralizationHierarchyException(leaf.getName() 
 					+ " is not a leaf in a generalization hierarchy");
@@ -62,12 +54,7 @@ public class SimpleGeneralizationAdaptation
 			throw new NotAValidLevelForGeneralizationAdaptationException(choice.getName()
 					+ " is neither " + leaf.getName() + " nor one of its superclasses");
 		
-		this.setSource(choice);
-		visitableSource = new VisitableClass(choice);
-		attributeVisitors = new ArrayList<>();
-		associationVisitors = new ArrayList<>();
-		dependencyVisitors = new ArrayList<>();
-		conflictScope = visitableSource.getSubClasses();
+		apply(choice);
 	}
 
 	/* METHODS */
@@ -85,6 +72,16 @@ public class SimpleGeneralizationAdaptation
 	
 	public List<GeneralizationAdaptationDependencyVisitor> getDependencyVisitors() {
 		return dependencyVisitors;
+	}
+	
+	@Override
+	public void preTransform(Class choice) {
+		super.preTransform(choice);
+		visitableSource = new VisitableClass(choice);
+		attributeVisitors = new ArrayList<>();
+		associationVisitors = new ArrayList<>();
+		dependencyVisitors = new ArrayList<>();
+		conflictScope = visitableSource.getSubClasses();
 	}
 	
 	@Override
@@ -294,7 +291,8 @@ public class SimpleGeneralizationAdaptation
 					dependencyConflictResolutionStrategyType);
 	}
 
-	protected void postTransformationClean() {
+	@Override
+	public void postTransform(Class source) {
 		// remove source's owned associations & dependencies, and its subclasses' associations & dependencies
 		Stream
 		.concat(associationVisitors.stream(), dependencyVisitors.stream())

@@ -32,4 +32,9 @@ public class BooleanAttributeToFAttributeConversion extends AbstractConversion<P
 		
 		return attribute;
 	}
+	
+	@Override
+	public void postTransform(Property source) {
+		
+	}
 }

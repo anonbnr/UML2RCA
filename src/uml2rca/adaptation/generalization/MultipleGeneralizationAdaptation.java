@@ -16,18 +16,22 @@ public class MultipleGeneralizationAdaptation extends SimpleGeneralizationAdapta
 
 	/* CONSTRUCTOR */
 	public MultipleGeneralizationAdaptation(Class leaf, Class choice)
-			throws NotALeafInGeneralizationHierarchyException, NotAValidLevelForGeneralizationAdaptationException {
-		preTransformInit(leaf, choice);
+			throws NotALeafInGeneralizationHierarchyException, 
+			NotAValidLevelForGeneralizationAdaptationException {
+		
+		super(leaf, choice);
+	}
+	
+	/* METHODS */
+	@Override
+	public void preTransform(Class choice) {
+		super.preTransform(choice);
 		conflictScope = Stream
 				.concat(visitableSource.getSuperClasses().stream(), 
 						visitableSource.getSubClasses().stream())
 				.collect(Collectors.toList());
-		
-		this.setTarget(this.transform(choice));
-		postTransformationClean();
 	}
 	
-	/* METHODS */
 	@Override
 	protected void initTargetClassAttributes()
 			throws ConflictResolutionStrategyException {

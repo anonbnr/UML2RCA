@@ -12,7 +12,9 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mwJtAX4SEeq_vO1Ti1fjcA" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_mwJtAn4SEeq_vO1Ti1fjcA" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_mwJF8H4SEeq_vO1Ti1fjcA"/>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_mwKUEH4SEeq_vO1Ti1fjcA" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_mwJF8H4SEeq_vO1Ti1fjcA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_mwKUEH4SEeq_vO1Ti1fjcA" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_mwJF8H4SEeq_vO1Ti1fjcA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tqMl8JK2Eeqhbfr5sQ-wBA"/>
+      </ownedEnd>
       <ownedEnd xmi:type="uml:Property" xmi:id="_nqP9wH4SEeq_vO1Ti1fjcA" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_mwJF8H4SEeq_vO1Ti1fjcA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nqWEYH4SEeq_vO1Ti1fjcA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nqWEYX4SEeq_vO1Ti1fjcA" value="1"/>

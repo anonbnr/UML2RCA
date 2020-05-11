@@ -91,19 +91,23 @@ public class NaryAssociationMaterializationAdaptationTest extends AbstractNaryAs
 						Strings.decapitalize(targetName) + "-" + memberEnd.getType().getName());
 				assertEquals(targetEnd.isNavigable(), 
 						NaryAssociationMaterializationAdaptation
-						.getMaterializedClassMemberEndNavigability(association.getMemberEnds(), memberEnd));
+						.getTargetClassMemberEndNavigability(association.getMemberEnds(),
+								sourceNaryAssociationMemberEnds.get(memberEnd.getType())));
+				assertEquals(targetEnd.getLower(), 
+						sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getLower());
+				
+				assertEquals(targetEnd.getUpper(), 
+						sourceNaryAssociationMemberEnds.get(memberEnd.getType()).getUpper());
 			}
 		}
 		
-		assertEquals(targetEnd.getLower(), 1);
-		assertEquals(targetEnd.getUpper(), 1);
 		assertEquals(targetEnd.getAggregation(), AggregationKind.NONE_LITERAL);
 	}
 	
 	protected void validateNonTargetMemberEnd(Association association, Property nonTargetEnd) {
 		assertEquals(nonTargetEnd.getName(), sourceNaryAssociationMemberEnds.get(nonTargetEnd.getType()).getName());
-		assertEquals(nonTargetEnd.getLower(), sourceNaryAssociationMemberEnds.get(nonTargetEnd.getType()).getLower());
-		assertEquals(nonTargetEnd.getUpper(), sourceNaryAssociationMemberEnds.get(nonTargetEnd.getType()).getUpper());
+		assertEquals(nonTargetEnd.getLower(), 1);
+		assertEquals(nonTargetEnd.getUpper(), 1);
 		assertEquals(nonTargetEnd.getAggregation(), sourceNaryAssociationMemberEnds.get(nonTargetEnd.getType()).getAggregation());
 		assertEquals(nonTargetEnd.isNavigable(), sourceNaryAssociationMemberEnds.get(nonTargetEnd.getType()).isNavigable());
 	}

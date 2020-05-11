@@ -27,22 +27,28 @@ public class AssociationToRContextConversion extends AbstractConversion<Associat
 	
 	/* CONSTRUCTORS */
 	public AssociationToRContextConversion(Association source) {
-		this.setSource(source);
-		this.setContextName("");
-		this.setTarget(this.transform(source));
+		super(source);
 	}
 	
 	public AssociationToRContextConversion(Association source, String rContextName) {
-		this.setSource(source);
-		this.setContextName(rContextName);
-		this.setTarget(this.transform(source));
+		apply(source, rContextName);
 	}
 	
 	/* METHODS */
 	public String getContextName() {return this.rContextName;}
 	public void setContextName(String rContextName) {this.rContextName = rContextName;}
 	
-	// implementation of the IConversion interface
+	@Override
+	public void preTransform(Association source) {
+		super.preTransform(source);
+		setContextName("");
+	}
+	
+	public void preTransform(Association source, String rContextName) {
+		super.preTransform(source);
+		setContextName(rContextName);
+	}
+	
 	@Override
 	public RContext transform(Association source) {
 		RContext context = RCAFactory.eINSTANCE.createRContext();
@@ -63,5 +69,16 @@ public class AssociationToRContextConversion extends AbstractConversion<Associat
 			context.setName(this.source.getName());
 		else
 			context.setName(this.rContextName);
+	}
+	
+	@Override
+	public void postTransform(Association source) {
+		
+	}
+	
+	public void apply(Association source, String rContextName) {
+		preTransform(source, rContextName);
+		setTarget(transform(source));
+		postTransform(source);
 	}
 }

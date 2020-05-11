@@ -36,8 +36,9 @@ public abstract class AbstractTransformation<S, T> implements ITransformation<S,
 	 * @param source a source element to transform.
 	 */
 	public AbstractTransformation(S source) {
-		this.setSource(source);
-		this.setTarget(this.transform(source));
+		preTransform(source);
+		setTarget(transform(source));
+		postTransform(source);
 	}
 	
 	/* METHODS */
@@ -59,5 +60,13 @@ public abstract class AbstractTransformation<S, T> implements ITransformation<S,
 	@Override
 	public void setTarget(T target) {
 		this.target = target;
+	}
+	
+	/**
+	 * Sets the provided entity as the source for this transformation, by default
+	 */
+	@Override
+	public void preTransform(S source) {
+		setSource(source);
 	}
 }

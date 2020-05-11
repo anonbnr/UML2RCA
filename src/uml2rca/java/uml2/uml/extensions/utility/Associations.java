@@ -109,10 +109,10 @@ public class Associations {
 	}
 	
 	/**
-	 * Adapts a non general association (e.g. aggregation, composition, dependency) into a general association
-	 * by getting rid of its aggregation kind.
+	 * Adapts a non general association (i.e. aggregation or composition) into a general association
+	 * by removing the aggregation kind of its aggregated member end.
 	 * @param association the non general association to adapt.
-	 * @param kind the aggregation kind of the non general association.
+	 * @param kind the aggregation kind of the non general association to remove.
 	 * @return a general association obtained from the non general association.
 	 * @see AggregationKind
 	 */

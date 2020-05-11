@@ -4,7 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Dependency;
@@ -40,7 +41,7 @@ public class DependencyToAssociationAdaptationTest {
 		
 		String dependencyName = "dependsOn";
 		Dependency dependency = (Dependency) root.getPackagedElement(dependencyName);
-		EList<Association> associations = null;
+		List<Association> associations = null;
 		
 		try {
 			associations = (new DependencyToAssociationAdaptation(dependency)).getTarget();

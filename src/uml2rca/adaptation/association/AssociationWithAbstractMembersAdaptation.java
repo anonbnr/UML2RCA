@@ -1,12 +1,7 @@
 package uml2rca.adaptation.association;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.uml2.uml.Association;
@@ -15,19 +10,45 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 
 import core.adaptation.AbstractAdaptation;
+import uml2rca.adaptation.AbstractRelationshipWithAbstractMembersAdaptation;
 import uml2rca.exceptions.NotAnAssociationWithAnAbstractMemberException;
 import uml2rca.java.extensions.utility.Strings;
 import uml2rca.java.uml2.uml.extensions.utility.Associations;
 import uml2rca.java.uml2.uml.extensions.utility.Classes;
 
-public class AssociationWithAbstractMembersAdaptation extends AbstractAdaptation<Association, List<Association>> {
+/**
+ * an AssociationWithAbstractMembersAdaptation concrete class that is used to adapt a UML
+ * association having abstract members by moving down the association into each non abstract child 
+ * of each of its abstract members.<br><br>
+ * 
+ * The adaptation consists of creating a list of target associations having the 
+ * same owning package as the source association to adapt, such that the members of each 
+ * target association consist of the original non abstract members of the source association 
+ * and a non abstract child of the original abstract member of the source association.
+ * 
+ * @author Bachar Rima
+ * @see AbstractAdaptation
+ * @see Association
+ */
+public class AssociationWithAbstractMembersAdaptation extends AbstractRelationshipWithAbstractMembersAdaptation<Association> {
 	
-	/* ATTRIBUTES */
-	protected Map<Class, Set<Class>> abstractMembersDictionary;
-	protected Queue<Association> newAssociationsQueue;
-	protected List<Association> associationsToClean;
+	/* CONSTRUCTORS */
+	/**
+	 * Creates an empty association with abstract members adaptation
+	 */
+	public AssociationWithAbstractMembersAdaptation() {}
 	
-	/* CONSTRUCTOR */
+	/**
+	 * Creates an association with abstract members adaptation having source as its source
+	 * association to adapt, then applies the adaptation to obtain the list of target
+	 * associations with no abstract members, such that the members of each 
+	 * target association consist of the original non abstract members of the source association 
+	 * and a non abstract child of the original abstract member of the source association.
+	 * It then cleans the post-adaptation residues.
+	 * @param source the source association to adapt
+	 * @throws NotAnAssociationWithAnAbstractMemberException if the provided source association 
+	 * doesn't have abstract members
+	 */
 	public AssociationWithAbstractMembersAdaptation(Association source) 
 			throws NotAnAssociationWithAnAbstractMemberException {
 		
@@ -35,58 +56,26 @@ public class AssociationWithAbstractMembersAdaptation extends AbstractAdaptation
 			throw new NotAnAssociationWithAnAbstractMemberException(source.getName() 
 					+ " doesn't have any abstract members");
 		
-		this.setSource(source);
-		abstractMembersDictionary = new Hashtable<>();
-		newAssociationsQueue = new LinkedList<>();
-		associationsToClean = new ArrayList<>();
-		this.setTarget(transform(source));
-		this.postTransformationClean();
+		apply(source);
 	}
 
 	/* METHODS */
+	/**
+	 * Creates a new empty list of associations 
+	 */
 	@Override
-	public List<Association> transform(Association source) {
-		List<Association> newOwnedAssociations = new ArrayList<>();
-		initTargetAssociations(newOwnedAssociations);
-		
-		return newOwnedAssociations;
-	}	
-	
-	protected List<Association> initTargetAssociations(List<Association> newOwnedAssociations) {
-		initAbstractMemberEndsDictionary();
-		
-		newAssociationsQueue.add(source);
-		
-		while(!newAssociationsQueue.isEmpty()) {
-			final Association currentAssociation = newAssociationsQueue.element();
-			
-			if (Associations.hasAnAbstractMember(currentAssociation)) {
-				Class abstractMember = Associations.getFirstAbstractMember(
-						currentAssociation);
-				
-				abstractMembersDictionary.get(abstractMember)
-				.stream()
-				.forEach(subClass -> {
-					Association clonedAssociation = cloneSourceAssociationAndAdaptFirstAbstractMemberEnd(
-							currentAssociation, abstractMember, subClass);
-					newAssociationsQueue.add(clonedAssociation);
-				});
-				
-				associationsToClean.add(currentAssociation);
-			}
-			
-			else
-				newOwnedAssociations.add(currentAssociation);
-			
-			newAssociationsQueue.remove();
-		}
-		
-		initTargetAssociationsNamesAndOwnership(newOwnedAssociations);
-		
-		return newOwnedAssociations;
+	protected List<Association> createNewRelationshipEmptyList() {
+		return new ArrayList<>();
 	}
-	
-	protected void initAbstractMemberEndsDictionary() {
+
+	/**
+	 * Initializes the the content of the abstract members dictionary
+	 * of the source association with abstract members to adapt, by
+	 * mapping each of its abstract members to the set of its non abstract
+	 * subclasses.
+	 */
+	@Override
+	protected void initSourceRelationshipAbstractMembersDictionary() {
 		source.getEndTypes()
 		.stream()
 		.map(type -> (Class) type)
@@ -99,12 +88,32 @@ public class AssociationWithAbstractMembersAdaptation extends AbstractAdaptation
 				.collect(Collectors.toSet()));
 		});
 	}
+
+	/**
+	 * Checks whether the provided association has an abstract member
+	 */
+	@Override
+	protected boolean hasAnAbstractMember(Association association) {
+		return Associations.hasAnAbstractMember(association);
+	}
+
+	/**
+	 * Returns the first abstract member of the provided association
+	 */
+	@Override
+	protected Class getFirstAbstractMember(Association association) {
+		return Associations.getFirstAbstractMember(association);
+	}
 	
-	protected Association initTargetAssociation(Association currentAssociation) {
+	/**
+	 * Clones the provided enqueued intermediary association.
+	 */
+	@Override
+	protected Association cloneIntermediaryRelationship(Association intermediaryAssociation) {
 		Association newOwnedAssociation = UMLFactory.eINSTANCE.createAssociation();
 		Property newMemberEnd;
 		
-		for (Property memberEnd: currentAssociation.getMemberEnds()) {
+		for (Property memberEnd: intermediaryAssociation.getMemberEnds()) {
 			newMemberEnd = Associations.cloneMemberEnd(memberEnd);
 			Associations.adaptMemberEndOwnership(
 					newOwnedAssociation, newMemberEnd, memberEnd.isNavigable());
@@ -113,21 +122,30 @@ public class AssociationWithAbstractMembersAdaptation extends AbstractAdaptation
 		return newOwnedAssociation;
 	}
 	
-	protected Association cloneSourceAssociationAndAdaptFirstAbstractMemberEnd(
-			Association currentAssociation, Class abstractMember,
-			Class subClass) {
-		
-		Association clonedAssociation = initTargetAssociation(currentAssociation);
+	/**
+	 * Adapts the first abstract member of the provided intermediary association 
+	 * by replacing it with one of its non abstract subclasses.
+	 */
+	@Override
+	protected Association adaptIntermediaryRelationship(Association intermediaryAssociation, Class abstractMember, Class subClass) {
 		Property abstractMemberEnd = Associations.getFirstMemberEndHavingType(
-				clonedAssociation, abstractMember);
+				intermediaryAssociation, abstractMember);
 		
 		abstractMemberEnd.setName(Strings.decapitalize(subClass.getName()));
 		abstractMemberEnd.setType(subClass);
 		
-		return clonedAssociation;
+		return intermediaryAssociation;
 	}
-	
-	protected void initTargetAssociationsNamesAndOwnership(List<Association> newOwnedAssociations) {
+
+	/**
+	 * Sets the name and the owning package for each target association
+	 * in the provided list of target associations.
+	 * The owning package is the same one owning the source association
+	 * with abstract members to adapt, whereas the name conforms to 
+	 * the following convention &lt;sourceAssociationName&gt;-&lt;newNonAbstractMemberName&gt;
+	 */
+	@Override
+	protected void initTargetRelationshipsNamesAndOwnership(List<Association> newOwnedAssociations) {
 		newOwnedAssociations
 		.stream()
 		.forEach(newAssociation -> {
@@ -141,11 +159,5 @@ public class AssociationWithAbstractMembersAdaptation extends AbstractAdaptation
 			
 			newAssociation.setName(newAssociationName);
 		});
-	}
-
-	protected void postTransformationClean() {
-		associationsToClean
-		.stream()
-		.forEach(Association::destroy);
 	}
 }

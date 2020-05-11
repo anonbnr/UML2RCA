@@ -13,6 +13,7 @@ import org.junit.Test;
 import core.model.management.NotAValidModelStateException;
 import uml2rca.adaptation.association.AssociationClassWithAbstractMembersAdaptation;
 import uml2rca.adaptation.association.AssociationWithAbstractMembersAdaptation;
+import uml2rca.exceptions.NotAnAssociationClassException;
 import uml2rca.exceptions.NotAnAssociationWithAnAbstractMemberException;
 import uml2rca.model.management.EcoreModelManager;
 import uml2rca.model.management.EcoreModelState;
@@ -118,7 +119,7 @@ public class AssociationWithAbstractMembersAdaptationTest {
 		
 		try {
 			newOwnedAssociations = new AssociationClassWithAbstractMembersAdaptation(ImportedTo).getTarget();
-		} catch (NotAnAssociationWithAnAbstractMemberException e) {
+		} catch (NotAnAssociationClassException | NotAnAssociationWithAnAbstractMemberException e) {
 			e.printStackTrace();
 		}
 		

@@ -50,4 +50,9 @@ public class ClassToFContextConversion extends AbstractConversion<Class, FContex
 		
 		return attributeSet;
 	}
+	
+	@Override
+	public void postTransform(Class source) {
+		
+	}
 }
