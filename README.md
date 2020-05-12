@@ -7,7 +7,7 @@ This project defines UML-to-RCA metamodel transformations. It introduces a gener
 
 Underlying RCA is an iterative process aiming to refine the relationships between concept lattices, by adding relational attributes to objects of source lattices using **scaling operators**, and discovering new concepts at each iteration, until no new concept can be discovered. At the end of the process, a set of interconnected concept lattices is obtained, which can be represented in a hierarchy of ontological concepts that and can be examined and analyzed using some knowledge representation formalism (e.g. description logic).
 
-RCA can be very useful in software engineering, knowledge representation, artificial intelligence, $\dots$ Some applications include refactoring UML class and use case diagrams, extracting OO architectures, web service classification, construction and extraction of ontologies, $\dots$
+RCA can be very useful in software engineering, knowledge representation, artificial intelligence, etc. Some applications include refactoring UML class and use case diagrams, extracting OO architectures, web service classification, construction and extraction of ontologies, etc.
 
 ## RCF (Relational Context Family)
 *TODO*
@@ -74,13 +74,59 @@ Based on the brief aforementioned introduction to RCA, the following metamodel h
 ## Instance migrations (populating the RCF)
 
 # Environment Configuration
-1. install Eclipse IDE pre-bundled with the Eclipse Modeling Tools: https://www.eclipse.org/downloads/packages/release/2020-03/r/eclipse-modeling-tools
-1. once Eclipse IDE is installed, from the workspace, `File` $\rightarrow$ `New` $\rightarrow$ `Other` $\dots$ $\rightarrow$ `Eclipse Modeling Framework` $\rightarrow$ `Ecore Modeling Project`, then follow the installation wizard.
-1. The RCA metamodel project (*whose GitHub repository' links is provided in the Introduction*) should be added as a project dependency to the project's build path.
-1. The `Papyrus` project must be installed and used to create, visualize, import and export the `.uml` model files, instead of using the `Ecore Modeling Editor`. The installation is done as follows: `Help` $\rightarrow$ `Eclipse Marketplace` $\rightarrow$ search for `Papyrus Software Designer` in `All Available Markets` $\rightarrow$ install `Papyrus Software Designer 1.1.0` $\rightarrow$ `Restart Eclipse`.
-1. Along with the already imported plugin dependencies, the following jars must be added as external jars manually to the project's build path (*they usually reside in the* `plugins/` *folder of the eclipse IDE installation folder*):
-    - `org.eclipse.uml2.uml.profile.standard_1.5.0.v20200302-1312`
-    - `org.eclipse.uml2.uml.resources_5.5.0.v20200302-1312`
-1. The `Apache Commons Lang` bundle of utility classes must also be added as an external library to the project's build path:
-    - **download link**: https://mvnrepository.com/artifact/org.apache.commons/commons-lang3/3.10
-    - **note**: preferrably to be added to the `plugins/` folder of the eclipse IDE installation folder.
+## Eclipse IDE and other required tools
+1. install `Eclipse IDE` pre-bundled with the Eclipse Modeling Tools: https://www.eclipse.org/downloads/packages/release/2020-03/r/eclipse-modeling-tools
+1. install `Apache Maven` to automatically handle dependencies, as follows: `Help` -> `Install New Software` -> add a repository named "**m2eclipse**" at "http://download.eclipse.org/technology/m2e/releases" -> install `Maven Integration for Eclipse` -> `Restart Eclipse`
+1. install the `Papyrus` project must to create, visualize, import and export the `.uml` model files, instead of using the `Ecore Modeling Editor`, as follows: `Help` -> `Eclipse Marketplace` -> search for `Papyrus Software Designer` in `All Available Markets` -> install `Papyrus Software Designer 1.1.0` -> `Restart Eclipse`.
+
+## Project dependencies
+### The RCA metamodel project
+The RCA metamodel project must be imported into the workspace as follows:
+
+1. `Window` -> `Perspective` -> `Open Perspective` -> `Other...` -> Choose `Git` -> right click on the `Git repositories` perspective -> `Clone a Git Repository...` -> copy https://github.com/anonbnr/rca.git into the `URI` field -> `Next` -> Enter GitHub credentials -> `Next` -> Select the proper directory to import the project -> `Finish` -> Enter GitHub credentials
+1. `Window` -> `Perspective` -> `Open Perspective` -> `Java` -> right click on the `Package Explorer` perspective -> `Import...` -> `Git` -> `Projects from Git` -> `Next` -> `Existing local repository` -> `rca` -> `Next` -> `Next` -> `Finish`
+
+### The UML2RCA project
+The UML2RCA project must be imported into the workspace as follows:
+
+1. `Window` -> `Perspective` -> `Open Perspective` -> `Other...` -> Choose `Git` -> right click on the `Git repositories` perspective -> `Clone a Git Repository...` -> copy https://github.com/anonbnr/UML2RCA.git into the `URI` field -> `Next` -> Enter GitHub credentials -> `Next` -> Select the proper directory to import the project -> `Finish` -> Enter GitHub credentials
+1. `Window` -> `Perspective` -> `Open Perspective` -> `Java` -> right click on the `Package Explorer` perspective -> `Import...` -> `Git` -> `Projects from Git` -> `Next` -> `Existing local repository` -> `UML2RCA` -> `Next` -> `Next` -> `Finish`
+
+## Creating a new project using UML2RCA and RCA
+Once Eclipse IDE and its required tools have been installed, and the RCA metamodel and UML2RCA projects have been imported into the workspace, one can create a modeling project that uses them in its code, as follows:
+
+1. `File` -> `New` -> `Other...` -> `Eclipse Modeling Framework` -> `Ecore Modeling Project`, then follow the installation wizard.
+1. right click on the created project -> `Configure` -> `Convert to Maven Project` -> fill the fields of the Maven project to be created, mainly `GroupdId`, `ArtifactId`, `Version`, `Packaging` and optionally `Name` and `Description` -> `Finish`
+1. open `pom.xml` and add the following at the end of the `<project></project>` root tag:
+
+```xml
+<!-- pom.xml of the modeling project -->
+<project>
+...
+<dependencies>
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13</version>
+    <scope>test</scope>
+  </dependency>
+
+  <dependency>
+    <groupId>org</groupId>
+    <artifactId>rca</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org</groupId>
+    <artifactId>uml2rca</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+</dependencies>
+...
+</project>
+```
+
+### Notes
+1. If `Eclipse` got stuck upon adding the dependencies in the project's `pom.xml`, you can add the dependencies in the file outside `Eclipse` then **refresh the project** from within `Eclipse`. 
+1. Anytime an error arises from using an unrecognized element in the project, click `fix project setup...` in the proposed solutions, and choose the proposed project setup fix (*e.g. add* `X` *to required bundles*).

@@ -7,32 +7,32 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_qUJQsH0sEeq_vO1Ti1fjcA" name="A"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_rCrxsH0sEeq_vO1Ti1fjcA" name="B"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_iIiCgJMXEeqg8dUcrPZnxA" name="AssocClass">
-    <ownedAttribute xmi:id="_iItBo5MXEeqg8dUcrPZnxA" name="assocAtt1">
+  <packagedElement xmi:type="uml:Class" xmi:id="_IEI1kJRhEeqvSMVv-sXRig" name="AssocClass">
+    <ownedAttribute xmi:id="_IER_gJRhEeqvSMVv-sXRig" name="assocAtt1">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_iItBpJMXEeqg8dUcrPZnxA" name="assocAtt2">
+    <ownedAttribute xmi:id="_IER_gZRhEeqvSMVv-sXRig" name="assocAtt2">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_iIoJIJMXEeqg8dUcrPZnxA" name="B-AssocClass" memberEnd="_iIqlYJMXEeqg8dUcrPZnxA _iIrzgJMXEeqg8dUcrPZnxA" navigableOwnedEnd="_iIqlYJMXEeqg8dUcrPZnxA _iIrzgJMXEeqg8dUcrPZnxA">
-    <ownedEnd xmi:id="_iIqlYJMXEeqg8dUcrPZnxA" name="b" type="_rCrxsH0sEeq_vO1Ti1fjcA" association="_iIoJIJMXEeqg8dUcrPZnxA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iIqlYZMXEeqg8dUcrPZnxA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iIqlYpMXEeqg8dUcrPZnxA" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IENHAJRhEeqvSMVv-sXRig" name="B-AssocClass" memberEnd="_IEO8MJRhEeqvSMVv-sXRig _IEQxYJRhEeqvSMVv-sXRig" navigableOwnedEnd="_IEO8MJRhEeqvSMVv-sXRig _IEQxYJRhEeqvSMVv-sXRig">
+    <ownedEnd xmi:id="_IEO8MJRhEeqvSMVv-sXRig" name="b" type="_rCrxsH0sEeq_vO1Ti1fjcA" association="_IENHAJRhEeqvSMVv-sXRig">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IEO8MZRhEeqvSMVv-sXRig" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IEO8MpRhEeqvSMVv-sXRig" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_iIrzgJMXEeqg8dUcrPZnxA" name="assocClass-B" type="_iIiCgJMXEeqg8dUcrPZnxA" association="_iIoJIJMXEeqg8dUcrPZnxA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iIsakJMXEeqg8dUcrPZnxA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iIsakZMXEeqg8dUcrPZnxA" value="*"/>
+    <ownedEnd xmi:id="_IEQxYJRhEeqvSMVv-sXRig" name="assocClass-B" type="_IEI1kJRhEeqvSMVv-sXRig" association="_IENHAJRhEeqvSMVv-sXRig">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IEQxYZRhEeqvSMVv-sXRig" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IEQxYpRhEeqvSMVv-sXRig" value="*"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_iIsakpMXEeqg8dUcrPZnxA" name="A-AssocClass" memberEnd="_iIsak5MXEeqg8dUcrPZnxA _iItBoJMXEeqg8dUcrPZnxA" navigableOwnedEnd="_iIsak5MXEeqg8dUcrPZnxA _iItBoJMXEeqg8dUcrPZnxA">
-    <ownedEnd xmi:id="_iIsak5MXEeqg8dUcrPZnxA" name="a" type="_qUJQsH0sEeq_vO1Ti1fjcA" association="_iIsakpMXEeqg8dUcrPZnxA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iIsalJMXEeqg8dUcrPZnxA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iIsalZMXEeqg8dUcrPZnxA" value="1"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IEQxY5RhEeqvSMVv-sXRig" name="A-AssocClass" memberEnd="_IERYcJRhEeqvSMVv-sXRig _IERYc5RhEeqvSMVv-sXRig" navigableOwnedEnd="_IERYcJRhEeqvSMVv-sXRig _IERYc5RhEeqvSMVv-sXRig">
+    <ownedEnd xmi:id="_IERYcJRhEeqvSMVv-sXRig" name="a" type="_qUJQsH0sEeq_vO1Ti1fjcA" association="_IEQxY5RhEeqvSMVv-sXRig">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IERYcZRhEeqvSMVv-sXRig" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IERYcpRhEeqvSMVv-sXRig" value="1"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_iItBoJMXEeqg8dUcrPZnxA" name="assocClass-A" type="_iIiCgJMXEeqg8dUcrPZnxA" association="_iIsakpMXEeqg8dUcrPZnxA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iItBoZMXEeqg8dUcrPZnxA" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iItBopMXEeqg8dUcrPZnxA" value="1"/>
+    <ownedEnd xmi:id="_IERYc5RhEeqvSMVv-sXRig" name="assocClass-A" type="_IEI1kJRhEeqvSMVv-sXRig" association="_IEQxY5RhEeqvSMVv-sXRig">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IERYdJRhEeqvSMVv-sXRig" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IERYdZRhEeqvSMVv-sXRig" value="1"/>
     </ownedEnd>
   </packagedElement>
 </uml:Model>
