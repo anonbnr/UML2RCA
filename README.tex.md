@@ -183,36 +183,7 @@ The first step consists of using the RCA's formal contexts to create their initi
 
 ## RCA iterative algorithm
 
----
-header-includes:
-    - \usepackage[ruled,vlined,linesnumbered,nofillcomment]{algorithm2e}
----
-\begin{algorithm}[H]
-\caption{Multi-FCA}
-\SetKwData{Halt}{halt}
-\SetKwFunction{BuildLat}{BUILD-LATTICE}
-\SetKwFunction{UpdateLat}{UPDATE-LATTICE}
-\SetKwFunction{ExtendRel}{EXTEND-REL}
-\SetKwFunction{Iso}{ISOMORPHIC}
-\KwIn{An RCF (K, R)}
-\KwResult{A family of 1 to n interconnected concept lattices}
-\BlankLine
-\Begin{
-  $p \leftarrow$ 0\;
-  \Halt $\leftarrow$ false\;
-  \For{$i\leftarrow 1$ \KwTo $n$}{
-    $\mathbb{L}^0[i] \leftarrow$ \BuildLat{$\mathbb{K}^0_i$}\;
-  }
-  \While{not \Halt}{
-    $p ++$\;
-    \For{$i\leftarrow 1$ \KwTo $n$}{
-      $\mathbb{K}^p_i \leftarrow$ \ExtendRel{$\mathbb{K}^{p - 1}_i$, $\mathbb{L}^{p - 1}$}\;
-      $\mathbb{L}^p[i] \leftarrow$ \UpdateLat{$\mathbb{K}^p_i$, $\mathbb{L}^{p - 1}[i]$}\;
-    }
-    \Halt $\leftarrow \bigwedge_{i=1}^{n}$ \Iso{$\mathbb{L}^p[i]$, $\mathbb{L}^{p - 1}[i]$}\;
-  }
-}
-\end{algorithm}
+!["RCA iterative algorithm"](resources/images/readme/rca/rca_iterative_algorithm.png "RCA iterative algorithm")
 
 # The RCA Metamodel
 Based on the brief aforementioned introduction to RCA, the following metamodel has been crafted to describe its entities and associations.
