@@ -218,7 +218,7 @@ header-includes:
 Based on the brief aforementioned introduction to RCA, the following metamodel has been crafted to describe its entities and associations.
 
 ## The Core viewpoint
-*TODO*
+*TODO* *TODO*
 
 ### Description
 *TODO*
