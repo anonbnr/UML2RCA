@@ -7,34 +7,34 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_bBcDIH4SEeq_vO1Ti1fjcA" name="A"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_bmYjQH4SEeq_vO1Ti1fjcA" name="B"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_dJAMkH4SEeq_vO1Ti1fjcA" name="C"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_IGAd0JRhEeqvSMVv-sXRig" name="b-naryAssociation-a" memberEnd="_IGAd0ZRhEeqvSMVv-sXRig _IGAd1JRhEeqvSMVv-sXRig" navigableOwnedEnd="_IGAd0ZRhEeqvSMVv-sXRig _IGAd1JRhEeqvSMVv-sXRig">
-      <ownedEnd xmi:id="_IGAd0ZRhEeqvSMVv-sXRig" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_IGAd0JRhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGAd0pRhEeqvSMVv-sXRig" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGAd05RhEeqvSMVv-sXRig" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BRPrcJaQEeqxBeliqfv2QQ" name="b-naryAssociation-a" memberEnd="_BRPrcZaQEeqxBeliqfv2QQ _BRPrdJaQEeqxBeliqfv2QQ" navigableOwnedEnd="_BRPrcZaQEeqxBeliqfv2QQ _BRPrdJaQEeqxBeliqfv2QQ">
+      <ownedEnd xmi:id="_BRPrcZaQEeqxBeliqfv2QQ" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_BRPrcJaQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRPrcpaQEeqxBeliqfv2QQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRPrc5aQEeqxBeliqfv2QQ" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_IGAd1JRhEeqvSMVv-sXRig" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_IGAd0JRhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGAd1ZRhEeqvSMVv-sXRig"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGAd1pRhEeqvSMVv-sXRig" value="1"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_IGBE4JRhEeqvSMVv-sXRig" name="b-naryAssociation-c" memberEnd="_IGBE4ZRhEeqvSMVv-sXRig _IGBE5JRhEeqvSMVv-sXRig" navigableOwnedEnd="_IGBE4ZRhEeqvSMVv-sXRig _IGBE5JRhEeqvSMVv-sXRig">
-      <ownedEnd xmi:id="_IGBE4ZRhEeqvSMVv-sXRig" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_IGBE4JRhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGBE4pRhEeqvSMVv-sXRig" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGBE45RhEeqvSMVv-sXRig" value="1"/>
-      </ownedEnd>
-      <ownedEnd xmi:id="_IGBE5JRhEeqvSMVv-sXRig" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_IGBE4JRhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGBE5ZRhEeqvSMVv-sXRig"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGBE5pRhEeqvSMVv-sXRig" value="1"/>
+      <ownedEnd xmi:id="_BRPrdJaQEeqxBeliqfv2QQ" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_BRPrcJaQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRPrdZaQEeqxBeliqfv2QQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRPrdpaQEeqxBeliqfv2QQ" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_IGBE55RhEeqvSMVv-sXRig" name="a-naryAssociation-c" memberEnd="_IGBE6JRhEeqvSMVv-sXRig _IGBE65RhEeqvSMVv-sXRig" navigableOwnedEnd="_IGBE6JRhEeqvSMVv-sXRig _IGBE65RhEeqvSMVv-sXRig">
-      <ownedEnd xmi:id="_IGBE6JRhEeqvSMVv-sXRig" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_IGBE55RhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGBE6ZRhEeqvSMVv-sXRig"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGBE6pRhEeqvSMVv-sXRig" value="1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BRQSgJaQEeqxBeliqfv2QQ" name="b-naryAssociation-c" memberEnd="_BRQSgZaQEeqxBeliqfv2QQ _BRQShJaQEeqxBeliqfv2QQ" navigableOwnedEnd="_BRQSgZaQEeqxBeliqfv2QQ _BRQShJaQEeqxBeliqfv2QQ">
+      <ownedEnd xmi:id="_BRQSgZaQEeqxBeliqfv2QQ" name="b" type="_bmYjQH4SEeq_vO1Ti1fjcA" association="_BRQSgJaQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRQSgpaQEeqxBeliqfv2QQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRQSg5aQEeqxBeliqfv2QQ" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_IGBE65RhEeqvSMVv-sXRig" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_IGBE55RhEeqvSMVv-sXRig">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IGBE7JRhEeqvSMVv-sXRig"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IGBE7ZRhEeqvSMVv-sXRig" value="1"/>
+      <ownedEnd xmi:id="_BRQShJaQEeqxBeliqfv2QQ" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_BRQSgJaQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRQShZaQEeqxBeliqfv2QQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRQShpaQEeqxBeliqfv2QQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BRQSh5aQEeqxBeliqfv2QQ" name="a-naryAssociation-c" memberEnd="_BRQSiJaQEeqxBeliqfv2QQ _BRQSi5aQEeqxBeliqfv2QQ" navigableOwnedEnd="_BRQSiJaQEeqxBeliqfv2QQ _BRQSi5aQEeqxBeliqfv2QQ">
+      <ownedEnd xmi:id="_BRQSiJaQEeqxBeliqfv2QQ" name="a" type="_bBcDIH4SEeq_vO1Ti1fjcA" association="_BRQSh5aQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRQSiZaQEeqxBeliqfv2QQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRQSipaQEeqxBeliqfv2QQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_BRQSi5aQEeqxBeliqfv2QQ" name="c" type="_dJAMkH4SEeq_vO1Ti1fjcA" association="_BRQSh5aQEeqxBeliqfv2QQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BRQSjJaQEeqxBeliqfv2QQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BRQSjZaQEeqxBeliqfv2QQ" value="1"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
