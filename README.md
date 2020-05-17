@@ -183,11 +183,7 @@ The first step consists of using the RCA's formal contexts to create their initi
 
 ## RCA iterative algorithm
 
----
-header-includes:
-    - \usepackage[ruled,vlined,linesnumbered,nofillcomment]{algorithm2e}
----
-<p align="center"><img src="/tex/1b02ea68ec77de4ff9f81a3fd0d02e6b.svg?invert_in_darkmode&sanitize=true" align=middle width=779.6751418499999pt height=75.6164376pt/></p>
+!["RCA iterative algorithm"](resources/images/readme/rca/rca_iterative_algorithm.png "RCA iterative algorithm")
 
 # The RCA Metamodel
 Based on the brief aforementioned introduction to RCA, the following metamodel has been crafted to describe its entities and associations.
